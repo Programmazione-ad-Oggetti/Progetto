@@ -1,8 +1,12 @@
 package esame.EsameProgrammazione.model;
 
-/** In questa classe sono presenti gli oggetti rappresentanti la struttura di un Tweet.
- * @author Antonio Colucci
- * @author Carmen Andreozzi
+/////********************************************/////
+///// IN QUESTA CLASSE SONO PRESENTI GLI OGGETTI /////
+/////  RAPPRESENTANTI LA STRUTTURA DI UN TWEET   /////
+/////********************************************/////
+
+/** @author Antonio Colucci
+ *  @author Carmen Andreozzi
 */
 
 public class Tweet {
