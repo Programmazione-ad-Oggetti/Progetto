@@ -17,7 +17,6 @@ public class Statistics {
 	protected ArrayList<Tweet> tweet;
 
 	public Statistics(ArrayList<Tweet> tweet) {
-		super();
 		this.tweet = tweet;
 	}
 	

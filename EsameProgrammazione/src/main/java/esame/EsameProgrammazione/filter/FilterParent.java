@@ -1,7 +1,7 @@
 package esame.EsameProgrammazione.filter;
 
 /////*********************************************************************/////
-/////   QUESTA E' LA SUPERCLASSE PER LE CLASSI CHE IMPLEMENTANO I FILTR   /////
+/////   QUESTA E' LA SUPERCLASSE PER LE CLASSI CHE IMPLEMENTANO I FILTRI  /////
 /////*********************************************************************/////
 
 /** @author Antonio Colucci
@@ -18,7 +18,7 @@ public class FilterParent {
 		if (parametro instanceof String)
 			this.parametro = (String)parametro;
 		else {
-			throw new IllegalArgumentException("Il valore inserito non Ã¨ una stringa");
+			throw new IllegalArgumentException("Il valore inserito non è una stringa");
 		}
 	}
 	
@@ -26,7 +26,7 @@ public class FilterParent {
 		if (parametro instanceof String)
 			this.parametro = (String)parametro;
 		else {
-			throw new IllegalArgumentException("Il valore inserito non Ã¨ una stringa");
+			throw new IllegalArgumentException("Il valore inserito non è una stringa");
 		}
 	}
 
@@ -37,12 +37,5 @@ public class FilterParent {
 	public void setParametro(String parametro) {
 		this.parametro = parametro;
 	}
-
-		
-	
-	
-	
-	
-	
 
 }
