@@ -1,14 +1,5 @@
 package esame.EsameProgrammazione.database;
 
-/////***************************************/////
-/////   RAPPRESENTA LA CLASSE CHE GESTISCE  /////
-/////     L'INIZIALIZZAZIONE DEL DATASET    /////
-/////***************************************/////
-
-/** @author Antonio Colucci
-* 	@author Carmen Andreozzi
-*/
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,6 +11,14 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
 
+/////***************************************/////
+/////   RAPPRESENTA LA CLASSE CHE GESTISCE  /////
+/////     L'INIZIALIZZAZIONE DEL DATASET    /////
+/////***************************************/////
+
+/** @author Antonio Colucci
+* 	@author Carmen Andreozzi
+*/
 public class DatabaseClass {
 	
 	// Questo metodo effettua il download del JSON contenente i tweet dall'URL impostato

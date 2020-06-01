@@ -15,10 +15,11 @@ public class Tweet {
 	
 	//Costruttore
 	public Tweet(String hashtag, String data) {
-		super();
 		this.hashtag = hashtag;
 		this.data = data;
 	}
+	
+	public Tweet() {}
 
 	
 	public String getHashtag() {
