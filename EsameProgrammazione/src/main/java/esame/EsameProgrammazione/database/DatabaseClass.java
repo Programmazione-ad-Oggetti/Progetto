@@ -1,6 +1,58 @@
 package esame.EsameProgrammazione.database;
 
+/////***************************************/////
+/////   RAPPRESENTA LA CLASSE CHE GESTISCE  /////
+/////     L'INIZIALIZZAZIONE DEL DATASET    /////
+/////***************************************/////
+
+/** @author Antonio Colucci
+* 	@author Carmen Andreozzi
+*/
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
+
+import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
+import org.json.simple.parser.ParseException;
+
 public class DatabaseClass {
 	
-
+	// Questo metodo effettua il download del JSON contenente i tweet dall'URL impostato
+	public static JSONObject JSONdownloader() throws ParseException {
+		String url = "https://wd4hfxnxxa.execute-api.us-east-2.amazonaws.com/dev/api/1.1/search/tweets.json?q=terremoto";
+		
+		String data = "";
+		String line = "";
+		
+		try {
+			URLConnection openConnection = new URL(url).openConnection();
+			InputStream in = openConnection.getInputStream();
+			try {
+				   InputStreamReader inR = new InputStreamReader( in );
+				   BufferedReader buf = new BufferedReader( inR );
+				  
+				   while ( ( line = buf.readLine() ) != null ) {
+					   data+= line;
+				   }
+			} finally {
+				 in.close();
+			}
+		} catch (IOException e) {	
+			e.printStackTrace();	
+		} catch (Exception e) {	
+			e.printStackTrace();	
+			}
+		
+		JSONObject json = (JSONObject) JSONValue.parseWithException(data);
+		
+		return json;
+		
+	 }
 }
+
+

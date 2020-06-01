@@ -18,7 +18,7 @@ public class InternalGeneralException extends Exception {
 		}
 
 		public InternalGeneralException(String message) {
-			super(message);
+			super(message); 
 		}
 }
 
