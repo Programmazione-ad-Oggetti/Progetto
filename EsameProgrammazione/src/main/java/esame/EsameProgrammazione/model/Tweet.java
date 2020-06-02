@@ -1,5 +1,7 @@
 package esame.EsameProgrammazione.model;
 
+import java.util.ArrayList;
+
 /////********************************************/////
 ///// IN QUESTA CLASSE SONO PRESENTI GLI OGGETTI /////
 /////  RAPPRESENTANTI LA STRUTTURA DI UN TWEET   /////
@@ -9,25 +11,28 @@ package esame.EsameProgrammazione.model;
  *  @author Carmen Andreozzi
 */
 
-public class Tweet {
-	protected String hashtag;
+public class Tweet extends Hashtag{
 	protected String data;
+	protected ArrayList<Hashtag> hashtag;
 	
 	//Costruttore
-	public Tweet(String hashtag, String data) {
-		this.hashtag = hashtag;
+	public Tweet(String data, ArrayList<Hashtag> hashtag) {
+		super();
 		this.data = data;
+		this.hashtag = hashtag;
 	}
 	
-	public Tweet() {}
+	public Tweet() {
+		super();
+	}
 
 	
-	public String getHashtag() {
+	public ArrayList<Hashtag> getHashtag() {
 		return hashtag;
 	}
 
 
-	public void setHashtag(String hashtag) {
+	public void setHashtag(ArrayList<Hashtag> hashtag) {
 		this.hashtag = hashtag;
 	}
 
