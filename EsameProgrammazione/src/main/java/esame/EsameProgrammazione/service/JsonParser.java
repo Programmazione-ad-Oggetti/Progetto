@@ -22,7 +22,7 @@ import org.json.simple.parser.ParseException;
 
 public class JsonParser {
 	
-	public ArrayList<Tweet> parsingDataset() throws ParseException{
+	public static ArrayList<Tweet> parsingDataset() throws ParseException{
 			
 		JSONObject parser = DatabaseClass.JSONdownloader();
 			
