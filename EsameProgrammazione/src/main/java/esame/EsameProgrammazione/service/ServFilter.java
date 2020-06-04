@@ -38,10 +38,10 @@ public class ServFilter {
 			
 				Constructor<?> ct = cls.getDeclaredConstructor(Object.class); //seleziono il costruttore
 		    
-				filtro =(Filter)ct.newInstance(param);  //istanzo oggetto filtro
+				filtro =(Filter)ct.newInstance(param);  //Istanzio oggetto filtro
 			}
 			
-		    //entra qui se il nome filtro non è corretto 
+		    //entra qui se il nome filtro non e' corretto 
 		    catch(ClassNotFoundException e){
 		    	throw new FilterNotFoundException("The filter in field: '"+column+"' with operator: '"+
 		                                          operator +"' does not exist");

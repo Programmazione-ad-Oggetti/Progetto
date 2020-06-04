@@ -18,9 +18,15 @@ public class HashtagFilter extends FilterParent implements Filter {
 	}
 	
 	public boolean filter(Tweet tweet) {
-		if(tweet.getHashtag().equals(parametro))
-			return true;
-		else  return false;
+		boolean flag = true;
+		
+		for(int i = 0; i<tweet.getHashtag().size(); i++) {
+			if(tweet.getHashtag().get(i).getTesto().equals(parametro)) 
+				flag = true;
+			else  flag = false;
+		}
+		
+		return flag;
 	}
 
 }
