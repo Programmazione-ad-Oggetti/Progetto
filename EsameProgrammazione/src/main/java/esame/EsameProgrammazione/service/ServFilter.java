@@ -25,11 +25,11 @@ public class ServFilter {
 	private ArrayList<Tweet> EseguiFiltro;
 	private final static String path = "esame.EsameProgrammazione.filter.";
 	
-	public static Filter instanceFilter(String column,String operator,Object param) 
+	public static Filter instanceFilter(String field,String operator,Object param) 
 			   throws FilterNotFoundException, FilterIllegalArgumentException,InternalGeneralException{
 			
 			Filter filtro;
-			String filterName = new String("Filter"+column+operator);
+			String filterName = new String(operator+field+"Filter");
 			String ClassFilterName = path.concat(filterName);
 		    
 			try {
@@ -43,7 +43,7 @@ public class ServFilter {
 			
 		    //entra qui se il nome filtro non e' corretto 
 		    catch(ClassNotFoundException e){
-		    	throw new FilterNotFoundException("The filter in field: '"+column+"' with operator: '"+
+		    	throw new FilterNotFoundException("The filter in field: '"+field+"' with operator: '"+
 		                                          operator +"' does not exist");
 		    }
 			

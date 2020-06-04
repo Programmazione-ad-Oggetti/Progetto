@@ -11,9 +11,9 @@ import esame.EsameProgrammazione.model.Tweet;
 * 	@author Carmen Andreozzi
 */
 
-public class HashtagFilter extends FilterParent implements Filter {
+public class EqHashtagFilter extends FilterParent implements Filter {
 
-	public HashtagFilter(Object parametro) {
+	public EqHashtagFilter(Object parametro) {
 		super(parametro);
 	}
 	
