@@ -1,5 +1,7 @@
 package esame.EsameProgrammazione.filter;
 
+import java.util.ArrayList;
+
 import esame.EsameProgrammazione.model.Tweet;
 
 /** @author Antonio Colucci
@@ -17,5 +19,5 @@ public interface Filter {
 	 * @param tweet sul quale si vuole eseguire la verifica.
 	 * @return risposta booleana.
 	*/
-	public boolean filter(Tweet tweet);
+	public boolean filter(ArrayList<String> value, ArrayList<Tweet> tweet);
 }
