@@ -3,6 +3,7 @@ package esame.EsameProgrammazione.service;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Collection;
 
 import esame.EsameProgrammazione.exceptions.FilterIllegalArgumentException;
 import esame.EsameProgrammazione.exceptions.FilterNotFoundException;
@@ -23,6 +24,7 @@ import esame.EsameProgrammazione.filter.Filter;
 public class ServFilter {
 	
 	private final static String path = "esame.EsameProgrammazione.filter.";
+	private static Collection<Tweet> tweets = ServTweetsImpl.getTweets();
 	
 	public static Filter instanceFilter(String field,String operator,Object param) 
 			   throws FilterNotFoundException, FilterIllegalArgumentException,InternalGeneralException{
@@ -95,4 +97,23 @@ public class ServFilter {
 		
 		return filteredTweetList;
 	}
+	
+	public static ArrayList<Tweet> FilteringOr(FilterStruct filtro, ArrayList<Tweet> completeTweetList) throws FilterNotFoundException, FilterIllegalArgumentException, InternalGeneralException{
+
+		ArrayList<Tweet> filteredTweetList = new ArrayList<Tweet>();
+		
+		Filter filtraggio = instanceFilter(filtro.getField(), filtro.getOperator(), filtro.getValues());
+		
+		for(int i = 0; i < tweets.size(); i++) {
+
+			if(filtraggio.filter(filtro.getValues() , ((ArrayList<Tweet>) tweets).get(i)))
+				filteredTweetList.add(((ArrayList<Tweet>) tweets).get(i));
+		}	
+		
+		completeTweetList.removeAll(filteredTweetList);
+		completeTweetList.addAll(filteredTweetList);
+		return completeTweetList;
+	}
+	
+	
 }

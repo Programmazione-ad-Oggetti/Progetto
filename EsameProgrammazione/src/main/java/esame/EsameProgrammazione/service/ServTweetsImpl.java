@@ -10,8 +10,8 @@ import org.json.simple.parser.ParseException;
 import esame.EsameProgrammazione.model.Tweet;
 import esame.EsameProgrammazione.service.JsonParser;
 
-public class ServTweetsImpl implements ServTweets{
-	Map<Long, Tweet> TweetList = new HashMap<>();
+public class ServTweetsImpl{
+	static Map<Long, Tweet> TweetList = new HashMap<>();
 	
 	//Costruttore
 	public ServTweetsImpl() throws ParseException {
@@ -29,8 +29,7 @@ public class ServTweetsImpl implements ServTweets{
 		}
 	}
 	
-	@Override
-	public Collection<Tweet> getTweets() {
+	public static Collection<Tweet> getTweets() {
 		return TweetList.values();
 	}
 }

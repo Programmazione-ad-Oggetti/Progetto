@@ -1,5 +1,6 @@
 package esame.EsameProgrammazione.service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import esame.EsameProgrammazione.model.Tweet;
