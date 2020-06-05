@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.json.simple.parser.ParseException;
 
+import esame.EsameProgrammazione.model.Hashtag;
 import esame.EsameProgrammazione.model.Tweet;
 import esame.EsameProgrammazione.service.JsonParser;
 
@@ -16,8 +17,22 @@ public class ServTweetsImpl{
 	//Costruttore
 	public ServTweetsImpl() throws ParseException {
 		
+		/*try {
+			ArrayList<Tweet> lista = JsonParser.parsingDataset(hash); //Viene richiamata la funzione che effettua il parsing del Json
+			
+			for(int i = 0; i < lista.size(); i++) {
+				Tweet twt = lista.get(i);
+				TweetList.add(twt);
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}*/
+	}
+	
+	public static ArrayList<Tweet> getTweets(Hashtag hash) throws ParseException {
 		try {
-			ArrayList<Tweet> lista = JsonParser.parsingDataset(); //Viene richiamata la funzione che effettua il parsing del Json
+			ArrayList<Tweet> lista = JsonParser.parsingDataset(hash); //Viene richiamata la funzione che effettua il parsing del Json
 			
 			for(int i = 0; i < lista.size(); i++) {
 				Tweet twt = lista.get(i);
@@ -27,9 +42,7 @@ public class ServTweetsImpl{
 		catch(Exception e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public static ArrayList<Tweet> getTweets() {
+		
 		return TweetList;
 	}
 }

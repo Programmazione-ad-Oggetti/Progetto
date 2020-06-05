@@ -1,5 +1,6 @@
 package esame.EsameProgrammazione.controller;
 
+import org.json.simple.parser.ParseException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,10 +17,10 @@ public class ControllerClass {
 	
 	//VIENE RESTITUITA LA LISTA DEI PRODOTTI
 	@RequestMapping(value = "/tweets/{hashtag}")
-	public ResponseEntity<Object> setTesto(@PathVariable("hashtag") String testo){
+	public ResponseEntity<Object> setTesto(@PathVariable("hashtag") String testo) throws ParseException{
 		
 		Hashtag hash = new Hashtag();
 		hash.setTesto(testo);
-		return new ResponseEntity<>(ServTweetsImpl.getTweets(), HttpStatus.OK);
+		return new ResponseEntity<>(ServTweetsImpl.getTweets(hash), HttpStatus.OK);
 	}
 }

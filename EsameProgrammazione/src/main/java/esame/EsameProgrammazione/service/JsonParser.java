@@ -22,9 +22,9 @@ import org.json.simple.parser.ParseException;
 
 public class JsonParser {
 	
-	public static ArrayList<Tweet> parsingDataset() throws ParseException{
+	public static ArrayList<Tweet> parsingDataset(Hashtag hash) throws ParseException{
 			
-		JSONObject parser = DatabaseClass.JSONdownloader();
+		JSONObject parser = DatabaseClass.JSONdownloader(hash);
 			
 		ArrayList<Tweet> ListaTweets = new ArrayList<Tweet>();
 		for(int i = 0; i < parser.size(); i++) {
