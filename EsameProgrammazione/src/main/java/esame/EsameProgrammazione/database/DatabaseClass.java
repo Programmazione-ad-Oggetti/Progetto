@@ -11,6 +11,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
 
+import esame.EsameProgrammazione.model.Hashtag;
+
 /////***************************************/////
 /////   RAPPRESENTA LA CLASSE CHE GESTISCE  /////
 /////     L'INIZIALIZZAZIONE DEL DATASET    /////
@@ -23,7 +25,8 @@ public class DatabaseClass {
 	
 	// Questo metodo effettua il download del JSON contenente i tweet dall'URL impostato
 	public static JSONObject JSONdownloader() throws ParseException {
-		String url = "https://wd4hfxnxxa.execute-api.us-east-2.amazonaws.com/dev/api/1.1/search/tweets.json?q=terremoto";
+		Hashtag hash = new Hashtag();
+		String url = "https://wd4hfxnxxa.execute-api.us-east-2.amazonaws.com/dev/api/1.1/search/tweets.json?q=%23"+hash.getTesto();
 		
 		String data = "";
 		String line = "";

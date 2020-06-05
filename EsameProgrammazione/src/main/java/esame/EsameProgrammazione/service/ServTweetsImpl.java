@@ -11,7 +11,7 @@ import esame.EsameProgrammazione.model.Tweet;
 import esame.EsameProgrammazione.service.JsonParser;
 
 public class ServTweetsImpl{
-	static Map<Long, Tweet> TweetList = new HashMap<>();
+	static ArrayList<Tweet> TweetList = new ArrayList<Tweet>();
 	
 	//Costruttore
 	public ServTweetsImpl() throws ParseException {
@@ -21,7 +21,7 @@ public class ServTweetsImpl{
 			
 			for(int i = 0; i < lista.size(); i++) {
 				Tweet twt = lista.get(i);
-				TweetList.put(twt.getID(), twt);
+				TweetList.add(twt);
 			}
 		}
 		catch(Exception e) {
@@ -29,7 +29,7 @@ public class ServTweetsImpl{
 		}
 	}
 	
-	public static Collection<Tweet> getTweets() {
-		return TweetList.values();
+	public static ArrayList<Tweet> getTweets() {
+		return TweetList;
 	}
 }
