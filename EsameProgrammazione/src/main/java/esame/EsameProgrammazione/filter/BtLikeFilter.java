@@ -18,7 +18,7 @@ public class BtLikeFilter implements Filter{
 	
 	
 	@Override
-	public boolean filter(ArrayList<String> value, ArrayList<Tweet> tweet) {
+	public boolean filter(ArrayList<String> value, Tweet tweet) {
 		double num1 = Double.parseDouble(value.get(0));
 		double num2 = Double.parseDouble(value.get(1));
 		double min;
@@ -32,8 +32,8 @@ public class BtLikeFilter implements Filter{
 			min = num1;
 		}
 		
-		for (int i = 0; i < tweet.size(); i++)
-			if (!(min < tweet.get(i).getLike() && max > tweet.get(i).getLike()))
+		
+		if (!(min < tweet.getLike() && max > tweet.getLike()))
 				return false;
 		return true;
 	}
