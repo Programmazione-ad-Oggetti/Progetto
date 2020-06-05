@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import esame.EsameProgrammazione.exceptions.FilterIllegalArgumentException;
 import esame.EsameProgrammazione.exceptions.FilterNotFoundException;
 import esame.EsameProgrammazione.exceptions.InternalGeneralException;
-
+import esame.EsameProgrammazione.model.FilterStruct;
 import esame.EsameProgrammazione.model.Tweet;
 import esame.EsameProgrammazione.filter.Filter;
 
@@ -22,7 +22,6 @@ import esame.EsameProgrammazione.filter.Filter;
 
 public class ServFilter {
 	
-	private ArrayList<Tweet> EseguiFiltro;
 	private final static String path = "esame.EsameProgrammazione.filter.";
 	
 	public static Filter instanceFilter(String field,String operator,Object param) 
@@ -57,7 +56,7 @@ public class ServFilter {
 		   	catch (InvocationTargetException e) {  
 		   		//genero una nuova eccezione 
 		   		throw new FilterIllegalArgumentException(e.getTargetException().getMessage()
-		   				+ " Expected in '"+column+"'");
+		   				+ " Expected in '"+field+"'");
 		   	}
 
 		    catch(LinkageError | NoSuchMethodException | SecurityException 
@@ -78,15 +77,20 @@ public class ServFilter {
 	 * @param     completeTweetList ArrayList di Tweet sulla quale si vuole effettuare il filtraggio.  
 	 * @param     filtro che si desidera utilizzare.
 	 * @return    ArrayList di Tweet filtrati.
+	 * @throws InternalGeneralException 
+	 * @throws FilterIllegalArgumentException 
+	 * @throws FilterNotFoundException 
 	 */
-	public ArrayList<Tweet> Filtering(ArrayList<Tweet> completeTweetList, Filter filtro){
+	public ArrayList<Tweet> Filtering(ArrayList<Tweet> completeTweetList, FilterStruct filtro) throws FilterNotFoundException, FilterIllegalArgumentException, InternalGeneralException{
 		
 		ArrayList<Tweet> filteredTweetList = new ArrayList<Tweet>();
 		
-		for(Tweet tweet :  completeTweetList) {
+		Filter filtraggio = instanceFilter(filtro.getField(), filtro.getOperator(), filtro.getValues());
+		
+		for(int i = 0; i < completeTweetList.size(); i++) {
 
-			if(filtro.filter(tweet))
-				filteredTweetList.add(tweet);
+			if(filtraggio.filter(filtro.getValues() , completeTweetList.get(i)))
+				filteredTweetList.add(completeTweetList.get(i));
 		}		
 		
 		return filteredTweetList;

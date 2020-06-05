@@ -19,5 +19,5 @@ public interface Filter {
 	 * @param tweet sul quale si vuole eseguire la verifica.
 	 * @return risposta booleana.
 	*/
-	public boolean filter(ArrayList<String> value, ArrayList<Tweet> tweet);
+	public boolean filter(ArrayList<String> value, Tweet tweet);
 }

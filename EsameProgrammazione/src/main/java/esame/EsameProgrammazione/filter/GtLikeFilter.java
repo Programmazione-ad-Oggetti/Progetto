@@ -19,7 +19,7 @@ public class GtLikeFilter implements Filter{
 	
 	
 	@Override
-	public boolean filter(ArrayList<String> value, ArrayList<Tweet> tweet) {
+	public boolean filter(ArrayList<String> value, Tweet tweet) {
 		for (int i = 0; i < tweet.size(); i++)
 			if (!(tweet.get(i).getLike() > Double.parseDouble(value.get(0))))
 				return false;
