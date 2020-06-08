@@ -1,6 +1,7 @@
 package esame.EsameProgrammazione.service;
 
 import java.io.Reader;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 
 import esame.EsameProgrammazione.database.DatabaseClass;
@@ -22,15 +23,15 @@ import org.json.simple.parser.ParseException;
 
 public class JsonParser {
 	
-	public static ArrayList<Tweet> parsingDataset(Hashtag hash) throws ParseException{
+	public static ArrayList<Tweet> parsingDataset(Hashtag hash) throws ParseException, MalformedURLException{
 			
-		JSONObject parser = DatabaseClass.JSONdownloader(hash);
+		JSONArray parser = DatabaseClass.JSONdownloader(hash);
 			
 		ArrayList<Tweet> ListaTweets = new ArrayList<Tweet>();
 		for(int i = 0; i < parser.size(); i++) {
 			Tweet tweet = new Tweet();
 			
-			JSONObject parsedTweet = (JSONObject) JSONValue.parse((Reader) parser.get(i));
+			JSONObject parsedTweet = (JSONObject) parser.get(i);
 			
 			//tweet.setHashtag((String) parsedTweet.get("hashtags"));
 			tweet.setData((String) parsedTweet.get("created_at")); //Viene presa la data
