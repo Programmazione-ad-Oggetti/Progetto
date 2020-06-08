@@ -5,10 +5,13 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.json.simple.parser.ParseException;
+
 import esame.EsameProgrammazione.exceptions.FilterIllegalArgumentException;
 import esame.EsameProgrammazione.exceptions.FilterNotFoundException;
 import esame.EsameProgrammazione.exceptions.InternalGeneralException;
 import esame.EsameProgrammazione.model.FilterStruct;
+import esame.EsameProgrammazione.model.Hashtag;
 import esame.EsameProgrammazione.model.Tweet;
 import esame.EsameProgrammazione.filter.Filter;
 
@@ -24,7 +27,6 @@ import esame.EsameProgrammazione.filter.Filter;
 public class ServFilter {
 	
 	private final static String path = "esame.EsameProgrammazione.filter.";
-	private static Collection<Tweet> tweets = ServTweetsImpl.getTweets();
 	
 	public static Filter instanceFilter(String field,String operator,Object param) 
 			   throws FilterNotFoundException, FilterIllegalArgumentException,InternalGeneralException{
@@ -98,8 +100,9 @@ public class ServFilter {
 		return filteredTweetList;
 	}
 	
-	public static ArrayList<Tweet> FilteringOr(FilterStruct filtro, ArrayList<Tweet> completeTweetList) throws FilterNotFoundException, FilterIllegalArgumentException, InternalGeneralException{
+	public static ArrayList<Tweet> FilteringOr(FilterStruct filtro, ArrayList<Tweet> completeTweetList, Hashtag hash) throws FilterNotFoundException, FilterIllegalArgumentException, InternalGeneralException, ParseException{
 
+		Collection<Tweet> tweets = ServTweetsImpl.getTweets(hash);
 		ArrayList<Tweet> filteredTweetList = new ArrayList<Tweet>();
 		
 		Filter filtraggio = instanceFilter(filtro.getField(), filtro.getOperator(), filtro.getValues());
