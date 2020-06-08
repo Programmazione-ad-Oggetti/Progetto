@@ -95,7 +95,7 @@ public class ServFilter {
 
 			if(filtraggio.filter(filtro.getValues() , completeTweetList.get(i)))
 				filteredTweetList.add(completeTweetList.get(i));
-		}		
+		}
 		
 		return filteredTweetList;
 	}

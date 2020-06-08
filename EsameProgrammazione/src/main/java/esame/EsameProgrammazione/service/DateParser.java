@@ -10,14 +10,16 @@ import esame.EsameProgrammazione.model.*;
 
 public class DateParser {
 	
-	public static ArrayList<Tweet> TweetList = new ArrayList<Tweet>();
+	private static ArrayList<Tweet> TweetList = new ArrayList<Tweet>();
+	private static Date data;
 	
-	public static ArrayList<Tweet> getTwitterDate(Hashtag hash) throws org.json.simple.parser.ParseException {
+	public static ArrayList<Tweet> getTwitterDate(Hashtag hash) throws org.json.simple.parser.ParseException, ParseException, java.text.ParseException {
+		
 		TweetList = ServTweetsImpl.getTweets(hash);
 		for(int i = 0; i<TweetList.size(); i++) {
-			dateParsing(TweetList.get(i).getData());
+			data = dateParsing(TweetList.get(i).getData());
 		}
-		return 
+		return TweetList;
 	}
 		
 	
@@ -26,5 +28,5 @@ public class DateParser {
 		  SimpleDateFormat sf = new SimpleDateFormat(TWITTER);
 		  sf.setLenient(true);
 		  return (Date) sf.parse(date);
-		  }
+	}
 }
