@@ -7,7 +7,7 @@ import java.util.Calendar;
 
 import com.sun.el.parser.ParseException;
 
-import esame.EsameProgrammazione.filter.DataFilter;
+import esame.EsameProgrammazione.filter.EqDataFilter;
 import esame.EsameProgrammazione.model.*;
 
 public class DateParser {
@@ -24,7 +24,7 @@ public class DateParser {
 		for(int i = 0; i<TweetList.size(); i++) {
 			data = normalDateParsing(TweetList.get(i).getData());
 			
-			if(DataFilter.filter(data, data_utente)) {
+			if(EqDataFilter.filter(data, data_utente)) {
 				FilteredList.add(TweetList.get(i));
 			}
 		}

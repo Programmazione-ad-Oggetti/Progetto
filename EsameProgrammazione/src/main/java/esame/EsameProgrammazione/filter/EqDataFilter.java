@@ -18,9 +18,9 @@ import esame.EsameProgrammazione.service.DateParser;
 * 	@author Carmen Andreozzi
 */
 
-public class DataFilter {
+public class EqDataFilter {
 	
-		public DataFilter() {
+		public EqDataFilter() {
 		}
 		
 		public static boolean filter(Calendar data, String data_utente) throws ParseException, java.text.ParseException {

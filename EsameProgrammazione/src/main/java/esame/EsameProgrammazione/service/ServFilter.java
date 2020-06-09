@@ -28,10 +28,10 @@ public class ServFilter {
 	
 	private final static String path = "esame.EsameProgrammazione.filter.";
 	
-	public static Filter instanceFilter(String field,String operator,Object param) 
+	public static FilterStruct instanceFilter(String field,String operator,Object param) 
 			   throws FilterNotFoundException, FilterIllegalArgumentException,InternalGeneralException{
 			
-			Filter filtro;
+			FilterStruct filtro;
 			String filterName = new String(operator+field+"Filter");
 			String ClassFilterName = path.concat(filterName);
 		    
@@ -41,7 +41,7 @@ public class ServFilter {
 			
 				Constructor<?> ct = cls.getDeclaredConstructor(Object.class); //seleziono il costruttore
 		    
-				filtro =(Filter)ct.newInstance(param);  //Istanzio oggetto filtro
+				filtro =(FilterStruct)ct.newInstance(param);  //Istanzio oggetto filtro
 			}
 			
 		    //entra qui se il nome filtro non e' corretto 
@@ -85,11 +85,11 @@ public class ServFilter {
 	 * @throws FilterIllegalArgumentException 
 	 * @throws FilterNotFoundException 
 	 */
-	public ArrayList<Tweet> Filtering(ArrayList<Tweet> completeTweetList, FilterStruct filtro) throws FilterNotFoundException, FilterIllegalArgumentException, InternalGeneralException{
+	public static ArrayList<Tweet> Filtering(ArrayList<Tweet> completeTweetList, FilterStruct filtro) throws FilterNotFoundException, FilterIllegalArgumentException, InternalGeneralException{
 		
 		ArrayList<Tweet> filteredTweetList = new ArrayList<Tweet>();
 		
-		Filter filtraggio = instanceFilter(filtro.getField(), filtro.getOperator(), filtro.getValues());
+		Filter filtraggio = (Filter) instanceFilter(filtro.getField(), filtro.getOperator(), filtro.getValues());
 		
 		for(int i = 0; i < completeTweetList.size(); i++) {
 
@@ -105,11 +105,11 @@ public class ServFilter {
 		Collection<Tweet> tweets = ServTweetsImpl.getTweets(hash);
 		ArrayList<Tweet> filteredTweetList = new ArrayList<Tweet>();
 		
-		Filter filtraggio = instanceFilter(filtro.getField(), filtro.getOperator(), filtro.getValues());
+		Filter filtraggio = (Filter) instanceFilter(filtro.getField(), filtro.getOperator(), filtro.getValues());
 		
 		for(int i = 0; i < tweets.size(); i++) {
 
-			if(filtraggio.filter(filtro.getValues() , ((ArrayList<Tweet>) tweets).get(i)))
+			if(filtraggio.filter(filtro.getValues(), ((ArrayList<Tweet>) tweets).get(i)))
 				filteredTweetList.add(((ArrayList<Tweet>) tweets).get(i));
 		}	
 		
