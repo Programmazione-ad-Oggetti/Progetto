@@ -1,6 +1,13 @@
 package esame.EsameProgrammazione.filter;
 
-import esame.EsameProgrammazione.model.Tweet;
+import static java.util.Calendar.DAY_OF_MONTH;
+
+import java.sql.Date;
+import java.util.Calendar;
+
+import com.sun.el.parser.ParseException;
+
+import esame.EsameProgrammazione.service.DateParser;
 
 /////*******************************************************************/////
 /////    VIENE CONTROLLATO SE LA DATA DI OGNI TWEET CORRISPONDE CON   	/////
@@ -11,15 +18,19 @@ import esame.EsameProgrammazione.model.Tweet;
 * 	@author Carmen Andreozzi
 */
 
-public class DataFilter extends FilterParent implements Filter {
+public class DataFilter {
 	
-		public DataFilter(Object parametro) {
-			super(parametro);
+		public DataFilter() {
 		}
 		
-		public boolean filter(Tweet tweet) {
-			if(tweet.getData().equals(parametro))
+		public static boolean filter(Calendar data, String data_utente) throws ParseException, java.text.ParseException {
+			Calendar user_date;
+			
+			user_date = DateParser.userDateParsing(data_utente);
+			
+			if(data.get(DAY_OF_MONTH) == user_date.get(DAY_OF_MONTH))
 				return true;
+			
 			else  return false;
 		}
 }
