@@ -40,7 +40,7 @@ public class JsonParser {
 			Hashtag hashtg;
 			
 			//Creazione dell'oggetto entities che permette di effetttuare la get() dell'hashtag, 
-			//in quanto (nel JSON) il campo Hashtag � inserito dentro l'oggetto "entities"
+			//in quanto (nel JSON) il campo Hashtag e' inserito dentro l'oggetto "entities"
 			JSONObject entities = (JSONObject) parsedTweet.get("entities");
 			JSONArray Hashtag = (JSONArray) entities.get("hashtags"); //Viene preso l'hashtag
 			
@@ -52,7 +52,7 @@ public class JsonParser {
 			}
 			
 			//Creazione dell'oggetto retweeted_status che permette di effetttuare la get() del campo "favorite_count" (ossia il numero dei Like del post), 
-			//in quanto (nel JSON) il campo "favorite_count" � inserito dentro l'oggetto "retweeted_status"
+			//in quanto (nel JSON) il campo "favorite_count" e' inserito dentro l'oggetto "retweeted_status"
 			JSONObject retweeted_status = (JSONObject) parsedTweet.get("retweeted_status"); 
 			
 			tweet.setLike((int) retweeted_status.get("favorite_count")); //Viene preso il numero dei Like

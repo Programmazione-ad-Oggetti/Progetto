@@ -1,5 +1,7 @@
 package esame.EsameProgrammazione.model;
 
+import org.springframework.stereotype.Service;
+
 /////*****************************************/////
 ///// QUESTA CLASSE RAPPRESENTA LA STRUTTURA  /////
 /////             DI UN HASHTAG               /////
@@ -9,6 +11,7 @@ package esame.EsameProgrammazione.model;
 *  @author Carmen Andreozzi
 */
 
+@Service
 public class Hashtag {
 	
 	protected String testo;

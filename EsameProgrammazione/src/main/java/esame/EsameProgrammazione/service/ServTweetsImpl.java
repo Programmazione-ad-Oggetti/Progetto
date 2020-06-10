@@ -6,17 +6,36 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.json.simple.parser.ParseException;
+import org.springframework.stereotype.Service;
 
 import esame.EsameProgrammazione.model.Hashtag;
 import esame.EsameProgrammazione.model.Tweet;
 import esame.EsameProgrammazione.service.JsonParser;
 
-public class ServTweetsImpl{
-	static ArrayList<Tweet> TweetList = new ArrayList<Tweet>();
+@Service
+public class ServTweetsImpl implements ServTweets{
+	//public ArrayList<Tweet> TweetList = new ArrayList<Tweet>();
+	private Map<Long, Tweet> timeline=new HashMap<>();
 	
 	//Costruttore
-	public ServTweetsImpl() throws ParseException {
+	public ServTweetsImpl(Hashtag hash) {
 		
+		try {
+			ArrayList<Tweet> lista = JsonParser.parsingDataset(hash); //Viene richiamata la funzione che effettua il parsing del Json
+			
+			for(int i = 0; i < lista.size(); i++) {
+				Tweet twt = lista.get(i);
+				//TweetList.add(twt);
+				timeline.put(twt.getID(),twt);
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Override
+	public Collection<Tweet> getTweets(/*Hashtag hash*/) /*throws ParseException*/ {
 		/*try {
 			ArrayList<Tweet> lista = JsonParser.parsingDataset(hash); //Viene richiamata la funzione che effettua il parsing del Json
 			
@@ -28,22 +47,8 @@ public class ServTweetsImpl{
 		catch(Exception e) {
 			e.printStackTrace();
 		}*/
-	}
-	
-	public static ArrayList<Tweet> getTweets(Hashtag hash) throws ParseException {
-		try {
-			ArrayList<Tweet> lista = JsonParser.parsingDataset(hash); //Viene richiamata la funzione che effettua il parsing del Json
-			
-			for(int i = 0; i < lista.size(); i++) {
-				Tweet twt = lista.get(i);
-				TweetList.add(twt);
-			}
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}
 		
-		return TweetList;
+		return timeline.values();
 	}
 	
 }
