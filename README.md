@@ -30,7 +30,7 @@ Di seguito vengono mostrati i diagrammi relativi allo sviluppo del progetto, per
 ### Packages
 
 In particolare, questo diagramma mostra come sono stati divisi i vari packages. 
-La gerarchia vede al suo livello più alto com.EsameProgrammazione, a sua volta diviso in: 
+La gerarchia vede al suo livello più alto esame.EsameProgrammazione, a sua volta diviso in: 
 * controller
 * service 
 * exceptions
