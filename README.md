@@ -46,3 +46,10 @@ La gerarchia vede al suo livello più alto esame.EsameProgrammazione, a sua volt
 Entrando ancora di più nel dettaglio, esaminiamo ogni package e ogni classe contenuta al suo interno:
 
 * esame.EsameProgrammazione.controller
+* esame.EsameProgrammazione.service
+* esame.EsameProgrammazione.exceptions
+* esame.EsameProgrammazione.model
+* esame.EsameProgrammazione.database
+* esame.EsameProgrammazione.filter
+* esame.EsameProgrammazione.statistics
+
