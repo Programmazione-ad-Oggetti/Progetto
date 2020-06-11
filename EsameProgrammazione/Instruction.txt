@@ -1,0 +1,1 @@
+ISTRUZIONI& /GetInstructions     (GET)        questa richiesta ti permette di visualizzare l'elenco di azioni che puoi effettuare;/tweet/{hashtag}     (GET)        questo comando ti permette di visualizzare i tweets relativi all'hashtag immesso;
