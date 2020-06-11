@@ -48,8 +48,14 @@ Entrando ancora di più nel dettaglio, esaminiamo ogni package e ogni classe con
 * esame.EsameProgrammazione.controller
 * esame.EsameProgrammazione.service
 * esame.EsameProgrammazione.exceptions
+
+[![exceptions.jpg](https://i.postimg.cc/Cx0WwrZf/exceptions.jpg)](https://postimg.cc/ZCffccxT)
+
 * esame.EsameProgrammazione.model
 * esame.EsameProgrammazione.database
+
+[![database.jpg](https://i.postimg.cc/0j6VCDzv/database.jpg)](https://postimg.cc/tnjdq1dv)
+
 * esame.EsameProgrammazione.filter
 * esame.EsameProgrammazione.statistics
 
