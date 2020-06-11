@@ -59,3 +59,16 @@ Entrando ancora di più nel dettaglio, esaminiamo ogni package e ogni classe con
 * esame.EsameProgrammazione.filter
 * esame.EsameProgrammazione.statistics
 
+
+
+
+## Software
+
+* [Eclipse](https://www.eclipse.org/)
+* [Spring Boot](https://spring.io/projects/spring-boot)
+* [Maven](https://maven.apache.org/)
+
+## Autori 
+
+* Antonio Colucci
+* Carmen Andreozzi
