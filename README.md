@@ -60,6 +60,14 @@ Entrando ancora di più nel dettaglio, esaminiamo ogni package e ogni classe con
 * esame.EsameProgrammazione.statistics
 
 
+## Chiamate
+
+In questo punto esaminiamo nello specifico le chiamate che l'utente può effettuare utilizzando i diagrammi delle sequenze, i quali mostrano come interagiscono tra di loro gli oggetti delle varie classi e forniscono informazioni anche di tipo temporale, poiché le interazioni nel diagramma vengono disposte in ordine cronologico.
+
+* GET /GetInstructions
+
+
+
 
 
 ## Software
