@@ -58,15 +58,17 @@ public class ControllerClass {
 		return new ResponseEntity<>(RecognizeFilter.JsonParserColumn(param, hash), HttpStatus.OK);
 	}
 	
-	
+	//VENGONO RESTITUITE LE STATISTICHE RELATIVE AI LIKE
 	@PostMapping("/GetStats/{hashtag}")
 	public ResponseEntity<Object> getStatsOfLike(@PathVariable("hashtag") String testo, 
-								  				 @RequestBody Object filter) 
+								  				 @RequestBody String filter) 
 					  	throws InternalGeneralException, StatsNotFoundException, FilterNotFoundException, FilterIllegalArgumentException {
 
 		Hashtag hash = new Hashtag();
 		hash.setTesto(testo);
 		
-		return new ResponseEntity<>(, HttpStatus.OK);
+		return new ResponseEntity<>(ServTweetsImpl.StatsVisualizeLike(filter, hash), HttpStatus.OK);
 	}
+	
+	
 }
