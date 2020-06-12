@@ -8,7 +8,11 @@ import java.util.Map;
 import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
 
+import esame.EsameProgrammazione.exceptions.FilterIllegalArgumentException;
+import esame.EsameProgrammazione.exceptions.FilterNotFoundException;
+import esame.EsameProgrammazione.exceptions.InternalGeneralException;
 import esame.EsameProgrammazione.model.Hashtag;
+import esame.EsameProgrammazione.model.LikeStatistics;
 import esame.EsameProgrammazione.model.Tweet;
 import esame.EsameProgrammazione.service.JsonParser;
 
@@ -16,6 +20,7 @@ import esame.EsameProgrammazione.service.JsonParser;
 public class ServTweetsImpl implements ServTweets{
 	//public ArrayList<Tweet> TweetList = new ArrayList<Tweet>();
 	private Map<Long, Tweet> timeline=new HashMap<>();
+	private LikeStatistics filteredLikeStatistics;
 	
 	//Costruttore
 	public ServTweetsImpl(Hashtag hash) {
@@ -51,5 +56,18 @@ public class ServTweetsImpl implements ServTweets{
 		return timeline.values();
 	}
 	
+	//Controlla il campo delle statistiche: Like o Date
+	@Override
+	public LikeStatistics StatsVisualizeLike(String filter, Hashtag hash) {
+		try {
+			filteredLikeStatistics = new LikeStatistics(RecognizeFilter.JsonParserColumn(filter, hash));
+		} 
+		catch (FilterNotFoundException | FilterIllegalArgumentException | InternalGeneralException
+				| ParseException e) {
+			e.printStackTrace();
+		}
+			
+		return filteredLikeStatistics;
+	}
 }
 

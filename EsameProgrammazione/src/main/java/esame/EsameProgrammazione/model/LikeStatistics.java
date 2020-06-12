@@ -21,16 +21,15 @@ public class LikeStatistics extends MakeStatsLike{
 	 * @param recordToPass ArrayList that are used to calculate the stats
 	 * @param fieldToPass field passed
 	 */
-	public LikeStatistics(ArrayList<Tweet> tweet,String field) {
-		this.field=field;
-		
+	public LikeStatistics(ArrayList<Tweet> tweet) {
+
 		//filling the HashMap "statistic" with the different stats of a particular field, calculated on the images contained in the records passed
-		statistics.put("min", LikeMin(tweet, this.field));
-		statistics.put("max", LikeMax(tweet, this.field));
-		statistics.put("sum", LikeSum(tweet, this.field));
-		statistics.put("average", LikeAverage(tweet, this.field));
-		statistics.put("variance", LikeVariance(tweet, this.field));
-		statistics.put("standard deviation",Math.pow(LikeVariance(tweet,this.field),0.5));
+		statistics.put("min", LikeMin(tweet));
+		statistics.put("max", LikeMax(tweet));
+		statistics.put("sum", LikeSum(tweet));
+		statistics.put("average", LikeAverage(tweet));
+		statistics.put("variance", LikeVariance(tweet));
+		statistics.put("standard deviation",Math.pow(LikeVariance(tweet),0.5));
 	}
 	/**
 	 * Getter for the statsField

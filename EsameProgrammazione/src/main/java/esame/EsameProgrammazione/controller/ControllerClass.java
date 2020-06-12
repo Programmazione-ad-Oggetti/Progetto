@@ -1,21 +1,28 @@
 package esame.EsameProgrammazione.controller;
 
 
+import java.util.ArrayList;
+
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 
 import esame.EsameProgrammazione.exceptions.FilterIllegalArgumentException;
 import esame.EsameProgrammazione.exceptions.FilterNotFoundException;
 import esame.EsameProgrammazione.exceptions.InternalGeneralException;
+import esame.EsameProgrammazione.exceptions.StatsNotFoundException;
 import esame.EsameProgrammazione.model.Hashtag;
+import esame.EsameProgrammazione.model.Tweet;
 import esame.EsameProgrammazione.service.InstructionReader;
 import esame.EsameProgrammazione.service.RecognizeFilter;
 import esame.EsameProgrammazione.service.ServTweetsImpl;
@@ -49,5 +56,17 @@ public class ControllerClass {
 		hash.setTesto(testo);
 		//ServTweetsImpl = new ServTweetsImpl(hash);
 		return new ResponseEntity<>(RecognizeFilter.JsonParserColumn(param, hash), HttpStatus.OK);
+	}
+	
+	
+	@PostMapping("/GetStats/{hashtag}")
+	public ResponseEntity<Object> getStatsOfLike(@PathVariable("hashtag") String testo, 
+								  				 @RequestBody Object filter) 
+					  	throws InternalGeneralException, StatsNotFoundException, FilterNotFoundException, FilterIllegalArgumentException {
+
+		Hashtag hash = new Hashtag();
+		hash.setTesto(testo);
+		
+		return new ResponseEntity<>(, HttpStatus.OK);
 	}
 }
