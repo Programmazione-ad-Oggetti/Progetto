@@ -74,10 +74,10 @@ public class ServTweetsImpl implements ServTweets{
 	
 	//Ritorna le statistiche riferite alla data
 	@Override
-	public DateStatistics StatsVisualizeDate(String filter, Hashtag hash) {
+	public DateStatistics StatsVisualizeDate(String filter, Hashtag hash, String data_utente) {
 		
 		try {
-			filteredDateStatistics = new DateStatistics(RecognizeFilter.JsonParserColumn(filter, hash), hash, filter);
+			filteredDateStatistics = new DateStatistics(RecognizeFilter.JsonParserColumn(filter, hash), hash, data_utente);
 		} 
 		catch (com.sun.el.parser.ParseException | java.text.ParseException | FilterNotFoundException | FilterIllegalArgumentException | InternalGeneralException
 				| ParseException e) {

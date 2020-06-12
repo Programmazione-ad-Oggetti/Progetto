@@ -32,5 +32,5 @@ public interface ServTweets {
 	*/
 	public abstract Collection<Tweet> getTweets(/*Hashtag hash*/)  /*throws ParseException*/;
 	public abstract LikeStatistics StatsVisualizeLike(String filter, Hashtag hash);
-	public abstract DateStatistics StatsVisualizeDate(String filter, Hashtag hash);
+	public abstract DateStatistics StatsVisualizeDate(String filter, Hashtag hash, String data_utente);
 }

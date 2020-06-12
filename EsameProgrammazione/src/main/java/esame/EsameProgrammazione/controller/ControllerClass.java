@@ -38,7 +38,8 @@ public class ControllerClass {
 		return new ResponseEntity<>(InstructionReader.getInstructions(), HttpStatus.OK);
 	}
 	
-	//VIENE RESTITUITA LA LISTA DEI PRODOTTI
+	
+	//VIENE RESTITUITA LA LISTA DEI TWEET
 	@RequestMapping(value = "/tweets/{hashtag}", method = RequestMethod.GET)
 	public ResponseEntity<Object> setTesto(@PathVariable("hashtag") String testo) throws ParseException{
 		
@@ -47,6 +48,7 @@ public class ControllerClass {
 		ServTweetsImpl = new ServTweetsImpl(hash);
 		return new ResponseEntity<>(ServTweetsImpl.getTweets(), HttpStatus.OK);
 	}
+	
 	
 	//VIENE RESTITUITA LA LISTA DEI TWEET CON UN CERTO FILTRO
 	@RequestMapping(value = "/tweets/{hashtag}", method = RequestMethod.GET)
@@ -57,6 +59,7 @@ public class ControllerClass {
 		//ServTweetsImpl = new ServTweetsImpl(hash);
 		return new ResponseEntity<>(RecognizeFilter.JsonParserColumn(param, hash), HttpStatus.OK);
 	}
+	
 	
 	//VENGONO RESTITUITE LE STATISTICHE RELATIVE AI LIKE
 	@PostMapping("/GetStatsLike/{hashtag}")
@@ -74,12 +77,12 @@ public class ControllerClass {
 	//VENGONO RESTITUITE LE STATISTICHE RELATIVE ALLA DATA
 	@PostMapping("/GetStatsDate/{hashtag}")
 	public ResponseEntity<Object> getStatsOfDate(@PathVariable("hashtag") String testo, 
-								  				 @RequestBody String filter) 
+								  				 @RequestBody String filter, String data_utente) 
 					  	throws InternalGeneralException, StatsNotFoundException, FilterNotFoundException, FilterIllegalArgumentException {
 
 		Hashtag hash = new Hashtag();
 		hash.setTesto(testo);
 		
-		return new ResponseEntity<>(ServTweetsImpl.StatsVisualizeDate(filter, hash), HttpStatus.OK);
+		return new ResponseEntity<>(ServTweetsImpl.StatsVisualizeDate(filter, hash, data_utente), HttpStatus.OK);
 	}
 }
