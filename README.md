@@ -1,5 +1,5 @@
 # Progetto
-Progetto per la materia "Programmazione ad Oggetti"
+Progetto per la materia "Programmazione ad Oggetti" del corso di Ingegneria Informatica e dell'Automazione (Università Politecnica delle Marche), anno accademico 2019/2020. 
 
 ## Introduzione
 
@@ -102,7 +102,7 @@ In questo punto esaminiamo nello specifico le chiamate che l'utente può effettu
 * POST /GetStatsLike/{hashtag}
 * POST /GetStatsDate/{hashtag}
 
-# Software
+## Software
 
 * [Eclipse](https://www.eclipse.org/)
 * [Spring Boot](https://spring.io/projects/spring-boot)
