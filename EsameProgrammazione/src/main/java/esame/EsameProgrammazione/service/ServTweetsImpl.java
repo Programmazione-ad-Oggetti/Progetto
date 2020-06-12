@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import esame.EsameProgrammazione.exceptions.FilterIllegalArgumentException;
 import esame.EsameProgrammazione.exceptions.FilterNotFoundException;
 import esame.EsameProgrammazione.exceptions.InternalGeneralException;
+import esame.EsameProgrammazione.model.DateStatistics;
 import esame.EsameProgrammazione.model.Hashtag;
 import esame.EsameProgrammazione.model.LikeStatistics;
 import esame.EsameProgrammazione.model.Tweet;
@@ -21,6 +22,7 @@ public class ServTweetsImpl implements ServTweets{
 	//public ArrayList<Tweet> TweetList = new ArrayList<Tweet>();
 	private Map<Long, Tweet> timeline=new HashMap<>();
 	private LikeStatistics filteredLikeStatistics;
+	private DateStatistics filteredDateStatistics;
 	
 	//Costruttore
 	public ServTweetsImpl(Hashtag hash) {
@@ -56,7 +58,7 @@ public class ServTweetsImpl implements ServTweets{
 		return timeline.values();
 	}
 	
-	//Controlla il campo delle statistiche: Like o Date
+	//Ritorna le statistiche riferite ai like
 	@Override
 	public LikeStatistics StatsVisualizeLike(String filter, Hashtag hash) {
 		try {
@@ -68,6 +70,23 @@ public class ServTweetsImpl implements ServTweets{
 		}
 			
 		return filteredLikeStatistics;
+	}
+	
+	//Ritorna le statistiche riferite alla data
+	@Override
+	public DateStatistics StatsVisualizeDate(String filter, Hashtag hash) {
+		
+		try {
+			filteredDateStatistics = new DateStatistics(RecognizeFilter.JsonParserColumn(filter, hash), hash, filter);
+		} 
+		catch (com.sun.el.parser.ParseException | java.text.ParseException | FilterNotFoundException | FilterIllegalArgumentException | InternalGeneralException
+				| ParseException e) {
+
+			e.printStackTrace();
+		}
+
+			
+		return filteredDateStatistics;
 	}
 }
 

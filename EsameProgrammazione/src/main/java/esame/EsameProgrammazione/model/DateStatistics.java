@@ -10,10 +10,10 @@ import esame.EsameProgrammazione.statistic.MakeStatsDate;
 public class DateStatistics extends MakeStatsDate{
 	private int numeroTweet;
 	
-	public DateStatistics(Hashtag hash, String data_utente) throws ParseException, com.sun.el.parser.ParseException, java.text.ParseException {
-		ArrayList<Tweet> lista = DateList(hash, data_utente);
+	public DateStatistics(ArrayList<Tweet> tweets, Hashtag hash, String data_utente) throws ParseException, com.sun.el.parser.ParseException, java.text.ParseException {
+		tweets = DateList(hash, data_utente);
 		
-		numeroTweet=lista.size();
+		numeroTweet=tweets.size();
 	}
 	
 	public int getNumeroTweet() {

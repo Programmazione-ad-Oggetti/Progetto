@@ -59,7 +59,7 @@ public class ControllerClass {
 	}
 	
 	//VENGONO RESTITUITE LE STATISTICHE RELATIVE AI LIKE
-	@PostMapping("/GetStats/{hashtag}")
+	@PostMapping("/GetStatsLike/{hashtag}")
 	public ResponseEntity<Object> getStatsOfLike(@PathVariable("hashtag") String testo, 
 								  				 @RequestBody String filter) 
 					  	throws InternalGeneralException, StatsNotFoundException, FilterNotFoundException, FilterIllegalArgumentException {
@@ -71,4 +71,15 @@ public class ControllerClass {
 	}
 	
 	
+	//VENGONO RESTITUITE LE STATISTICHE RELATIVE ALLA DATA
+	@PostMapping("/GetStatsDate/{hashtag}")
+	public ResponseEntity<Object> getStatsOfDate(@PathVariable("hashtag") String testo, 
+								  				 @RequestBody String filter) 
+					  	throws InternalGeneralException, StatsNotFoundException, FilterNotFoundException, FilterIllegalArgumentException {
+
+		Hashtag hash = new Hashtag();
+		hash.setTesto(testo);
+		
+		return new ResponseEntity<>(ServTweetsImpl.StatsVisualizeDate(filter, hash), HttpStatus.OK);
+	}
 }
