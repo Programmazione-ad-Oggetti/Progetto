@@ -12,48 +12,75 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import esame.EsameProgrammazione.exceptions.FilterIllegalArgumentException;
 import esame.EsameProgrammazione.exceptions.FilterNotFoundException;
 import esame.EsameProgrammazione.exceptions.InternalGeneralException;
+import esame.EsameProgrammazione.filter.Filter;
 import esame.EsameProgrammazione.model.*;
 
 public class RecognizeFilter {
-			
-			public static ArrayList<Tweet> jsonParserOperator(Object filterParam, 
-														       ArrayList<Tweet> previousArray,Hashtag hash) 
-			throws FilterNotFoundException, FilterIllegalArgumentException, InternalGeneralException, ParseException {
-				
-				String type="";
-				FilterStruct filter;
-				String field = "Like";
-				ArrayList<Tweet> filteredArray = new ArrayList<Tweet>();
-				HashMap<String, Object> result = new ObjectMapper().convertValue(filterParam, HashMap.class);
-			
-				for(Map.Entry<String, Object> entry : result.entrySet()) {
+	
+	/**Effettua il parsing dei dati esterni (Campo da analizzare)
+	   @param filtro da applicare
+	   @return ArrayList di Tweet filtrati
+	 * @throws InternalGeneralException
+	 * @throws  FilterNotFoundException 
+	 * @throws FilterIllegalArgumentException 
+	 * @throws ParseException 
+	 */
+	public static ArrayList<Tweet> JsonParserColumn(Object filter, Hashtag hash)
+			throws InternalGeneralException, FilterNotFoundException, FilterIllegalArgumentException, ParseException{ 
+				ArrayList<Tweet> previousArray= new ArrayList<Tweet>();
+				ArrayList<Tweet> filteredArray= new ArrayList<Tweet>();
+			//vedere se posso anche non istanziarlo qu�
+				HashMap<String,Object> result= new ObjectMapper().convertValue(filter, HashMap.class);
+
+			//Itera con tutti gli elementi dell'ArrayList
+				for(Map.Entry<String, Object> entry: result.entrySet()) {
+					filteredArray= new ArrayList<Tweet>();
+					String column=entry.getKey();
+					Object filterParam=entry.getValue();
+					try {
+							filteredArray=jsonParserOperator(column, filterParam, previousArray, hash);
+					}catch (SecurityException e) {
+						throw new InternalGeneralException ("Error in I/O parsing information");
+					}
 					
-				    String operator = entry.getKey();
-				    Object value = entry.getValue();
-				    // Se operatore è type allora guarda se il valore è 'and' o 'or'
-				    // lancia il metodo runfilter corrispondente
-				    if(operator.equals("type") || operator.equals("Type")) {
-				    	type = (String) value;
-				    	if(!(value.equals("and")) && !(value.equals("or"))) {
-				    		throw new FilterIllegalArgumentException("'and' o 'or' expected after 'type'");
-				    	}
-				    	continue;
-				    }
-				   
-				    
-				    filter = ServFilter.instanceFilter(field, operator, value);
-				    switch(type) {
-				    
-					    case "and":
-					    	filteredArray = ServFilter.Filtering(previousArray, filter);
-					    	break;
-					    case "or":
-					    	filteredArray = ServFilter.FilteringOr(filter, previousArray,hash);
-					    	break;
-					    default:
-					    	filteredArray = ServFilter.FilteringOr(filter, previousArray,hash);		    	
-				    }
+					previousArray=new ArrayList<Tweet>();
+					previousArray.addAll(filteredArray);
 				}
-				return filteredArray;	
-			}
+				return filteredArray;
+	}
+			
+	
+	
+	public static  ArrayList<Tweet> jsonParserOperator (String column,Object filterParam,
+            ArrayList<Tweet> previousArray, Hashtag hash)
+	throws InternalGeneralException, FilterNotFoundException, FilterIllegalArgumentException, ParseException {
+		String type="";
+		FilterStruct filter;
+		ArrayList<Tweet> filteredArray= new ArrayList <Tweet>();
+		HashMap<String, Object> result= new ObjectMapper().convertValue(filterParam,HashMap.class);
+		for(Map.Entry<String, Object> entry: result.entrySet()) {
+		String operator= entry.getKey();
+		Object value=entry.getValue();
+		if(operator.equals("type") || operator.equals("Type")) {
+		type=(String) value;
+		if(!(value.equals("and"))&&!(value.equals("or"))) {
+		throw new FilterIllegalArgumentException("'and' o 'or' expected after 'type'");
+		}
+		continue;
+		}
+		
+		filter= ServFilter.instanceFilter(column, operator, value);
+		
+		if (type == "and")
+			filteredArray = ServFilter.Filtering(previousArray, filter);
+		else if(type == "or")
+			filteredArray = ServFilter.FilteringOr(filter, previousArray, hash);
+		else
+			filteredArray = ServFilter.FilteringOr(filter, previousArray, hash);
+		
+		}
+		
+		return filteredArray;
+		
+	}
 }
