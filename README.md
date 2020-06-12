@@ -5,6 +5,14 @@ Progetto per la materia "Programmazione ad Oggetti"
 
 Questa repository contiene un Web Service in grado di visualizzare tutti i Tweets relativi ad un determinato hashtag, ma anche di applicare ad essi dei filtri ed effettuare delle statistiche. 
 Per lanciare l'applicazione, l'utente deve utilizzare un Client come Postman per poter effettuare delle richieste e visualizzare i dati.
+Per comprendere al meglio il funzionamento, l'utente può consultare i punti elencati di seguito in cui viene spiegato nel dettaglio come 
+il nostro progetto è stato organizzato e sviluppato. 
+
+* [Come usare l'applicazione](#Come-usare-l'applicazione)
+* [Struttura dei packages e delle classi](#Struttura-dei-packages-e-delle-classi)
+* [Chiamate](#Chiamate)
+* [Software](#Software)
+* [Autori](#Autori) 
 
 ## Come usare l'applicazione
 
