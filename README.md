@@ -26,6 +26,9 @@ Per effettuare queste richieste, l'utente può consultare la tabella di seguito 
 | ----- | ------ | ----------- | 
 | /GetInstructions | GET | L'utente può accedere ad un elenco di istruzioni utili per effettuare le richieste| 
 | /tweets/{hashtag} | GET | Con questa richiesta l'utente può accedere all'intera lista di Tweets relativi all'hashtag scelto |
+| /tweets/{hashtag} |  POST | Con questo comando l'utente può accedere ai Tweets relativi all'hashtag scelto, secondo un certo filtro inserito nel body |
+| /GetStatsLike/{hashtag} | POST |  Con questo comando l'utente può visualizzare le statistiche relative ai like, secondo un certo filtro immesso nel body |
+| /GetStatsDate/{hashtag} | POST |  Con questo comando l'utente può visualizzare le statistiche relative alla data immessa nel body, secondo un certo filtro immesso nel body |
 
 
 
