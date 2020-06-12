@@ -31,6 +31,12 @@ Per effettuare queste richieste, l'utente può consultare la tabella di seguito 
 | /GetStatsDate/{hashtag} | POST |  Con questo comando l'utente può visualizzare le statistiche relative alla data immessa nel body, secondo un certo filtro immesso nel body |
 
 
+| ESEMPI | SPIEGAZIONE |
+| ------ | ----------- | 
+| /tweets/univpm | Questa richiesta permette di visualizzare tutti i Tweet contenenti l'hashtag "univpm" |
+| {"like":{"$gt": 250}} | Questa richiesta permette di visualizzare i Tweet che hanno più di 250 like |
+|{"$and":[{"data":{"eq" : 02 05}},{"like":{"$gt": 30 }}]} | Questa richiesta permette di visualizzare i Tweet riferiti al 5 Febbraio, i quali, a loro volta, hanno più di 30 like |
+
 
 
 
