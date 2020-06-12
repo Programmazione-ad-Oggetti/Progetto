@@ -51,12 +51,12 @@ public class ControllerClass {
 	
 	
 	//VIENE RESTITUITA LA LISTA DEI TWEET CON UN CERTO FILTRO
-	@RequestMapping(value = "/tweets/{hashtag}", method = RequestMethod.GET)
+	@RequestMapping(value = "/tweets2/{hashtag}", method = RequestMethod.GET)
 	public ResponseEntity<Object> setTesto(@PathVariable("hashtag") String testo, @RequestBody Object param) throws ParseException, FilterNotFoundException, FilterIllegalArgumentException, InternalGeneralException{
 		
 		Hashtag hash = new Hashtag();
 		hash.setTesto(testo);
-		//ServTweetsImpl = new ServTweetsImpl(hash);
+		ServTweetsImpl = new ServTweetsImpl(hash);
 		return new ResponseEntity<>(RecognizeFilter.JsonParserColumn(param, hash), HttpStatus.OK);
 	}
 	

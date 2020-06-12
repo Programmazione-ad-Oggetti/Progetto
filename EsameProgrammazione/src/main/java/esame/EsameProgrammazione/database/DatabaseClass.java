@@ -27,7 +27,7 @@ import esame.EsameProgrammazione.model.Hashtag;
 public class DatabaseClass {
 	
 	// Questo metodo effettua il download del JSON contenente i tweet dall'URL impostato
-	public static JSONArray JSONdownloader(Hashtag hash) throws ParseException, MalformedURLException {
+	public static JSONObject JSONdownloader(Hashtag hash) throws ParseException, MalformedURLException {
 		String url = "https://wd4hfxnxxa.execute-api.us-east-2.amazonaws.com/dev/api/1.1/search/tweets.json?q="+hash.getTesto();
 		
 		String data = "";
@@ -56,9 +56,9 @@ public class DatabaseClass {
 			e.printStackTrace();	
 			}
 		
-		JSONArray json = null;
+		JSONObject json = null;
 		try {
-			json = (JSONArray) JSONValue.parse(data);
+			json = (JSONObject) JSONValue.parse(data);
 			return json;
 			
 		} catch (Exception e) {

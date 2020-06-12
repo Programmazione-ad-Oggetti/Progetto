@@ -19,7 +19,7 @@ import esame.EsameProgrammazione.service.JsonParser;
 
 @Service
 public class ServTweetsImpl implements ServTweets{
-	//public ArrayList<Tweet> TweetList = new ArrayList<Tweet>();
+	public ArrayList<Tweet> TweetList = new ArrayList<Tweet>();
 	private Map<Long, Tweet> timeline=new HashMap<>();
 	private LikeStatistics filteredLikeStatistics;
 	private DateStatistics filteredDateStatistics;

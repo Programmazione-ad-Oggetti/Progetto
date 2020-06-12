@@ -25,7 +25,7 @@ public class JsonParser {
 	
 	public static ArrayList<Tweet> parsingDataset(Hashtag hash) throws ParseException, MalformedURLException{
 			
-		JSONArray parser = DatabaseClass.JSONdownloader(hash);
+		JSONObject parser = DatabaseClass.JSONdownloader(hash);
 			
 		ArrayList<Tweet> ListaTweets = new ArrayList<Tweet>();
 		for(int i = 0; i < parser.size(); i++) {
