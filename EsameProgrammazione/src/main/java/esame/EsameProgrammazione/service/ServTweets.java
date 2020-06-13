@@ -1,15 +1,10 @@
 package esame.EsameProgrammazione.service;
 
 import java.net.MalformedURLException;
-import java.util.ArrayList;
 import java.util.Collection;
 
 import org.json.JSONException;
-import org.json.simple.parser.ParseException;
 
-import esame.EsameProgrammazione.exceptions.FilterIllegalArgumentException;
-import esame.EsameProgrammazione.exceptions.FilterNotFoundException;
-import esame.EsameProgrammazione.exceptions.InternalGeneralException;
 import esame.EsameProgrammazione.model.DateStatistics;
 import esame.EsameProgrammazione.model.Hashtag;
 import esame.EsameProgrammazione.model.LikeStatistics;

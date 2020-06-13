@@ -4,27 +4,26 @@ import java.util.ArrayList;
 
 import esame.EsameProgrammazione.model.Tweet;
 
-public class GteLikeFilter implements Filter{
+public class GteLikeFilter extends FilterParent implements Filter{
 	
-	private String operator = "$gte";
-
-	private String field = "like";
-
-	
-	public String getOperator() {
-		return operator;
+	public GteLikeFilter(Object parametro) {
+		super(parametro);
 	}
-
-
-	public String getField() {
-		return field;
-	}
-	
 	
 	@Override
-	public boolean filter(ArrayList<String> value, Tweet tweet) {
-		if (!(Double.parseDouble(value.get(0)) <= tweet.getLike()))
+	public boolean filter(Tweet tweet) {
+			if (!(tweet.getLike() > parametro))
 				return false;
 		return true;
+	}
+
+	@Override
+	public boolean filter(ArrayList<String> value, Tweet tweet) {
+		return false;
+	}
+
+	@Override
+	public boolean filter1(ArrayList<Double> value, Tweet tweet) {
+		return false;
 	}
 }

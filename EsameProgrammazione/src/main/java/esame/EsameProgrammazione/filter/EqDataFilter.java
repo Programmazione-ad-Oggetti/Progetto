@@ -2,7 +2,6 @@ package esame.EsameProgrammazione.filter;
 
 import static java.util.Calendar.DAY_OF_MONTH;
 
-import java.sql.Date;
 import java.util.Calendar;
 
 import com.sun.el.parser.ParseException;

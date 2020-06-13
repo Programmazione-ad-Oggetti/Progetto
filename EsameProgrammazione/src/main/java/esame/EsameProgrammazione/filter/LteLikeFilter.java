@@ -4,26 +4,26 @@ import java.util.ArrayList;
 
 import esame.EsameProgrammazione.model.Tweet;
 
-public class LteLikeFilter implements Filter{
+public class LteLikeFilter extends FilterParent implements Filter{
 	
-	private String field = "like";
-	private String operator = "$lte";
-
-	
-	public String getField() {
-		return field;
-	}
-
-
-	public String getOperator() {
-		return this.operator;
+	public LteLikeFilter(Object parametro) {
+		super(parametro);
 	}
 	
 	@Override
-	public boolean filter(ArrayList<String> value, Tweet tweet) {
-		if (!(Double.parseDouble(value.get(0)) > tweet.getLike()))
-			return false;
-		
+	public boolean filter(Tweet tweet) {
+			if (!(tweet.getLike() <= parametro))
+				return false;
 		return true;
+	}
+
+	@Override
+	public boolean filter(ArrayList<String> value, Tweet tweet) {
+		return false;
+	}
+
+	@Override
+	public boolean filter1(ArrayList<Double> value, Tweet tweet) {
+		return false;
 	}
 }

@@ -52,7 +52,7 @@ public class DateParser {
 	
 	//EFFETTUA IL PARSING DELLA DATA IMMESSA DALL'UTENTE NELLA RICHIESTA
 	public static Calendar userDateParsing(String user_date) throws ParseException, java.text.ParseException {
-		  final String Data_utente = "MMM dd";
+		  final String Data_utente = "MM dd";
 		  SimpleDateFormat sf = new SimpleDateFormat(Data_utente);
 		  
 		  Date Date = (Date) sf.parse(user_date);

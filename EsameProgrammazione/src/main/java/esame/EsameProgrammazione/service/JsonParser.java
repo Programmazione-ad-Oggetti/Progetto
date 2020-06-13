@@ -1,6 +1,5 @@
 package esame.EsameProgrammazione.service;
 
-import java.io.Reader;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 

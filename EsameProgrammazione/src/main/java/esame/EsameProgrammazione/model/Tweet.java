@@ -1,7 +1,5 @@
 package esame.EsameProgrammazione.model;
 
-import java.util.ArrayList;
-
 /////********************************************/////
 ///// IN QUESTA CLASSE SONO PRESENTI GLI OGGETTI /////
 /////  RAPPRESENTANTI LA STRUTTURA DI UN TWEET   /////

@@ -14,13 +14,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import esame.EsameProgrammazione.exceptions.FilterIllegalArgumentException;
 import esame.EsameProgrammazione.exceptions.FilterNotFoundException;
 import esame.EsameProgrammazione.exceptions.InternalGeneralException;
-import esame.EsameProgrammazione.filter.BtLikeFilter;
-import esame.EsameProgrammazione.filter.EqDataFilter;
 import esame.EsameProgrammazione.filter.Filter;
-import esame.EsameProgrammazione.filter.GtLikeFilter;
-import esame.EsameProgrammazione.filter.GteLikeFilter;
-import esame.EsameProgrammazione.filter.LtLikeFilter;
-import esame.EsameProgrammazione.filter.LteLikeFilter;
 import esame.EsameProgrammazione.model.*;
 
 public class RecognizeFilter {
