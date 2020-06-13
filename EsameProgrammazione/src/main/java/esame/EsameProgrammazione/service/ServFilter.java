@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import esame.EsameProgrammazione.exceptions.FilterIllegalArgumentException;
 import esame.EsameProgrammazione.exceptions.FilterNotFoundException;
@@ -100,17 +101,21 @@ public class ServFilter {
 		return filteredTweetList;
 	}
 	
+	@Autowired
+	static 
+	ServTweetsImpl tweets;
+	
 	public static ArrayList<Tweet> FilteringOr(FilterStruct filtro, ArrayList<Tweet> completeTweetList, Hashtag hash) throws FilterNotFoundException, FilterIllegalArgumentException, InternalGeneralException, ParseException{
 
-		Collection<Tweet> tweets = ServTweetsImpl.getTweets(hash);
+		Collection<Tweet>support = tweets.getTweets();
 		ArrayList<Tweet> filteredTweetList = new ArrayList<Tweet>();
 		
 		Filter filtraggio = (Filter) instanceFilter(filtro.getField(), filtro.getOperator(), filtro.getValues());
 		
-		for(int i = 0; i < tweets.size(); i++) {
+		for(int i = 0; i < support.size(); i++) {
 
-			if(filtraggio.filter(filtro.getValues(), ((ArrayList<Tweet>) tweets).get(i)))
-				filteredTweetList.add(((ArrayList<Tweet>) tweets).get(i));
+			if(filtraggio.filter(filtro.getValues(), ((ArrayList<Tweet>) support).get(i)))
+				filteredTweetList.add(((ArrayList<Tweet>) support).get(i));
 		}	
 		
 		completeTweetList.removeAll(filteredTweetList);

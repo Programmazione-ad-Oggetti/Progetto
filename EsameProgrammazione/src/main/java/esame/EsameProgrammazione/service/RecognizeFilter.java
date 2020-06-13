@@ -29,7 +29,7 @@ public class RecognizeFilter {
 			throws InternalGeneralException, FilterNotFoundException, FilterIllegalArgumentException, ParseException{ 
 				ArrayList<Tweet> previousArray= new ArrayList<Tweet>();
 				ArrayList<Tweet> filteredArray= new ArrayList<Tweet>();
-			//vedere se posso anche non istanziarlo quì
+			//vedere se posso anche non istanziarlo quï¿½
 				HashMap<String,Object> result= new ObjectMapper().convertValue(filter, HashMap.class);
 
 			//Itera con tutti gli elementi dell'ArrayList

@@ -31,11 +31,13 @@ import esame.EsameProgrammazione.service.ServTweetsImpl;
 public class ControllerClass {
 	@Autowired
 	ServTweetsImpl ServTweetsImpl;
+
 	
 	//VIENE LETTO IL FILE CONTENENTE LE ISTRUZIONI D'USO DELL'API
 	@GetMapping("/GetInstructions")
 	public ResponseEntity<Object> getInstruction(){
-		return new ResponseEntity<>(InstructionReader.getInstructions(), HttpStatus.OK);
+		InstructionReader instructions = new InstructionReader();
+		return new ResponseEntity<>(instructions.getInstructions(), HttpStatus.OK);
 	}
 	
 	

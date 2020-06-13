@@ -18,7 +18,8 @@ public class InstructionReader extends Instruction {
 			BufferedReader reader = new BufferedReader(new FileReader("Instruction.txt"));
 			
 			String[] istruzioni = reader.readLine().split("&");
-			for(int i = 0; i < istruzioni.length; i++) {
+			int i = 0;
+			while(i < istruzioni.length) {
 				
 				istruzione = new Instruction(); 
 				istruzione.setIntroduzione(istruzioni[i]);
@@ -26,6 +27,7 @@ public class InstructionReader extends Instruction {
 				
 				String[] array = istruzioni[i].split(";");
 				istruzione.setScelta(array);
+				i++;
 				listaIstruzioni.add(istruzione);
 			}
 			reader.close();
