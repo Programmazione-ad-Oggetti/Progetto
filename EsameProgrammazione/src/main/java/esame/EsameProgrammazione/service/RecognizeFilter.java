@@ -1,18 +1,26 @@
 package esame.EsameProgrammazione.service;
 
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import esame.EsameProgrammazione.service.ServFilter;
 
+import org.json.JSONException;
 import org.json.simple.parser.ParseException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import esame.EsameProgrammazione.exceptions.FilterIllegalArgumentException;
 import esame.EsameProgrammazione.exceptions.FilterNotFoundException;
 import esame.EsameProgrammazione.exceptions.InternalGeneralException;
+import esame.EsameProgrammazione.filter.BtLikeFilter;
+import esame.EsameProgrammazione.filter.EqDataFilter;
 import esame.EsameProgrammazione.filter.Filter;
+import esame.EsameProgrammazione.filter.GtLikeFilter;
+import esame.EsameProgrammazione.filter.GteLikeFilter;
+import esame.EsameProgrammazione.filter.LtLikeFilter;
+import esame.EsameProgrammazione.filter.LteLikeFilter;
 import esame.EsameProgrammazione.model.*;
 
 public class RecognizeFilter {
@@ -24,9 +32,11 @@ public class RecognizeFilter {
 	 * @throws  FilterNotFoundException 
 	 * @throws FilterIllegalArgumentException 
 	 * @throws ParseException 
+	 * @throws JSONException 
+	 * @throws MalformedURLException 
 	 */
 	public static ArrayList<Tweet> JsonParserColumn(Object filter, Hashtag hash)
-			throws InternalGeneralException, FilterNotFoundException, FilterIllegalArgumentException, ParseException{ 
+			throws InternalGeneralException, FilterNotFoundException, FilterIllegalArgumentException, ParseException, MalformedURLException, JSONException{ 
 				ArrayList<Tweet> previousArray= new ArrayList<Tweet>();
 				ArrayList<Tweet> filteredArray= new ArrayList<Tweet>();
 			//vedere se posso anche non istanziarlo qu�
@@ -53,9 +63,9 @@ public class RecognizeFilter {
 	
 	public static  ArrayList<Tweet> jsonParserOperator (String column,Object filterParam,
             ArrayList<Tweet> previousArray, Hashtag hash)
-	throws InternalGeneralException, FilterNotFoundException, FilterIllegalArgumentException, ParseException {
+	throws InternalGeneralException, FilterNotFoundException, FilterIllegalArgumentException, ParseException, MalformedURLException, JSONException {
 		String type="";
-		FilterStruct filter;
+		Filter filter;
 		ArrayList<Tweet> filteredArray= new ArrayList <Tweet>();
 		HashMap<String, Object> result= new ObjectMapper().convertValue(filterParam,HashMap.class);
 		for(Map.Entry<String, Object> entry: result.entrySet()) {
@@ -72,11 +82,12 @@ public class RecognizeFilter {
 		filter= ServFilter.instanceFilter(column, operator, value);
 		
 		if (type == "and")
-			filteredArray = ServFilter.Filtering(previousArray, filter);
+			filteredArray = 
+			ServFilter.Filtering(filter, previousArray, hash);
 		else if(type == "or")
-			filteredArray = ServFilter.FilteringOr(filter, previousArray, hash);
+			filteredArray = ServFilter.FilteringOR(filter, previousArray, hash);
 		else
-			filteredArray = ServFilter.FilteringOr(filter, previousArray, hash);
+			filteredArray = ServFilter.FilteringOR(filter, previousArray, hash);
 		
 		}
 		
@@ -84,3 +95,4 @@ public class RecognizeFilter {
 		
 	}
 }
+	

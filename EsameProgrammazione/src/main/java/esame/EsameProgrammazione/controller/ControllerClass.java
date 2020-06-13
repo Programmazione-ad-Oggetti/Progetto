@@ -1,8 +1,10 @@
 package esame.EsameProgrammazione.controller;
 
 
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 
+import org.json.JSONException;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -54,7 +56,7 @@ public class ControllerClass {
 	
 	//VIENE RESTITUITA LA LISTA DEI TWEET CON UN CERTO FILTRO
 	@RequestMapping(value = "/tweets2/{hashtag}", method = RequestMethod.GET)
-	public ResponseEntity<Object> setTesto(@PathVariable("hashtag") String testo, @RequestBody Object param) throws ParseException, FilterNotFoundException, FilterIllegalArgumentException, InternalGeneralException{
+	public ResponseEntity<Object> setTesto(@PathVariable("hashtag") String testo, @RequestBody Object param) throws ParseException, FilterNotFoundException, FilterIllegalArgumentException, InternalGeneralException, MalformedURLException, JSONException{
 		
 		Hashtag hash = new Hashtag();
 		hash.setTesto(testo);
@@ -67,7 +69,7 @@ public class ControllerClass {
 	@PostMapping("/GetStatsLike/{hashtag}")
 	public ResponseEntity<Object> getStatsOfLike(@PathVariable("hashtag") String testo, 
 								  				 @RequestBody String filter) 
-					  	throws InternalGeneralException, StatsNotFoundException, FilterNotFoundException, FilterIllegalArgumentException {
+					  	throws InternalGeneralException, StatsNotFoundException, FilterNotFoundException, FilterIllegalArgumentException, MalformedURLException, JSONException {
 
 		Hashtag hash = new Hashtag();
 		hash.setTesto(testo);
@@ -80,7 +82,7 @@ public class ControllerClass {
 	@PostMapping("/GetStatsDate/{hashtag}")
 	public ResponseEntity<Object> getStatsOfDate(@PathVariable("hashtag") String testo, 
 								  				 @RequestBody String filter, String data_utente) 
-					  	throws InternalGeneralException, StatsNotFoundException, FilterNotFoundException, FilterIllegalArgumentException {
+					  	throws InternalGeneralException, StatsNotFoundException, FilterNotFoundException, FilterIllegalArgumentException, MalformedURLException, JSONException {
 
 		Hashtag hash = new Hashtag();
 		hash.setTesto(testo);

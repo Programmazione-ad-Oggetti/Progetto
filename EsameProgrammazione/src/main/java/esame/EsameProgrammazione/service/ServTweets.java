@@ -1,8 +1,10 @@
 package esame.EsameProgrammazione.service;
 
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.json.JSONException;
 import org.json.simple.parser.ParseException;
 
 import esame.EsameProgrammazione.exceptions.FilterIllegalArgumentException;
@@ -31,6 +33,6 @@ public interface ServTweets {
 	 * @return ArrayList di tweets.
 	*/
 	public abstract Collection<Tweet> getTweets(/*Hashtag hash*/)  /*throws ParseException*/;
-	public abstract LikeStatistics StatsVisualizeLike(String filter, Hashtag hash);
-	public abstract DateStatistics StatsVisualizeDate(String filter, Hashtag hash, String data_utente);
+	public abstract LikeStatistics StatsVisualizeLike(String filter, Hashtag hash)  throws MalformedURLException, JSONException;
+	public abstract DateStatistics StatsVisualizeDate(String filter, Hashtag hash, String data_utente) throws MalformedURLException, JSONException ;
 }

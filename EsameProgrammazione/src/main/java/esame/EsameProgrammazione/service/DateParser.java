@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.sun.el.parser.ParseException;
 
 import esame.EsameProgrammazione.filter.EqDataFilter;
@@ -16,10 +18,12 @@ public class DateParser {
 	private static ArrayList<Tweet> FilteredList = new ArrayList<Tweet>();
 	private static Calendar data;
 	
+	@Autowired
+	static ServTweetsImpl support; 
 	
 	public static ArrayList<Tweet> getTwitterDate(Hashtag hash, String data_utente) throws org.json.simple.parser.ParseException, ParseException, java.text.ParseException {
 		
-		TweetList = ServTweetsImpl.getTweets(hash);
+		TweetList = (ArrayList<Tweet>) support.getTweets();
 		
 		for(int i = 0; i<TweetList.size(); i++) {
 			data = normalDateParsing(TweetList.get(i).getData());

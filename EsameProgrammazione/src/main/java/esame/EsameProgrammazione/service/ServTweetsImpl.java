@@ -1,10 +1,12 @@
 package esame.EsameProgrammazione.service;
 
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.json.JSONException;
 import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
 
@@ -60,7 +62,7 @@ public class ServTweetsImpl implements ServTweets{
 	
 	//Ritorna le statistiche riferite ai like
 	@Override
-	public LikeStatistics StatsVisualizeLike(String filter, Hashtag hash) {
+	public LikeStatistics StatsVisualizeLike(String filter, Hashtag hash) throws MalformedURLException, JSONException {
 		try {
 			filteredLikeStatistics = new LikeStatistics(RecognizeFilter.JsonParserColumn(filter, hash));
 		} 
@@ -74,7 +76,7 @@ public class ServTweetsImpl implements ServTweets{
 	
 	//Ritorna le statistiche riferite alla data
 	@Override
-	public DateStatistics StatsVisualizeDate(String filter, Hashtag hash, String data_utente) {
+	public DateStatistics StatsVisualizeDate(String filter, Hashtag hash, String data_utente) throws MalformedURLException, JSONException {
 		
 		try {
 			filteredDateStatistics = new DateStatistics(RecognizeFilter.JsonParserColumn(filter, hash), hash, data_utente);

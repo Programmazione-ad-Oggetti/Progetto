@@ -4,23 +4,18 @@ import java.util.ArrayList;
 
 import esame.EsameProgrammazione.model.Tweet;
 
-public class BtLikeFilter implements Filter{
-	private String field = "like";
-	private String operator = "$bt";
+public class BtLikeFilter extends FilterParent implements Filter{
 	
-	public String getField() {
-		return field;
+	
+	
+	public BtLikeFilter(Object parametro) {
+		super(parametro);
 	}
-	
-	public String getOperator() {
-		return operator;
-	}
-	
-	
+
 	@Override
-	public boolean filter(ArrayList<String> value, Tweet tweet) {
-		double num1 = Double.parseDouble(value.get(0));
-		double num2 = Double.parseDouble(value.get(1));
+	public boolean filter1(ArrayList<Double> value, Tweet tweet) {
+		double num1 = value.get(0);
+		double num2 = value.get(1);
 		double min;
 		double max; 
 		
@@ -36,5 +31,15 @@ public class BtLikeFilter implements Filter{
 		if (!(min < tweet.getLike() && max > tweet.getLike()))
 				return false;
 		return true;
+	}
+
+	@Override
+	public boolean filter(Tweet tweet) {
+		return false;
+	}
+
+	@Override
+	public boolean filter(ArrayList<String> value, Tweet tweet) {
+		return false;
 	}
 }

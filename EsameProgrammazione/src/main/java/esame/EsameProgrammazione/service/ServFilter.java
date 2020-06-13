@@ -2,9 +2,11 @@ package esame.EsameProgrammazione.service;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.json.JSONException;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -29,10 +31,10 @@ public class ServFilter {
 	
 	private final static String path = "esame.EsameProgrammazione.filter.";
 	
-	public static FilterStruct instanceFilter(String field,String operator,Object param) 
+	public static Filter instanceFilter(String field,String operator,Object param) 
 			   throws FilterNotFoundException, FilterIllegalArgumentException,InternalGeneralException{
 			
-			FilterStruct filtro;
+			Filter filtro;
 			String filterName = new String(operator+field+"Filter");
 			String ClassFilterName = path.concat(filterName);
 		    
@@ -42,7 +44,7 @@ public class ServFilter {
 			
 				Constructor<?> ct = cls.getDeclaredConstructor(Object.class); //seleziono il costruttore
 		    
-				filtro =(FilterStruct)ct.newInstance(param);  //Istanzio oggetto filtro
+				filtro =(Filter)ct.newInstance(param);  //Istanzio oggetto filtro
 			}
 			
 		    //entra qui se il nome filtro non e' corretto 
@@ -80,48 +82,45 @@ public class ServFilter {
 	 * Questo metodo restitusce una lista di tweet composta da soli tweet 
 	 * che rispettano le condizioni del filtro.
 	 * @param     completeTweetList ArrayList di Tweet sulla quale si vuole effettuare il filtraggio.  
-	 * @param     filtro che si desidera utilizzare.
+	 * @param     filter che si desidera utilizzare.
 	 * @return    ArrayList di Tweet filtrati.
+	 * @throws ParseException 
+	 * @throws JSONException 
+	 * @throws MalformedURLException 
 	 * @throws InternalGeneralException 
 	 * @throws FilterIllegalArgumentException 
 	 * @throws FilterNotFoundException 
 	 */
-	public static ArrayList<Tweet> Filtering(ArrayList<Tweet> completeTweetList, FilterStruct filtro) throws FilterNotFoundException, FilterIllegalArgumentException, InternalGeneralException{
+	public static ArrayList<Tweet> Filtering(Filter filtro, ArrayList<Tweet> previousArray, Hashtag hash) throws MalformedURLException, JSONException, ParseException{
 		
-		ArrayList<Tweet> filteredTweetList = new ArrayList<Tweet>();
-		
-		Filter filtraggio = (Filter) instanceFilter(filtro.getField(), filtro.getOperator(), filtro.getValues());
-		
-		for(int i = 0; i < completeTweetList.size(); i++) {
+		ArrayList<Tweet> tweets = JsonParser.parsingDataset(hash);
 
-			if(filtraggio.filter(filtro.getValues() , completeTweetList.get(i)))
-				filteredTweetList.add(completeTweetList.get(i));
-		}
+		ArrayList<Tweet> filteredArray = new ArrayList<Tweet>();
 		
-		return filteredTweetList;
+		for(Tweet tweet :  tweets) {
+
+			if(filtro.filter(tweet))
+				filteredArray.add(tweet);
+		}				
+		
+		return filteredArray;
 	}
-	
-	@Autowired
-	static 
-	ServTweetsImpl tweets;
-	
-	public static ArrayList<Tweet> FilteringOr(FilterStruct filtro, ArrayList<Tweet> completeTweetList, Hashtag hash) throws FilterNotFoundException, FilterIllegalArgumentException, InternalGeneralException, ParseException{
 
-		Collection<Tweet>support = tweets.getTweets();
-		ArrayList<Tweet> filteredTweetList = new ArrayList<Tweet>();
+	
+	public static  ArrayList<Tweet> FilteringOR(Filter filtro, ArrayList<Tweet> previousArray, Hashtag hash) throws MalformedURLException, JSONException, ParseException{
 		
-		Filter filtraggio = (Filter) instanceFilter(filtro.getField(), filtro.getOperator(), filtro.getValues());
-		
-		for(int i = 0; i < support.size(); i++) {
+		ArrayList<Tweet> tweets = JsonParser.parsingDataset(hash);
 
-			if(filtraggio.filter(filtro.getValues(), ((ArrayList<Tweet>) support).get(i)))
-				filteredTweetList.add(((ArrayList<Tweet>) support).get(i));
+		ArrayList<Tweet> filteredArray = new ArrayList<Tweet>();
+		
+		for(Tweet tweet : tweets) {
+
+			if(filtro.filter(tweet))
+				filteredArray.add(tweet);
 		}	
 		
-		completeTweetList.removeAll(filteredTweetList);
-		completeTweetList.addAll(filteredTweetList);
-		return completeTweetList;
+		previousArray.removeAll(filteredArray);
+		previousArray.addAll(filteredArray);
+		return previousArray;
 	}
-	
-	
 }

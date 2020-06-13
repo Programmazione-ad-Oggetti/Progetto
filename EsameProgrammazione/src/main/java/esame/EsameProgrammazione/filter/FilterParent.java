@@ -10,31 +10,31 @@ package esame.EsameProgrammazione.filter;
 
 public class FilterParent {
 	
-	protected String parametro;
+	protected int parametro;
 
 	
 	//Costruttore in cui viene controllato il tipo di parametro preso in input, nel nostro caso una stringa.
 	public FilterParent(Object parametro) {
-		if (parametro instanceof String)
-			this.parametro = (String)parametro;
+		if (parametro instanceof Integer)
+			this.parametro = (Integer)parametro;
 		else {
-			throw new IllegalArgumentException("Il valore inserito non è una stringa");
+			throw new IllegalArgumentException("Il valore inserito non e' un intero");
 		}
 	}
 	
 	public void setParametro(Object parametro) {
-		if (parametro instanceof String)
-			this.parametro = (String)parametro;
+		if (parametro instanceof Integer)
+			this.parametro = (Integer)parametro;
 		else {
-			throw new IllegalArgumentException("Il valore inserito non è una stringa");
+			throw new IllegalArgumentException("Il valore inserito non e' un intero");
 		}
 	}
 
-	public String getParametro() {
+	public int getParametro() {
 		return parametro;
 	}
 
-	public void setParametro(String parametro) {
+	public void setParametro(int parametro) {
 		this.parametro = parametro;
 	}
 
