@@ -34,27 +34,27 @@ Per effettuare queste richieste, l'utente può consultare la tabella di seguito 
 | ESEMPI | SPIEGAZIONE |
 | ------ | ----------- | 
 | /tweets/univpm | Questa richiesta permette di visualizzare tutti i Tweet contenenti l'hashtag "univpm" |
-| {"like":{"$gt": 250}} | Questa richiesta permette di visualizzare i Tweet che hanno più di 250 like |
-|{"$and":[{"data":{"eq" : 02 05}},{"like":{"$gt": 30 }}]} | Questa richiesta permette di visualizzare i Tweet riferiti al 5 Febbraio, i quali, a loro volta, hanno più di 30 like |
+| {"Like":{"Gt": 250}} | Questa richiesta permette di visualizzare i Tweet che hanno più di 250 like |
+|{"$and":[{"data":{"Eq" : 02 05}},{"like":{"Gt": 30 }}]} | Questa richiesta permette di visualizzare i Tweet riferiti al 5 Febbraio, i quali, a loro volta, hanno più di 30 like |
 
 Per capire il funzionamento di tutti gli operatori che possono essere utilizzati nel filtraggio, l'utente può consultare le tabelle di seguito.
 
 | OPERATORI PER I LIKE | SPIEGAZIONE |
 | --------- | ----------- | 
-| "$gt" | Serve per vedere i Tweet il cui valore del campo interessato è maggiore del valore immesso. |
-| "$gte" | Serve per vedere i Tweet il cui valore del campo interessato è maggiore o uguale al valore immesso. |
-| "$lt" | Serve per vedere i Tweet il cui valore del campo interessato è minore del valore immesso. |
-| "$lte" | Serve per vedere i Tweet il cui valore del campo interessato è minore o uguale al valore immesso. |
-| "$bt" | Serve per vedere i Tweet il cui valore del campo interessato è compreso nell'intervallo dato dai due valorei immessi. |
+| "Gt" | Serve per vedere i Tweet il cui valore del campo interessato è maggiore del valore immesso. |
+| "Gte" | Serve per vedere i Tweet il cui valore del campo interessato è maggiore o uguale al valore immesso. |
+| "Lt" | Serve per vedere i Tweet il cui valore del campo interessato è minore del valore immesso. |
+| "Lte" | Serve per vedere i Tweet il cui valore del campo interessato è minore o uguale al valore immesso. |
+| "Bt" | Serve per vedere i Tweet il cui valore del campo interessato è compreso nell'intervallo dato dai due valorei immessi. |
 
 | OPERATORI PER LA DATA | SPIEGAZIONE |
 | --------------------- | ----------- | 
-| "$Eq" | Serve per vedere i Tweet il cui valore del campo interessato è uguale a quello immesso. | 
+| "Eq" | Serve per vedere i Tweet il cui valore del campo interessato è uguale a quello immesso. | 
 
 | MACRO-OPERATORI | SPIEGAZIONE |
 | --------------- | ----------- | 
-| "$and" | Serve per vedere i Tweet che rispettano tutti i filtri immessi. | 
-| "$or" | Serve per vedere i Tweet che rispettano almeno uno dei filtri immessi. |
+| "And" | Serve per vedere i Tweet che rispettano tutti i filtri immessi. | 
+| "Or" | Serve per vedere i Tweet che rispettano almeno uno dei filtri immessi. |
 
 ## Struttura dei packages e delle classi 
 Di seguito vengono mostrati i diagrammi relativi allo sviluppo del progetto, per comprendere come è stato organizzato per quanto riguarda i packages e le classi. 
