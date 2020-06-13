@@ -4,16 +4,16 @@ import java.util.ArrayList;
 
 import esame.EsameProgrammazione.model.Tweet;
 
-public class MakeStatsLike {
+public class MakeStats {
 	/**
 	 * The function that calculate the average.
 	 * @param data the Records where to get the information for calcuting the average
 	 * @param field the field of which the average has to be calculated
 	 * @return the average
 	 */
-	public double LikeAverage(ArrayList<Tweet> tweets) {
+	public double Average(ArrayList<Tweet> tweets, String field) {
 
-		return LikeSum(tweets) / LikeList(tweets).size();
+		return Sum(tweets,field) / List(tweets,field).size();
 
 	}
 
@@ -23,10 +23,10 @@ public class MakeStatsLike {
 	 * @param field the field of which the sum has to be calculated
 	 * @return the sum
 	 */
-	public double LikeSum(ArrayList<Tweet> tweets) {
+	public double Sum(ArrayList<Tweet> tweets,String field) {
 		double sum = 0;
-		for (int i = 0; i < LikeList(tweets).size(); i++)
-			sum += LikeList(tweets).get(i);
+		for (int i = 0; i < List(tweets,field).size(); i++)
+			sum += List(tweets,field).get(i);
 		return sum;
 	}
 
@@ -36,9 +36,9 @@ public class MakeStatsLike {
 	 * @param field the field of which the max has to be founded
 	 * @return the max
 	 */
-	public double LikeMax(ArrayList<Tweet> tweets) {
+	public double Max(ArrayList<Tweet> tweets,String field) {
 		double max = Double.MIN_VALUE;
-		ArrayList<Double> support = LikeList(tweets);
+		ArrayList<Double> support = List(tweets,field);
 		for (int i = 0; i < support.size(); i++) {
 			if (support.get(i) > max)
 				max = support.get(i);
@@ -52,9 +52,9 @@ public class MakeStatsLike {
 	 * @param field the field of which the min has to be founded
 	 * @return the min
 	 */
-	public double LikeMin(ArrayList<Tweet> tweets) {
+	public double Min(ArrayList<Tweet> tweets,String field) {
 		double min = Double.MAX_VALUE;
-		ArrayList<Double> support = LikeList(tweets);
+		ArrayList<Double> support = List(tweets,field);
 		for (int i = 0; i < support.size(); i++) {
 			if (support.get(i) < min)
 				min = support.get(i);
@@ -68,12 +68,12 @@ public class MakeStatsLike {
 	 * @param field the field of which the variance has to be calculated
 	 * @return the variance
 	 */
-	public double LikeVariance(ArrayList<Tweet> tweets) {
+	public double Variance(ArrayList<Tweet> tweets,String field) {
 		double variance = 0;
 
-		ArrayList<Double> support = LikeList(tweets);
+		ArrayList<Double> support = List(tweets,field);
 		for (int i=0; i<support.size();i++) {
-			variance += Math.pow((support.get(i) - LikeAverage(tweets)), 2);
+			variance += Math.pow((support.get(i) - Average(tweets,field)), 2);
 		}
 		return variance / support.size();
 	}
@@ -84,15 +84,16 @@ public class MakeStatsLike {
 	 * @param field the field of which the stats has to be calculated
 	 * @return an ArraList of the value of the images of the records that satisfy the field passed
 	 */
-	public ArrayList<Double> LikeList(ArrayList<Tweet> tweets){
+	public ArrayList<Double> List(ArrayList<Tweet> tweets, String field){
 		
 		ArrayList<Double> listaTweet = new ArrayList<Double>();
 		
-		//this for is used to take all the image information that are usefull to calculate the different stats, switching between the different field passed
 		for(int i =0; i < tweets.size();i++) {
-			listaTweet.add((double)tweets.get(i).getLike());
+				if(field.equals("Like"))
+					listaTweet.add((double)tweets.get(i).getLike());
+				else if(field.equals("width"))
+					listaTweet.add((double)tweets.get(i).getFollowers());
 		}
-	
 		return listaTweet;
 	}
 }

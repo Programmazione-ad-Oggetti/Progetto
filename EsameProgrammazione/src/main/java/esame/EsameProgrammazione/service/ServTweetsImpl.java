@@ -15,7 +15,7 @@ import esame.EsameProgrammazione.exceptions.FilterNotFoundException;
 import esame.EsameProgrammazione.exceptions.InternalGeneralException;
 import esame.EsameProgrammazione.model.DateStatistics;
 import esame.EsameProgrammazione.model.Hashtag;
-import esame.EsameProgrammazione.model.LikeStatistics;
+import esame.EsameProgrammazione.model.Statistics;
 import esame.EsameProgrammazione.model.Tweet;
 import esame.EsameProgrammazione.service.JsonParser;
 
@@ -23,8 +23,8 @@ import esame.EsameProgrammazione.service.JsonParser;
 public class ServTweetsImpl implements ServTweets{
 	public ArrayList<Tweet> TweetList = new ArrayList<Tweet>();
 	private Map<Long, Tweet> timeline=new HashMap<>();
-	private LikeStatistics filteredLikeStatistics;
 	private DateStatistics filteredDateStatistics;
+	private Statistics[] filteredStatistics = new Statistics[2];
 	
 	//Costruttore
 	public ServTweetsImpl(Hashtag hash) {
@@ -60,18 +60,32 @@ public class ServTweetsImpl implements ServTweets{
 		return timeline.values();
 	}
 	
+	@Override
+	public Statistics VisualizeStatsField(String filter, String field, Hashtag hash) throws FilterNotFoundException, FilterIllegalArgumentException, MalformedURLException, JSONException, InternalGeneralException, ParseException {
+		filteredStatistics[0] = new Statistics(RecognizeFilter.JsonParserColumn(filter, hash), RecognizeField(field));
+		return filteredStatistics[0];
+	}
+	private String RecognizeField(String field) {
+		if (field.equals("\"Like\""))
+			return "width";
+		if (field.equals("\"Followers\""))
+			return "height";
+		return null;
+	}
+
 	//Ritorna le statistiche riferite ai like
 	@Override
-	public LikeStatistics StatsVisualizeLike(String filter, Hashtag hash) throws MalformedURLException, JSONException {
+	public Statistics[] VisualizeStats(String filter, Hashtag hash) throws MalformedURLException, JSONException {
 		try {
-			filteredLikeStatistics = new LikeStatistics(RecognizeFilter.JsonParserColumn(filter, hash));
+			filteredStatistics[0] = new Statistics(RecognizeFilter.JsonParserColumn(filter, hash), "Like");
+			filteredStatistics[1] = new Statistics(RecognizeFilter.JsonParserColumn(filter, hash), "Followers");
 		} 
 		catch (FilterNotFoundException | FilterIllegalArgumentException | InternalGeneralException
 				| ParseException e) {
 			e.printStackTrace();
 		}
 			
-		return filteredLikeStatistics;
+		return filteredStatistics;
 	}
 	
 	//Ritorna le statistiche riferite alla data
@@ -90,5 +104,6 @@ public class ServTweetsImpl implements ServTweets{
 			
 		return filteredDateStatistics;
 	}
+
 }
 

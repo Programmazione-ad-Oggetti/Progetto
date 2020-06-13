@@ -4,6 +4,10 @@ package esame.EsameProgrammazione.controller;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 
+import javax.management.openmbean.OpenDataException;
+import javax.security.auth.login.FailedLoginException;
+import javax.security.sasl.SaslException;
+
 import org.json.JSONException;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +19,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 
 import esame.EsameProgrammazione.exceptions.FilterIllegalArgumentException;
 import esame.EsameProgrammazione.exceptions.FilterNotFoundException;
@@ -42,7 +48,7 @@ public class ControllerClass {
 	
 	
 	//VIENE RESTITUITA LA LISTA DEI TWEET
-	@RequestMapping(value = "/tweets/{hashtag}", method = RequestMethod.GET)
+	@RequestMapping(value = "/GetTweets/{hashtag}", method = RequestMethod.GET)
 	public ResponseEntity<Object> setTesto(@PathVariable("hashtag") String testo) throws ParseException{
 		
 		Hashtag hash = new Hashtag();
@@ -53,7 +59,7 @@ public class ControllerClass {
 	
 	
 	//VIENE RESTITUITA LA LISTA DEI TWEET CON UN CERTO FILTRO
-	@RequestMapping(value = "/tweets2/{hashtag}", method = RequestMethod.GET)
+	@RequestMapping(value = "/GetFilteredTweets/{hashtag}", method = RequestMethod.GET)
 	public ResponseEntity<Object> setTesto(@PathVariable("hashtag") String testo, @RequestBody Object param) throws ParseException, FilterNotFoundException, FilterIllegalArgumentException, InternalGeneralException, MalformedURLException, JSONException{
 		
 		Hashtag hash = new Hashtag();
@@ -64,7 +70,7 @@ public class ControllerClass {
 	
 	
 	//VENGONO RESTITUITE LE STATISTICHE RELATIVE AI LIKE
-	@PostMapping("/GetStatsLike/{hashtag}")
+	@PostMapping("/GetStats/{hashtag}")
 	public ResponseEntity<Object> getStatsOfLike(@PathVariable("hashtag") String testo, 
 								  				 @RequestBody String filter) 
 					  	throws InternalGeneralException, StatsNotFoundException, FilterNotFoundException, FilterIllegalArgumentException, MalformedURLException, JSONException {
@@ -72,9 +78,16 @@ public class ControllerClass {
 		Hashtag hash = new Hashtag();
 		hash.setTesto(testo);
 		
-		return new ResponseEntity<>(ServTweetsImpl.StatsVisualizeLike(filter, hash), HttpStatus.OK);
+		return new ResponseEntity<>(ServTweetsImpl.VisualizeStats(filter, hash), HttpStatus.OK);
 	}
 	
+	@PostMapping("/GetFieldStats/{hashtag}")
+	public ResponseEntity<Object> getFieldStatistic(@PathVariable("hashtag") String testo, @RequestParam(name="field")String field,@RequestBody String filter ) throws FailedLoginException, MismatchedInputException, FailedLoginException, OpenDataException, SaslException, FilterNotFoundException, FilterIllegalArgumentException, MalformedURLException, JSONException, InternalGeneralException, ParseException{
+
+		Hashtag hash = new Hashtag();
+		hash.setTesto(testo);
+		return new ResponseEntity<>(ServTweetsImpl.VisualizeStatsField(filter, field, hash),HttpStatus.OK);
+	}	
 	
 	//VENGONO RESTITUITE LE STATISTICHE RELATIVE ALLA DATA
 	@PostMapping("/GetStatsDate/{hashtag}")

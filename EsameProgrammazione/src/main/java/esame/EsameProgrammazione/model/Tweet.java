@@ -13,6 +13,7 @@ public class Tweet extends Hashtag{
 	private String data;
 	private long ID;
 	private long like;
+	private long followers;
 	private String text;
 	
 	
@@ -64,5 +65,14 @@ public class Tweet extends Hashtag{
 	public void setLike(long like) {
 		this.like = like;
 	}
+	
+	public long getFollowers() {
+		return followers;
+	}
+
+	public void setFollowers(long followers) {
+		this.followers = followers;
+	}
+	
 	
 }

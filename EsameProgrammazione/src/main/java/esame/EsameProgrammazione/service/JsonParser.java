@@ -58,7 +58,8 @@ public class JsonParser {
 			 */
 			JSONObject retweeted = (JSONObject) tweetObject.get("user"); 
 			
-			tweet.setLike((long) retweeted.get("favourites_count")); //Viene preso il numero dei Like
+			tweet.setLike((long) retweeted.get("favourites_count"));
+			tweet.setFollowers((long) retweeted.get("followers_count"));//Viene preso il numero dei Like
 			
 			ListaTweets.add(tweet);
 		}
