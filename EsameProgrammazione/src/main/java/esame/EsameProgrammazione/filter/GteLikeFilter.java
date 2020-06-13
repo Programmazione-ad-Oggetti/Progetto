@@ -8,7 +8,7 @@ public class GteLikeFilter implements Filter{
 	
 	private String operator = "$gte";
 
-	private String field = "favorite_count";
+	private String field = "like";
 
 	
 	public String getOperator() {

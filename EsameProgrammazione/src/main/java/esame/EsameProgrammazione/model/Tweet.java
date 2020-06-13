@@ -13,33 +13,33 @@ import java.util.ArrayList;
 
 public class Tweet extends Hashtag{
 	private String data;
-	private ArrayList<Hashtag> hashtag;
 	private long ID;
-	private int like;
+	private long like;
+	private String text;
 	
 	
 	//Costruttore
-	public Tweet(String data, ArrayList<Hashtag> hashtag, long ID, int like) {
+	public Tweet(String data, long ID, int like,String text) {
 		super();
 		this.data = data;
-		this.hashtag = hashtag;
 		this.ID = ID;
 		this.like = like;
+		this.text = text;
 	}
 	
 	public Tweet() {
 		super();
 	}
 
-	
-	public ArrayList<Hashtag> getHashtag() {
-		return hashtag;
+
+	public String getText() {
+		return text;
 	}
 
 
-	public void setHashtag(Hashtag hashtg) {
-		hashtag.add(hashtg);
-	}
+	public void setText(String text) {
+		this.text = text;
+	}	
 
 
 	public String getData() {
@@ -59,11 +59,11 @@ public class Tweet extends Hashtag{
 		this.ID = iD;
 	}
 
-	public int getLike() {
+	public long getLike() {
 		return like;
 	}
 
-	public void setLike(int like) {
+	public void setLike(long like) {
 		this.like = like;
 	}
 	

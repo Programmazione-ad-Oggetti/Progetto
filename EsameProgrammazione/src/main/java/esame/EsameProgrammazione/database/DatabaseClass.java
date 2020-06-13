@@ -9,10 +9,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
-import org.json.simple.JSONValue;
+import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
@@ -59,11 +57,10 @@ public class DatabaseClass {
 			e.printStackTrace();	
 			}
 		
-		JSONObject json2 = new JSONObject();
 		JSONObject json = new JSONObject();
 		
 		try {
-			json = json2.getJSONObject(data);
+			json = (JSONObject) JSONValue.parse(data);
 		} 
 		catch (JSONException e) {
 			e.printStackTrace();

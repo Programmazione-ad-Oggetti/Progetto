@@ -6,7 +6,7 @@ import esame.EsameProgrammazione.model.Tweet;
 
 public class GtLikeFilter implements Filter{
 	
-	private String field = "favorite_count";
+	private String field = "like";
 	private String operator = "$gt";
 	
 	public String getField() {

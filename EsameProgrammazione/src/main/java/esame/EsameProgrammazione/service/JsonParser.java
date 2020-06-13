@@ -8,7 +8,8 @@ import esame.EsameProgrammazione.database.DatabaseClass;
 import esame.EsameProgrammazione.model.Hashtag;
 import esame.EsameProgrammazione.model.Tweet;
 
-import org.json.*;
+import org.json.JSONException;
+import org.json.simple.*;
 import org.json.simple.parser.ParseException;
 
 /////********************************************************/////
@@ -26,37 +27,39 @@ public class JsonParser {
 			
 		JSONObject parser = DatabaseClass.JSONdownloader(hash);
 			
-		JSONArray parsedTweet = (JSONArray) parser.getJSONArray("statuses");
+		JSONArray stasuses = (JSONArray) parser.get("statuses");
 		
 		ArrayList<Tweet> ListaTweets = new ArrayList<Tweet>();
-		for(int i = 0; i < parsedTweet.length(); i++) {
+		for(int i = 0; i < stasuses.size(); i++) {
 			Tweet tweet = new Tweet();
 			
-			JSONObject parsed = (JSONObject) parsedTweet.get(i);
+			JSONObject tweetObject = (JSONObject) stasuses.get(i);
 			
 			//tweet.setHashtag((String) parsedTweet.get("hashtags"));
-			tweet.setData((String) parsed.getString("created_at")); //Viene presa la data
-			tweet.setID((long) parsed.getInt("id"));
+			tweet.setText((String) tweetObject.get("text"));
+			tweet.setData((String) tweetObject.get("created_at")); //Viene presa la data
+			tweet.setID((long) tweetObject.get("id"));
 			
-			Hashtag hashtg;
+		/*	Hashtag hashtg;
 			
 			//Creazione dell'oggetto entities che permette di effetttuare la get() dell'hashtag, 
 			//in quanto (nel JSON) il campo Hashtag e' inserito dentro l'oggetto "entities"
-			JSONObject entities = (JSONObject) parsed.get("entities");
+			JSONObject entities = (JSONObject) tweetObject.get("entities");
 			JSONArray Hashtag = (JSONArray) entities.get("hashtags"); //Viene preso l'hashtag
 			
-			for(int j=0; j<Hashtag.length(); j++) {
+			for(int j=0; j<Hashtag.size(); j++) {
 				JSONObject text = (JSONObject) Hashtag.get(j);
 				hashtg = new Hashtag();
 				hashtg.setTesto((String) text.get("text"));
-				tweet.setHashtag(hashtg);
 			}
 			
 			//Creazione dell'oggetto retweeted_status che permette di effetttuare la get() del campo "favorite_count" (ossia il numero dei Like del post), 
 			//in quanto (nel JSON) il campo "favorite_count" e' inserito dentro l'oggetto "retweeted_status"
-			JSONObject retweeted_status = (JSONObject) parsed.get("retweeted_status"); 
+		
+			 */
+			JSONObject retweeted = (JSONObject) tweetObject.get("user"); 
 			
-			tweet.setLike((int) retweeted_status.get("favorite_count")); //Viene preso il numero dei Like
+			tweet.setLike((long) retweeted.get("favourites_count")); //Viene preso il numero dei Like
 			
 			ListaTweets.add(tweet);
 		}

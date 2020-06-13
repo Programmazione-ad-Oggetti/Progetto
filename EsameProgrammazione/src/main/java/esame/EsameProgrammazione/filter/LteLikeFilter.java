@@ -6,7 +6,7 @@ import esame.EsameProgrammazione.model.Tweet;
 
 public class LteLikeFilter implements Filter{
 	
-	private String field = "favorite_count";
+	private String field = "like";
 	private String operator = "$lte";
 
 	

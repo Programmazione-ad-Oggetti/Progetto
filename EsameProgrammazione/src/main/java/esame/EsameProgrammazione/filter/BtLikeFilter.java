@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import esame.EsameProgrammazione.model.Tweet;
 
 public class BtLikeFilter implements Filter{
-	private String field = "favorite_count";
+	private String field = "like";
 	private String operator = "$bt";
 	
 	public String getField() {
