@@ -9,9 +9,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.json.simple.JSONValue;
+import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import esame.EsameProgrammazione.model.Hashtag;
@@ -33,6 +35,7 @@ public class DatabaseClass {
 		String data = "";
 		String line = "";
 		
+		JSONParser parser = new JSONParser();
 		try {
 			URLConnection openConnection = new URL(url).openConnection();
 			openConnection.addRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:25.0) Gecko/20100101 Firefox/25.0");
@@ -56,12 +59,13 @@ public class DatabaseClass {
 			e.printStackTrace();	
 			}
 		
-		JSONObject json = null;
+		JSONObject json2 = new JSONObject();
+		JSONObject json = new JSONObject();
+		
 		try {
-			json = (JSONObject) JSONValue.parse(data);
-			return json;
-			
-		} catch (Exception e) {
+			json = json2.getJSONObject(data);
+		} 
+		catch (JSONException e) {
 			e.printStackTrace();
 		}
 		

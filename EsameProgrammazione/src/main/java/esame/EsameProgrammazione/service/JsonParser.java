@@ -7,9 +7,8 @@ import java.util.ArrayList;
 import esame.EsameProgrammazione.database.DatabaseClass;
 import esame.EsameProgrammazione.model.Hashtag;
 import esame.EsameProgrammazione.model.Tweet;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
+
+import org.json.*;
 import org.json.simple.parser.ParseException;
 
 /////********************************************************/////
@@ -23,28 +22,30 @@ import org.json.simple.parser.ParseException;
 
 public class JsonParser {
 	
-	public static ArrayList<Tweet> parsingDataset(Hashtag hash) throws ParseException, MalformedURLException{
+	public static ArrayList<Tweet> parsingDataset(Hashtag hash) throws ParseException, MalformedURLException, JSONException{
 			
 		JSONObject parser = DatabaseClass.JSONdownloader(hash);
 			
+		JSONArray parsedTweet = (JSONArray) parser.getJSONArray("statuses");
+		
 		ArrayList<Tweet> ListaTweets = new ArrayList<Tweet>();
-		for(int i = 0; i < parser.size(); i++) {
+		for(int i = 0; i < parsedTweet.length(); i++) {
 			Tweet tweet = new Tweet();
 			
-			JSONObject parsedTweet = (JSONObject) parser.get(i);
+			JSONObject parsed = (JSONObject) parsedTweet.get(i);
 			
 			//tweet.setHashtag((String) parsedTweet.get("hashtags"));
-			tweet.setData((String) parsedTweet.get("created_at")); //Viene presa la data
-			tweet.setID((long) parsedTweet.get("id"));
+			tweet.setData((String) parsed.getString("created_at")); //Viene presa la data
+			tweet.setID((long) parsed.getInt("id"));
 			
 			Hashtag hashtg;
 			
 			//Creazione dell'oggetto entities che permette di effetttuare la get() dell'hashtag, 
 			//in quanto (nel JSON) il campo Hashtag e' inserito dentro l'oggetto "entities"
-			JSONObject entities = (JSONObject) parsedTweet.get("entities");
+			JSONObject entities = (JSONObject) parsed.get("entities");
 			JSONArray Hashtag = (JSONArray) entities.get("hashtags"); //Viene preso l'hashtag
 			
-			for(int j=0; j<Hashtag.size(); j++) {
+			for(int j=0; j<Hashtag.length(); j++) {
 				JSONObject text = (JSONObject) Hashtag.get(j);
 				hashtg = new Hashtag();
 				hashtg.setTesto((String) text.get("text"));
@@ -53,7 +54,7 @@ public class JsonParser {
 			
 			//Creazione dell'oggetto retweeted_status che permette di effetttuare la get() del campo "favorite_count" (ossia il numero dei Like del post), 
 			//in quanto (nel JSON) il campo "favorite_count" e' inserito dentro l'oggetto "retweeted_status"
-			JSONObject retweeted_status = (JSONObject) parsedTweet.get("retweeted_status"); 
+			JSONObject retweeted_status = (JSONObject) parsed.get("retweeted_status"); 
 			
 			tweet.setLike((int) retweeted_status.get("favorite_count")); //Viene preso il numero dei Like
 			
