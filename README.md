@@ -25,17 +25,18 @@ Per effettuare queste richieste, l'utente può consultare la tabella di seguito 
 | ROTTA | METODO | DESCRIZIONE |
 | ----- | ------ | ----------- | 
 | /GetInstructions | GET | L'utente può accedere ad un elenco di istruzioni utili per effettuare le richieste| 
-| /tweets/{hashtag} | GET | Con questa richiesta l'utente può accedere all'intera lista di Tweets relativi all'hashtag scelto |
-| /tweets/{hashtag} |  POST | Con questo comando l'utente può accedere ai Tweets relativi all'hashtag scelto, secondo un certo filtro inserito nel body |
-| /GetStatsLike/{hashtag} | POST |  Con questo comando l'utente può visualizzare le statistiche relative ai like, secondo un certo filtro immesso nel body |
+| /GetTweets/{hashtag} | GET | Con questa richiesta l'utente può accedere all'intera lista di Tweets relativi all'hashtag scelto |
+| /GetFilteredTweets/{hashtag} |  POST | Con questo comando l'utente può accedere ai Tweets relativi all'hashtag scelto, secondo un certo filtro inserito nel body |
+| /GetStats/{hashtag} | POST |  Con questo comando l'utente può visualizzare le statistiche relative ai like e ai followers, secondo un certo filtro immesso nel body |
+| /GetFieldStats/{hashtag} | POST | Con questo comando l'utente puo' visualizzare le statistiche relative ai like o ai followers, secondo un certo filtro immesso nel body e scegliendo un campo |
 | /GetStatsDate/{hashtag} | POST |  Con questo comando l'utente può visualizzare le statistiche relative alla data immessa nel body, secondo un certo filtro immesso nel body |
 
 
 | ESEMPI | SPIEGAZIONE |
 | ------ | ----------- | 
-| /tweets/univpm | Questa richiesta permette di visualizzare tutti i Tweet contenenti l'hashtag "univpm" |
+| /GetTweets/univpm | Questa richiesta permette di visualizzare tutti i Tweet contenenti l'hashtag "univpm" |
 | {"Like":{"Gt": 250}} | Questa richiesta permette di visualizzare i Tweet che hanno più di 250 like |
-|{"$and":[{"data":{"Eq" : 02 05}},{"like":{"Gt": 30 }}]} | Questa richiesta permette di visualizzare i Tweet riferiti al 5 Febbraio, i quali, a loro volta, hanno più di 30 like |
+|{"And":[{"Followers":{"Gt" : 300}},{"Like":{"Lt": 3230 }}]} | Questa richiesta permette di visualizzare i Tweet che hanno meno di 3230 like e che sono stati pubblicati da utendi con più di 300 followers |
 
 Per capire il funzionamento di tutti gli operatori che possono essere utilizzati nel filtraggio, l'utente può consultare le tabelle di seguito.
 
