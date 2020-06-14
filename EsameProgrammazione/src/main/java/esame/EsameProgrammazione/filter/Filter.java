@@ -1,6 +1,9 @@
 package esame.EsameProgrammazione.filter;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+
+import com.sun.el.parser.ParseException;
 
 import esame.EsameProgrammazione.model.Tweet;
 
@@ -20,6 +23,8 @@ public interface Filter {
 	 * @return risposta booleana.
 	*/
 	public boolean filter(ArrayList<String> value, Tweet tweet);
+	
+	public boolean filterDate(Calendar data, String data_utente) throws ParseException, java.text.ParseException;
 
 	boolean filter(Tweet tweet);
 	
