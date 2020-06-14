@@ -4,6 +4,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import org.json.JSONException;
 import org.json.simple.parser.ParseException;
@@ -13,6 +14,7 @@ import esame.EsameProgrammazione.exceptions.FilterNotFoundException;
 import esame.EsameProgrammazione.exceptions.InternalGeneralException;
 import esame.EsameProgrammazione.model.Hashtag;
 import esame.EsameProgrammazione.model.Tweet;
+import esame.EsameProgrammazione.filter.EqDataFilter;
 import esame.EsameProgrammazione.filter.Filter;
 
 /////*******************************************************************/////
@@ -84,38 +86,68 @@ public class ServFilter {
 	 * @throws ParseException 
 	 * @throws JSONException 
 	 * @throws MalformedURLException 
+	 * @throws com.sun.el.parser.ParseException 
+	 * @throws java.text.ParseException 
 	 * @throws InternalGeneralException 
 	 * @throws FilterIllegalArgumentException 
 	 * @throws FilterNotFoundException 
 	 */
-	public static ArrayList<Tweet> Filtering(Filter filtro, ArrayList<Tweet> previousArray, Hashtag hash) throws MalformedURLException, JSONException, ParseException{
+	public static ArrayList<Tweet> Filtering(Filter filtro, ArrayList<Tweet> previousArray, Hashtag hash, String column, Object value) throws MalformedURLException, JSONException, ParseException, com.sun.el.parser.ParseException, java.text.ParseException{
 		
 		ArrayList<Tweet> tweets = JsonParser.parsingDataset(hash);
-
+		Calendar data;
+		EqDataFilter fil;
 		ArrayList<Tweet> filteredArray = new ArrayList<Tweet>();
 		
-		for(Tweet tweet :  tweets) {
-
-			if(filtro.filter(tweet))
-				filteredArray.add(tweet);
-		}				
+		if(column.equals("Data")) {
+			for(int i = 0; i<tweets.size(); i++) {
+				data = DateParser.normalDateParsing(tweets.get(i).getData());
+				
+				fil = new EqDataFilter(value);
+				
+				if(fil.filterDate(data)) {
+					filteredArray.add(tweets.get(i));
+				}
+			}
+		}
+		else{
+			for(Tweet tweet :  tweets) {
+	
+				if(filtro.filter(tweet))
+					filteredArray.add(tweet);
+			}				
+		}
 		
 		return filteredArray;
 	}
 
 	
-	public static  ArrayList<Tweet> FilteringOR(Filter filtro, ArrayList<Tweet> previousArray, Hashtag hash) throws MalformedURLException, JSONException, ParseException{
+	public static  ArrayList<Tweet> FilteringOR(Filter filtro, ArrayList<Tweet> previousArray, Hashtag hash, String column, Object value) throws MalformedURLException, JSONException, ParseException, com.sun.el.parser.ParseException, java.text.ParseException{
 		
 		ArrayList<Tweet> tweets = JsonParser.parsingDataset(hash);
-
+		Calendar data;
+		EqDataFilter fil;
 		ArrayList<Tweet> filteredArray = new ArrayList<Tweet>();
 		
-		for(Tweet tweet : tweets) {
+		if(column.equals("Data")) {
+			for(int i = 0; i<tweets.size(); i++) {
+				data = DateParser.normalDateParsing(tweets.get(i).getData());
+				
+				fil = new EqDataFilter(value);
+				
+				if(fil.filterDate(data)) {
+					filteredArray.add(tweets.get(i));
+				}
+			}
+		}
+		else{
+			for(Tweet tweet : tweets) {
 
 			if(filtro.filter(tweet))
 				filteredArray.add(tweet);
-		}	
-		
+			}	
+		}
+			
 		previousArray.removeAll(filteredArray);
 		previousArray.addAll(filteredArray);
 		return previousArray;

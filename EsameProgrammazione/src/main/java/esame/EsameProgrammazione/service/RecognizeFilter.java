@@ -33,7 +33,7 @@ public class RecognizeFilter {
 			throws InternalGeneralException, FilterNotFoundException, FilterIllegalArgumentException, ParseException, MalformedURLException, JSONException{ 
 				ArrayList<Tweet> previousArray= new ArrayList<Tweet>();
 				ArrayList<Tweet> filteredArray= new ArrayList<Tweet>();
-			//vedere se posso anche non istanziarlo qu�
+			//vedere se posso anche non istanziarlo qui
 				HashMap<String,Object> result= new ObjectMapper().convertValue(filter, HashMap.class);
 
 			//Itera con tutti gli elementi dell'ArrayList
@@ -79,11 +79,29 @@ public class RecognizeFilter {
 			filter= ServFilter.instanceFilter(column, operator, value);
 			
 			if (type == "and")
-				filteredArray = ServFilter.Filtering(filter, previousArray, hash);
+				try {
+					filteredArray = ServFilter.Filtering(filter, previousArray, hash, column, value);
+				} 
+				catch (MalformedURLException | JSONException | ParseException | com.sun.el.parser.ParseException
+						| java.text.ParseException e) {
+					e.printStackTrace();
+				}
 			else if(type == "or")
-				filteredArray = ServFilter.FilteringOR(filter, previousArray, hash);
+				try {
+					filteredArray = ServFilter.FilteringOR(filter, previousArray, hash, column, value);
+				} 
+				catch (MalformedURLException | JSONException | ParseException | com.sun.el.parser.ParseException
+						| java.text.ParseException e) {
+					e.printStackTrace();
+				}
 			else
-				filteredArray = ServFilter.FilteringOR(filter, previousArray, hash);
+				try {
+					filteredArray = ServFilter.FilteringOR(filter, previousArray, hash, column, value);
+				} 
+				catch (MalformedURLException | JSONException | ParseException | com.sun.el.parser.ParseException
+						| java.text.ParseException e) {
+					e.printStackTrace();
+				}
 		
 		}
 		
