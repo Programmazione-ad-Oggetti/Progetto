@@ -91,7 +91,7 @@ public class MakeStats {
 		for(int i =0; i < tweets.size();i++) {
 				if(field.equals("Like"))
 					listaTweet.add((double)tweets.get(i).getLike());
-				else if(field.equals("width"))
+				else if(field.equals("Followers"))
 					listaTweet.add((double)tweets.get(i).getFollowers());
 		}
 		return listaTweet;
