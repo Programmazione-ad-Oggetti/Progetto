@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -42,9 +43,10 @@ public class DateParser {
 	
 	//EFFETTUA IL PARSING DELLA DATA DI UN TWEET
 	public static Calendar normalDateParsing(String date) throws ParseException, java.text.ParseException {
-		  final String TWITTER="EEE MMM dd HH:mm:ss ZZZZZ yyyy";
+		  final String TWITTER="EEE MMM dd HH:mm:ss X yyyy ";
 		  SimpleDateFormat sf = new SimpleDateFormat(TWITTER);
 		  
+		  //date = date.replace("+0000 ", "") + " UTC";
 		  Date Date = (Date) sf.parse(date);
 		  sf.setLenient(true);
 		  
