@@ -56,12 +56,7 @@ public class DatabaseClass {
 		
 		JSONObject json = new JSONObject();
 		
-		try {
-			json = (JSONObject) JSONValue.parse(data);
-		} 
-		catch (JSONException e) {
-			e.printStackTrace();
-		}
+		json = (JSONObject) JSONValue.parse(data);
 		
 		return json;
 		
