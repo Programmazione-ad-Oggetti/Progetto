@@ -1,6 +1,9 @@
 package esame.EsameProgrammazione.filter;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+
+import com.sun.el.parser.ParseException;
 
 import esame.EsameProgrammazione.model.Tweet;
 
@@ -24,6 +27,12 @@ public class GteLikeFilter extends FilterParent implements Filter{
 
 	@Override
 	public boolean filter1(ArrayList<Double> value, Tweet tweet) {
+		return false;
+	}
+
+	@Override
+	public boolean filterDate(Calendar data) throws ParseException, java.text.ParseException {
+		// TODO Auto-generated method stub
 		return false;
 	}
 }

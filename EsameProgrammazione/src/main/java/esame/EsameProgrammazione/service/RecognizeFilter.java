@@ -62,25 +62,28 @@ public class RecognizeFilter {
 		Filter filter;
 		ArrayList<Tweet> filteredArray= new ArrayList <Tweet>();
 		HashMap<String, Object> result= new ObjectMapper().convertValue(filterParam,HashMap.class);
+		
 		for(Map.Entry<String, Object> entry: result.entrySet()) {
-		String operator= entry.getKey();
-		Object value=entry.getValue();
-		if(operator.equals("type") || operator.equals("Type")) {
-		type=(String) value;
-		if(!(value.equals("and"))&&!(value.equals("or"))) {
-		throw new FilterIllegalArgumentException("'and' o 'or' expected after 'type'");
-		}
-		continue;
-		}
+			String operator= entry.getKey();
+			Object value=entry.getValue();
 		
-		filter= ServFilter.instanceFilter(column, operator, value);
-		
-		if (type == "and")
-			filteredArray = ServFilter.Filtering(filter, previousArray, hash);
-		else if(type == "or")
-			filteredArray = ServFilter.FilteringOR(filter, previousArray, hash);
-		else
-			filteredArray = ServFilter.FilteringOR(filter, previousArray, hash);
+			if(operator.equals("type") || operator.equals("Type")) {
+				type=(String) value;
+				
+				if(!(value.equals("and"))&&!(value.equals("or"))) {
+					throw new FilterIllegalArgumentException("'and' o 'or' expected after 'type'");
+				}
+				continue;
+			}
+			
+			filter= ServFilter.instanceFilter(column, operator, value);
+			
+			if (type == "and")
+				filteredArray = ServFilter.Filtering(filter, previousArray, hash);
+			else if(type == "or")
+				filteredArray = ServFilter.FilteringOR(filter, previousArray, hash);
+			else
+				filteredArray = ServFilter.FilteringOR(filter, previousArray, hash);
 		
 		}
 		

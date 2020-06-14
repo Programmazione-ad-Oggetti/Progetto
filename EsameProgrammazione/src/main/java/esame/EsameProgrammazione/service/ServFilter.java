@@ -78,8 +78,8 @@ public class ServFilter {
 	/**
 	 * Questo metodo restitusce una lista di tweet composta da soli tweet 
 	 * che rispettano le condizioni del filtro.
-	 * @param     completeTweetList ArrayList di Tweet sulla quale si vuole effettuare il filtraggio.  
-	 * @param     filter che si desidera utilizzare.
+	 * @param     filtro Filtro che si desidera utilizzare.  
+	 * @param     previousArray ArrayList di Tweet sulla quale si vuole effettuare il filtraggio.
 	 * @return    ArrayList di Tweet filtrati.
 	 * @throws ParseException 
 	 * @throws JSONException 

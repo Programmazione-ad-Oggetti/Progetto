@@ -24,7 +24,7 @@ public interface Filter {
 	*/
 	public boolean filter(ArrayList<String> value, Tweet tweet);
 	
-	public boolean filterDate(Calendar data, String data_utente) throws ParseException, java.text.ParseException;
+	public boolean filterDate(Calendar data) throws ParseException, java.text.ParseException;
 
 	boolean filter(Tweet tweet);
 	

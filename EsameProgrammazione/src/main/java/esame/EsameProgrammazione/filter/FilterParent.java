@@ -13,7 +13,7 @@ public class FilterParent {
 	protected int parametro;
 
 	
-	//Costruttore in cui viene controllato il tipo di parametro preso in input, nel nostro caso una stringa.
+	//Costruttore in cui viene controllato il tipo di parametro preso in input, nel nostro caso un intero.
 	public FilterParent(Object parametro) {
 		if (parametro instanceof Integer)
 			this.parametro = (Integer)parametro;
