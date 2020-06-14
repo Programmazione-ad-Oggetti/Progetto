@@ -20,6 +20,7 @@ public class DateParser {
 	
 	@Autowired
 	static ServTweetsImpl support; 
+	static EqDataFilter	  fil;
 	
 	public static ArrayList<Tweet> getTwitterDate(Hashtag hash, String data_utente) throws org.json.simple.parser.ParseException, ParseException, java.text.ParseException {
 		
@@ -28,7 +29,7 @@ public class DateParser {
 		for(int i = 0; i<TweetList.size(); i++) {
 			data = normalDateParsing(TweetList.get(i).getData());
 			
-			if(EqDataFilter.filter(data, data_utente)) {
+			if(fil.filterDate(data, data_utente)) {
 				FilteredList.add(TweetList.get(i));
 			}
 		}

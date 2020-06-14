@@ -1,6 +1,9 @@
 package esame.EsameProgrammazione.filter;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+
+import com.sun.el.parser.ParseException;
 
 import esame.EsameProgrammazione.model.Tweet;
 
@@ -40,6 +43,12 @@ public class BtLikeFilter extends FilterParent implements Filter{
 
 	@Override
 	public boolean filter(ArrayList<String> value, Tweet tweet) {
+		return false;
+	}
+
+	@Override
+	public boolean filterDate(Calendar data, String data_utente) throws ParseException, java.text.ParseException {
+		// TODO Auto-generated method stub
 		return false;
 	}
 }
