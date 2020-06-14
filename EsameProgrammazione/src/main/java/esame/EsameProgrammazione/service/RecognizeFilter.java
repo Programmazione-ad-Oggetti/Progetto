@@ -76,8 +76,7 @@ public class RecognizeFilter {
 		filter= ServFilter.instanceFilter(column, operator, value);
 		
 		if (type == "and")
-			filteredArray = 
-			ServFilter.Filtering(filter, previousArray, hash);
+			filteredArray = ServFilter.Filtering(filter, previousArray, hash);
 		else if(type == "or")
 			filteredArray = ServFilter.FilteringOR(filter, previousArray, hash);
 		else
