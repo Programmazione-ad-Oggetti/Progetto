@@ -80,17 +80,18 @@ public class ServFilter {
 	/**
 	 * Questo metodo restitusce una lista di tweet composta da soli tweet 
 	 * che rispettano le condizioni del filtro.
-	 * @param     filtro Filtro che si desidera utilizzare.  
-	 * @param     previousArray ArrayList di Tweet sulla quale si vuole effettuare il filtraggio.
-	 * @return    ArrayList di Tweet filtrati.
+	 * @param filtro Filtro che si desidera utilizzare.  
+	 * @param previousArray ArrayList di Tweet sulla quale si vuole effettuare il filtraggio.
+	 * @param hash Hashtag applicato
+	 * @param column Campo sul quale fitrare
+	 * @param value Valore immesso dall'utente
+	 * @return ArrayList di Tweet filtrati.
 	 * @throws ParseException 
 	 * @throws JSONException 
 	 * @throws MalformedURLException 
 	 * @throws com.sun.el.parser.ParseException 
 	 * @throws java.text.ParseException 
-	 * @throws InternalGeneralException 
 	 * @throws FilterIllegalArgumentException 
-	 * @throws FilterNotFoundException 
 	 */
 	public static ArrayList<Tweet> Filtering(Filter filtro, ArrayList<Tweet> previousArray, Hashtag hash, String column, Object value) throws MalformedURLException, JSONException, ParseException, com.sun.el.parser.ParseException, java.text.ParseException{
 		

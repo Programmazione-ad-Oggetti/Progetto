@@ -1,12 +1,10 @@
 package esame.EsameProgrammazione.exceptions;
 
-/////**************************************************/////
-/////   VIENE PERSONALIZZATA UN'ECCEZIONE CHE ESTENDE  /////
-/////             ClassNotFoundException               /////
-/////**************************************************/////
-
-/** @author Antonio Colucci
-* 	@author Carmen Andreozzi
+/** 
+ * Viene personalizzata un'eccezione che estende ClassNotFoundException
+ * 
+ * @author Antonio Colucci
+ * @author Carmen Andreozzi
 */
 
 public class StatsNotFoundException extends ClassNotFoundException{

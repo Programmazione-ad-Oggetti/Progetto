@@ -1,12 +1,11 @@
 package esame.EsameProgrammazione.filter;
 
 
-/////*********************************************************************/////
-/////   QUESTA E' LA SUPERCLASSE PER LE CLASSI CHE IMPLEMENTANO I FILTRI  /////
-/////*********************************************************************/////
-
-/** @author Antonio Colucci
-* 	@author Carmen Andreozzi
+/** 
+ * Superclasse ereditata dalla classe EqDataFilter
+ * 
+ * @author Antonio Colucci
+ * @author Carmen Andreozzi
 */
 
 public class FilterParentString {
@@ -14,7 +13,11 @@ public class FilterParentString {
 	protected String parametro;
 
 	
-	//Costruttore in cui viene controllato il tipo di parametro preso in input, nel nostro caso una stringa.
+	/**
+	 * Costruttore in cui viene controllato il tipo di parametro preso in input, nel nostro caso una stringa.
+	 * 
+	 * @param parametro
+	 */
 	public FilterParentString(Object parametro) {
 		if (parametro instanceof String)
 			this.parametro = (String)parametro;
@@ -23,6 +26,11 @@ public class FilterParentString {
 		}
 	}
 	
+	/**
+	 * Viene controllato il tipo di parametro preso in input, nel nostro caso una stringa.
+	 * 
+	 * @param parametro
+	 */
 	public void setParametro(Object parametro) {
 		if (parametro instanceof String)
 			this.parametro = (String)parametro;

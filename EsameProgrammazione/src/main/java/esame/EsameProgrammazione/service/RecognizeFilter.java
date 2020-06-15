@@ -20,8 +20,9 @@ import esame.EsameProgrammazione.model.*;
 public class RecognizeFilter {
 	
 	/**Effettua il parsing dei dati esterni (Campo da analizzare)
-	   @param filtro da applicare
-	   @return ArrayList di Tweet filtrati
+	 * @param filter filtro da applicare
+	 * @param hash Hashtag applicato
+	 * @return ArrayList di Tweet filtrati
 	 * @throws InternalGeneralException
 	 * @throws  FilterNotFoundException 
 	 * @throws FilterIllegalArgumentException 

@@ -1,6 +1,5 @@
 package esame.EsameProgrammazione.controller;
 
-
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 
@@ -33,13 +32,25 @@ import esame.EsameProgrammazione.service.InstructionReader;
 import esame.EsameProgrammazione.service.RecognizeFilter;
 import esame.EsameProgrammazione.service.ServTweetsImpl;
 
+/**
+ * Classe nella quale vengono modellate le richieste API
+ * 
+ * @author Colucci Antonio
+ * @author Andreozzi Carmen
+ *
+ */
+
 @RestController
 public class ControllerClass {
 	@Autowired
 	ServTweetsImpl ServTweetsImpl;
 
 	
-	//VIENE LETTO IL FILE CONTENENTE LE ISTRUZIONI D'USO DELL'API
+	/**
+	 * Viene letto il file contenente le istruzioni d'uso dell'API
+	 * 
+	 * @return Istruzioni
+	 */
 	@GetMapping("/GetInstructions")
 	public ResponseEntity<Object> getInstruction(){
 		InstructionReader instructions = new InstructionReader();
@@ -47,7 +58,14 @@ public class ControllerClass {
 	}
 	
 	
-	//VIENE RESTITUITA LA LISTA DEI TWEET
+	/**
+	 * Viene restituita la lista dei Tweet corrispondenti ad 
+	 * un certo hashtag inserito nella rotta
+	 * 
+	 * @param testo
+	 * @return la lista dei tweet
+	 * @throws ParseException
+	 */
 	@RequestMapping(value = "/GetTweets/{hashtag}", method = RequestMethod.GET)
 	public ResponseEntity<Object> setTesto(@PathVariable("hashtag") String testo) throws ParseException{
 		
@@ -58,7 +76,19 @@ public class ControllerClass {
 	}
 	
 	
-	//VIENE RESTITUITA LA LISTA DEI TWEET CON UN CERTO FILTRO
+	/**
+	 * Viene restituita la lista dei Tweet con un certo Filtro
+	 * 
+	 * @param testo
+	 * @param param
+	 * @return lista dei tweet filtrati
+	 * @throws ParseException
+	 * @throws FilterNotFoundException
+	 * @throws FilterIllegalArgumentException
+	 * @throws InternalGeneralException
+	 * @throws MalformedURLException
+	 * @throws JSONException
+	 */
 	@RequestMapping(value = "/GetFilteredTweets/{hashtag}", method = RequestMethod.GET)
 	public ResponseEntity<Object> setTesto(@PathVariable("hashtag") String testo, @RequestBody Object param) throws ParseException, FilterNotFoundException, FilterIllegalArgumentException, InternalGeneralException, MalformedURLException, JSONException{
 		
@@ -69,7 +99,19 @@ public class ControllerClass {
 	}
 	
 	
-	//VENGONO RESTITUITE LE STATISTICHE RELATIVE AI LIKE
+	/**
+	 * Vengono restituite tutte le statistiche
+	 * 
+	 * @param testo
+	 * @param filter
+	 * @return statistiche relative ai like
+	 * @throws InternalGeneralException
+	 * @throws StatsNotFoundException
+	 * @throws FilterNotFoundException
+	 * @throws FilterIllegalArgumentException
+	 * @throws MalformedURLException
+	 * @throws JSONException
+	 */
 	@PostMapping("/GetStats/{hashtag}")
 	public ResponseEntity<Object> getStatsOfLike(@PathVariable("hashtag") String testo, 
 								  				 @RequestBody Object filter) 
@@ -81,6 +123,25 @@ public class ControllerClass {
 		return new ResponseEntity<>(ServTweetsImpl.VisualizeStats(filter, hash), HttpStatus.OK);
 	}
 	
+	/**
+	 * Vengono restituite le statistiche relative ad un determinato campo (Field)
+	 * 
+	 * @param testo
+	 * @param field
+	 * @param filter
+	 * @return statistiche relative al "field" inserito
+	 * @throws FailedLoginException
+	 * @throws MismatchedInputException
+	 * @throws FailedLoginException
+	 * @throws OpenDataException
+	 * @throws SaslException
+	 * @throws FilterNotFoundException
+	 * @throws FilterIllegalArgumentException
+	 * @throws MalformedURLException
+	 * @throws JSONException
+	 * @throws InternalGeneralException
+	 * @throws ParseException
+	 */
 	@PostMapping("/GetFieldStats/{hashtag}")
 	public ResponseEntity<Object> getFieldStatistic(@PathVariable("hashtag") String testo, @RequestParam(name="field")String field,@RequestBody Object filter ) throws FailedLoginException, MismatchedInputException, FailedLoginException, OpenDataException, SaslException, FilterNotFoundException, FilterIllegalArgumentException, MalformedURLException, JSONException, InternalGeneralException, ParseException{
 
@@ -89,7 +150,19 @@ public class ControllerClass {
 		return new ResponseEntity<>(ServTweetsImpl.VisualizeStatsField(filter, field, hash),HttpStatus.OK);
 	}	
 	
-	//VENGONO RESTITUITE LE STATISTICHE RELATIVE ALLA DATA
+	/**
+	 * Vengono restituite le statistiche relative alla data
+	 * 
+	 * @param testo
+	 * @param filter
+	 * @return numero di tweet pubblicati in una certa data
+	 * @throws InternalGeneralException
+	 * @throws StatsNotFoundException
+	 * @throws FilterNotFoundException
+	 * @throws FilterIllegalArgumentException
+	 * @throws MalformedURLException
+	 * @throws JSONException
+	 */
 	@PostMapping("/GetStatsDate/{hashtag}")
 	public ResponseEntity<Object> getStatsOfDate(@PathVariable("hashtag") String testo, 
 								  				 @RequestBody Object filter) 

@@ -1,12 +1,10 @@
 package esame.EsameProgrammazione.exceptions;
 
-/////***************************************************/////
-/////    VIENE PERSONALIZZATA UN'ECCEZIONE CHE ESTENDE  /////
-/////             IllegalArgumentException              /////
-/////***************************************************/////
-
-/** @author Antonio Colucci
-* 	@author Carmen Andreozzi
+/** 
+ * Viene personalizzata un'eccezione che estende IllegalArgumentException
+ * 
+ * @author Antonio Colucci
+ * @author Carmen Andreozzi
 */
 
 public class FilterIllegalArgumentException extends IllegalArgumentException{

@@ -18,8 +18,8 @@ public class Statistics extends MakeStats{
 	
 	/**
 	 * The constructor of the class; it inizialize the hashamap calculating the different stats with the right records
-	 * @param recordToPass ArrayList that are used to calculate the stats
-	 * @param fieldToPass field passed
+	 * @param tweet ArrayList usato per calcolare le statistiche
+	 * @param field Campo inserito
 	 */
 	public Statistics(ArrayList<Tweet> tweet, String field) {
 		

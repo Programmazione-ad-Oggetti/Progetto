@@ -7,12 +7,26 @@ import com.sun.el.parser.ParseException;
 import esame.EsameProgrammazione.model.OurDate;
 import esame.EsameProgrammazione.model.Tweet;
 
+/**
+ * Classe che effettua il filtraggio dei like, tramite l'operatore "$gt"
+ * 
+ * @author Colucci Antonio
+ * @author Andreozzi Carmen
+ */
 public class GtLikeFilter extends FilterParent implements Filter{
 	
+	/**
+	 * Viene richiamato il costruttore della superclasse
+	 * 
+	 * @param parametro
+	 */
 	public GtLikeFilter(Object parametro) {
 		super(parametro);
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean filter(Tweet tweet) {
 			if (!(tweet.getLike() > parametro1))
@@ -20,13 +34,17 @@ public class GtLikeFilter extends FilterParent implements Filter{
 		return true;
 	}
 
-	//METODO DERIVANTE DALL'INTERFACCIA IMPLEMENTATA, CHE IN QUESTO CASO NON FA NIENTE
+	/**
+	 * Metodo derivante dell'interfaccia implementata, che in questo caso non fa' niente
+	 */
 	@Override
 	public boolean filter(ArrayList<String> value, Tweet tweet) {
 		return false;
 	}
 
-	//METODO DERIVANTE DALL'INTERFACCIA IMPLEMENTATA, CHE IN QUESTO CASO NON FA NIENTE
+	/**
+	 * Metodo derivante dell'interfaccia implementata, che in questo caso non fa' niente
+	 */
 	@Override
 	public boolean filterDate(OurDate data) throws ParseException, java.text.ParseException {
 		return false;

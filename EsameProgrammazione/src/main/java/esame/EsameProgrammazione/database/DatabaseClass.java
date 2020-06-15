@@ -14,17 +14,22 @@ import org.json.simple.parser.ParseException;
 
 import esame.EsameProgrammazione.model.Hashtag;
 
-/////***************************************/////
-/////   RAPPRESENTA LA CLASSE CHE GESTISCE  /////
-/////     L'INIZIALIZZAZIONE DEL DATASET    /////
-/////***************************************/////
-
-/** @author Antonio Colucci
-* 	@author Carmen Andreozzi
+/** 
+ * Rappresenta la classe che gestisce l'inizializzazione del dataset
+ * 
+ * @author Antonio Colucci
+ * @author Carmen Andreozzi
 */
 public class DatabaseClass {
 	
-	// Questo metodo effettua il download del JSON contenente i tweet dall'URL impostato
+	/**
+	 * Questo metodo effettua il download del JSON contenente i tweet dall'URL impostato
+	 * 
+	 * @param hash
+	 * @return il JSON scaricato
+	 * @throws ParseException
+	 * @throws MalformedURLException
+	 */
 	public static JSONObject JSONdownloader(Hashtag hash) throws ParseException, MalformedURLException {
 		String url = "https://wd4hfxnxxa.execute-api.us-east-2.amazonaws.com/dev/api/1.1/search/tweets.json?q="+hash.getTesto()+"&count=100000";
 		

@@ -1,12 +1,10 @@
 package esame.EsameProgrammazione.exceptions;
 
-/////***************************************************/////
-/////    VIENE PERSONALIZZATA UN'ECCEZIONE CHE ESTENDE  /////
-/////                    Exception                      /////
-/////***************************************************/////
-
-/** @author Antonio Colucci
-* 	@author Carmen Andreozzi
+/** 
+ * Viene personalizzata un'eccezione che estende Exception
+ * 
+ * @author Antonio Colucci
+ * @author Carmen Andreozzi
 */
 
 public class InternalGeneralException extends Exception {

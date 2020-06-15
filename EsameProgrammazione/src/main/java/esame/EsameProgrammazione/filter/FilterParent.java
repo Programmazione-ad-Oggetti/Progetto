@@ -2,12 +2,11 @@ package esame.EsameProgrammazione.filter;
 
 import java.util.ArrayList;
 
-/////*********************************************************************/////
-/////   QUESTA E' LA SUPERCLASSE PER LE CLASSI CHE IMPLEMENTANO I FILTRI  /////
-/////*********************************************************************/////
-
-/** @author Antonio Colucci
-* 	@author Carmen Andreozzi
+/**
+ * Superclasse implementata da tutte le classi di filtraggio
+ *  
+ * @author Antonio Colucci
+ * @author Carmen Andreozzi
 */
 
 public class FilterParent {
@@ -16,11 +15,18 @@ public class FilterParent {
 	protected int parametro2;
 
 	
-	//Costruttore in cui viene controllato il tipo di parametro preso in input, nel nostro caso un intero.
+	/**
+	 * Costruttore in cui viene controllato il tipo di parametro preso in input: 
+	 * un intero, oppure un ArrayList di interi
+	 * 
+	 * @param parametro
+	 */
 	public FilterParent(Object parametro) {
+		//Condizione per controllare se "parametro" e' un intero
 		if (parametro instanceof Integer)
 			this.parametro1 = (Integer)parametro;
 		
+		//Serie di condizioni per controllare se "parametro" e' un ArrayList di interi
 		else if (parametro instanceof ArrayList<?>) {
 			if ( ((ArrayList<?>) parametro).size() != 2) {
 				throw new IndexOutOfBoundsException("Inserire due interi!") ;
@@ -41,10 +47,18 @@ public class FilterParent {
 		else throw new IllegalArgumentException("Il valore inserito non e' un intero");
 	}
 	
+	/**
+	 * Viene controllato il tipo di parametro preso in input: 
+	 * un intero, oppure un ArrayList di interi
+	 * 
+	 * @param parametro
+	 */
 	public void setParametro(Object parametro) {
+		//Condizione per controllare se "parametro" e' un intero
 		if (parametro instanceof Integer)
 			this.parametro1 = (Integer)parametro;
 		
+		//Serie di condizioni per controllare se "parametro" e' un ArrayList di interi
 		else if (parametro instanceof ArrayList<?>) {
 			if ( ((ArrayList<?>) parametro).size() != 2) {
 				throw new IndexOutOfBoundsException("Inserire due interi!") ;
