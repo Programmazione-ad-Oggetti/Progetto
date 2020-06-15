@@ -29,7 +29,9 @@ public class EqDataFilter extends FilterParentString implements Filter{
 			
 			user_date = DateParser.userParsing(parametro);
 			
-			if( (data.getDay().equals(user_date.getDay())) && (data.getMonth().equals(user_date.getMonth())) /*&& (data.getYear().equals(user_date.getYear()))*/)
+			if( (data.getDay().equals(user_date.getDay())) 
+					&& (data.getMonth().equals(user_date.getMonth())) 
+					&& (data.getYear().equals(user_date.getYear())) )
 				return true;
 			
 			else  return false;

@@ -5,6 +5,7 @@ import java.util.Calendar;
 
 import com.sun.el.parser.ParseException;
 
+import esame.EsameProgrammazione.model.OurDate;
 import esame.EsameProgrammazione.model.Tweet;
 
 public class BtFollowersFilter extends FilterParent implements Filter{
@@ -46,9 +47,10 @@ public class BtFollowersFilter extends FilterParent implements Filter{
 		return false;
 	}
 
+
 	@Override
-	public boolean filterDate(Calendar data, String data_utente) throws ParseException, java.text.ParseException {
-		
+	public boolean filterDate(OurDate data) throws ParseException, java.text.ParseException {
+
 		return false;
 	}
 }

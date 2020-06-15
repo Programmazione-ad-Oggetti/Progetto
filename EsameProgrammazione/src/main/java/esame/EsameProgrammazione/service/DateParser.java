@@ -53,7 +53,6 @@ public class DateParser {
 		}
 		date = date.replaceAll(caratteri, "");
 		
-		System.out.println(date);
 		//VIENE ELIMINATA L'ULTIMA PARTE DELLA STRINGA CHE FORMA LA DATA DI UN TWEET, OSSIA "HH:mm:ss "
 		caratteri = "";
 		for(int i = 7; i < 16; i++) {
@@ -61,9 +60,11 @@ public class DateParser {
 		}
 		date = date.replaceAll(caratteri, "");
 		
-		data.setMonth(date.substring(0,2));
-		data.setDay(date.substring(4,5));
-		data.setYear(date.substring(7,10));
+		System.out.println(date);
+		
+		data.setMonth(date.substring(0,3));
+		data.setDay(date.substring(4,6));
+		data.setYear(date.substring(7,11));
 		
 		return data;
 	}
@@ -75,18 +76,13 @@ public class DateParser {
 		
 		System.out.println(user_date);
 		
-		data.setMonth(user_date.substring(0,2));
-		data.setDay(user_date.substring(4,5));
-		data.setYear(user_date.substring(7,10));
+		data.setMonth(user_date.substring(0,3));
+		data.setDay(user_date.substring(4,6));
+		data.setYear(user_date.substring(7,11));
 		
 		return data;
 	}
-	//INIZIALIZZA UN VETTORE CON TUTTI I MESI SCRITTI LETTERALMENTE, I QUALI VERRANO TRASFORMATI IN NUMERI
-	/*private static String[] initialize() {
-		String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
-		
-		return months;
-	}*/
+	
 	
 	/*
 	//EFFETTUA IL PARSING DELLA DATA DI UN TWEET
