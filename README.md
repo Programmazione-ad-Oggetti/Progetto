@@ -29,7 +29,7 @@ Per effettuare queste richieste, l'utente può consultare la tabella di seguito 
 | /GetFilteredTweets/{hashtag} |  GET | Con questo comando l'utente può accedere ai Tweets relativi all'hashtag scelto, secondo un certo filtro inserito nel body | "Like", "Followers", "Friends" e "Data" |
 | /GetStats/{hashtag} | POST |  Con questo comando l'utente può visualizzare le statistiche relative ai like e ai followers, secondo un certo filtro immesso nel body | "Like", "Followers" e "Friends" |
 | /GetFieldStats/{hashtag}?field = "campo" | POST | Con questo comando l'utente puo' visualizzare le statistiche relative ai like o ai followers, secondo un certo filtro immesso nel body e scegliendo un campo | "Like", "Followers" o "Friends" |
-| /GetStatsDate/{hashtag} | POST |  Con questo comando l'utente può visualizzare le statistiche relative alla data immessa nel body, secondo un certo filtro immesso nel body | "Data" |
+| /GetStatsDate/{hashtag} | POST |  Con questo comando l'utente può visualizzare le statistiche relative alla data immessa nel body | "Data" |
 
 
 | ESEMPI | SPIEGAZIONE |
