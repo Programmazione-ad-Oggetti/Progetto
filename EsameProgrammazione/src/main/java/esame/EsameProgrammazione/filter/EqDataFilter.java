@@ -49,9 +49,4 @@ public class EqDataFilter extends FilterParentString implements Filter{
 			return false;
 		}
 
-		//METODO DERIVANTE DALL'INTERFACCIA IMPLEMENTATA, CHE IN QUESTO CASO NON FA NIENTE
-		@Override
-		public boolean filter1(ArrayList<Double> value, Tweet tweet) {
-			return false;
-		}
 }

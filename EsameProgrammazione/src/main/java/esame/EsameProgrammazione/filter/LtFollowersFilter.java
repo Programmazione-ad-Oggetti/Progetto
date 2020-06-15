@@ -16,7 +16,7 @@ public class LtFollowersFilter extends FilterParent implements Filter {
 
 	@Override
 	public boolean filter(Tweet tweet) {
-			if (!(tweet.getFollowers() < parametro))
+			if (!(tweet.getFollowers() < parametro1))
 				return false;
 		return true;
 	}
@@ -24,12 +24,6 @@ public class LtFollowersFilter extends FilterParent implements Filter {
 	//METODO DERIVANTE DALL'INTERFACCIA IMPLEMENTATA, CHE IN QUESTO CASO NON FA NIENTE
 	@Override
 	public boolean filter(ArrayList<String> value, Tweet tweet) {
-		return false;
-	}
-
-	//METODO DERIVANTE DALL'INTERFACCIA IMPLEMENTATA, CHE IN QUESTO CASO NON FA NIENTE
-	@Override
-	public boolean filter1(ArrayList<Double> value, Tweet tweet) {
 		return false;
 	}
 
