@@ -60,6 +60,10 @@ public class JsonParser {
 			
 			tweet.setLike((long) retweeted.get("favourites_count"));
 			tweet.setFollowers((long) retweeted.get("followers_count"));//Viene preso il numero dei Like
+			tweet.setLocation((String) retweeted.get("location"));
+			tweet.setName((String) retweeted.get("name"));
+			tweet.setScreen_name((String) retweeted.get("screen_name"));
+			tweet.setUrl((String) retweeted.get("url"));
 			
 			ListaTweets.add(tweet);
 		}
