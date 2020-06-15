@@ -4,7 +4,6 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import org.json.JSONException;
 import org.json.simple.parser.ParseException;
@@ -13,6 +12,7 @@ import esame.EsameProgrammazione.exceptions.FilterIllegalArgumentException;
 import esame.EsameProgrammazione.exceptions.FilterNotFoundException;
 import esame.EsameProgrammazione.exceptions.InternalGeneralException;
 import esame.EsameProgrammazione.model.Hashtag;
+import esame.EsameProgrammazione.model.OurDate;
 import esame.EsameProgrammazione.model.Tweet;
 import esame.EsameProgrammazione.filter.EqDataFilter;
 import esame.EsameProgrammazione.filter.Filter;
@@ -95,13 +95,13 @@ public class ServFilter {
 	public static ArrayList<Tweet> Filtering(Filter filtro, ArrayList<Tweet> previousArray, Hashtag hash, String column, Object value) throws MalformedURLException, JSONException, ParseException, com.sun.el.parser.ParseException, java.text.ParseException{
 		
 		ArrayList<Tweet> tweets = JsonParser.parsingDataset(hash);
-		Calendar data;
+		OurDate data;
 		EqDataFilter fil;
 		ArrayList<Tweet> filteredArray = new ArrayList<Tweet>();
 		
 		if(column.equals("Data")) {
 			for(int i = 0; i<tweets.size(); i++) {
-				data = DateParser.normalDateParsing(tweets.get(i).getData());
+				data = DateParser.parsing(tweets.get(i).getData());
 				
 				fil = new EqDataFilter(value);
 				
@@ -125,13 +125,13 @@ public class ServFilter {
 	public static  ArrayList<Tweet> FilteringOR(Filter filtro, ArrayList<Tweet> previousArray, Hashtag hash, String column, Object value) throws MalformedURLException, JSONException, ParseException, com.sun.el.parser.ParseException, java.text.ParseException{
 		
 		ArrayList<Tweet> tweets = JsonParser.parsingDataset(hash);
-		Calendar data;
+		OurDate data;
 		EqDataFilter fil;
 		ArrayList<Tweet> filteredArray = new ArrayList<Tweet>();
 		
 		if(column.equals("Data")) {
 			for(int i = 0; i<tweets.size(); i++) {
-				data = DateParser.normalDateParsing(tweets.get(i).getData());
+				data = DateParser.parsing(tweets.get(i).getData());
 				
 				fil = new EqDataFilter(value);
 				

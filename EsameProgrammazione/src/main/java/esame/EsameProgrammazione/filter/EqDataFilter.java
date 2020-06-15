@@ -1,13 +1,10 @@
 package esame.EsameProgrammazione.filter;
 
-import static java.util.Calendar.DAY_OF_MONTH;
-import static java.util.Calendar.MONTH;
-
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import com.sun.el.parser.ParseException;
 
+import esame.EsameProgrammazione.model.OurDate;
 import esame.EsameProgrammazione.model.Tweet;
 import esame.EsameProgrammazione.service.DateParser;
 
@@ -27,12 +24,12 @@ public class EqDataFilter extends FilterParentString implements Filter{
 		}
 		
 		@Override
-		public boolean filterDate(Calendar data/*, String data_utente*/) throws ParseException, java.text.ParseException {
-			Calendar user_date;
+		public boolean filterDate(OurDate data) throws ParseException, java.text.ParseException {
+			OurDate user_date;
 			
-			user_date = DateParser.userDateParsing(parametro);
+			user_date = DateParser.userParsing(parametro);
 			
-			if((data.get(DAY_OF_MONTH) == user_date.get(DAY_OF_MONTH)) && (data.get(MONTH) == user_date.get(MONTH)))
+			if( (data.getDay().equals(user_date.getDay())) && (data.getMonth().equals(user_date.getMonth())) /*&& (data.getYear().equals(user_date.getYear()))*/)
 				return true;
 			
 			else  return false;
