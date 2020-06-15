@@ -22,21 +22,21 @@ Nel seguente diagramma sono schematizzate le azioni che l'utente può effettuare
 
 Per effettuare queste richieste, l'utente può consultare la tabella di seguito che mostra le istruzioni per visualizzare i dati interessati:
 
-| ROTTA | METODO | DESCRIZIONE |
-| ----- | ------ | ----------- | 
+| ROTTA | METODO | DESCRIZIONE | CAMPO IN CUI SI PUO' UTILIZZARE |
+| ----- | ------ | ----------- | ------------------------------- |
 | /GetInstructions | GET | L'utente può accedere ad un elenco di istruzioni utili per effettuare le richieste| 
 | /GetTweets/{hashtag} | GET | Con questa richiesta l'utente può accedere all'intera lista di Tweets relativi all'hashtag scelto |
-| /GetFilteredTweets/{hashtag} |  GET | Con questo comando l'utente può accedere ai Tweets relativi all'hashtag scelto, secondo un certo filtro inserito nel body |
-| /GetStats/{hashtag} | POST |  Con questo comando l'utente può visualizzare le statistiche relative ai like e ai followers, secondo un certo filtro immesso nel body |
-| /GetFieldStats/{hashtag}?field = "campo" | POST | Con questo comando l'utente puo' visualizzare le statistiche relative ai like o ai followers, secondo un certo filtro immesso nel body e scegliendo un campo |
-| /GetStatsDate/{hashtag} | POST |  Con questo comando l'utente può visualizzare le statistiche relative alla data immessa nel body, secondo un certo filtro immesso nel body |
+| /GetFilteredTweets/{hashtag} |  GET | Con questo comando l'utente può accedere ai Tweets relativi all'hashtag scelto, secondo un certo filtro inserito nel body | "Like", "Followers" e "Data" |
+| /GetStats/{hashtag} | POST |  Con questo comando l'utente può visualizzare le statistiche relative ai like e ai followers, secondo un certo filtro immesso nel body | "Like" e "Followers" |
+| /GetFieldStats/{hashtag}?field = "campo" | POST | Con questo comando l'utente puo' visualizzare le statistiche relative ai like o ai followers, secondo un certo filtro immesso nel body e scegliendo un campo | "Like" o "Followers" |
+| /GetStatsDate/{hashtag} | POST |  Con questo comando l'utente può visualizzare le statistiche relative alla data immessa nel body, secondo un certo filtro immesso nel body | "Data" |
 
 
 | ESEMPI | SPIEGAZIONE |
 | ------ | ----------- | 
 | /GetTweets/univpm | Questa richiesta permette di visualizzare tutti i Tweet contenenti l'hashtag "univpm" |
 | {"Like":{"Gt": 250}} | Questa richiesta permette di visualizzare i Tweet che hanno più di 250 like |
-|{"And":[{"Followers":{"Gt" : 300}},{"Like":{"Lt": 3230 }}]} | Questa richiesta permette di visualizzare i Tweet che hanno meno di 3230 like e che sono stati pubblicati da utendi con più di 300 followers |
+| {"Like": { "Bt": [100,200]}, "Data": {"Type": "and", "Eq": "Jun 12 2020"}} | Questa richiesta permette di visualizzare i Tweet che hanno tra i 100 e i 200 like e che sono stati pubblicati il 12 Giugno 2020 |
 
 Per capire il funzionamento di tutti gli operatori che possono essere utilizzati nel filtraggio, l'utente può consultare le tabelle di seguito.
 
@@ -99,7 +99,7 @@ In questo punto esaminiamo nello specifico le chiamate che l'utente può effettu
 
 * GET /GetInstructions
 * GET /GetTweets/{hashtag}
-* POST /GetFilteredTweets/{hashtag}
+* GET /GetFilteredTweets/{hashtag}
 * POST /GetStats/{hashtag}
 * POST /GetFieldStats/{hashtag}?field="campo"
 * POST /GetStatsDate/{hashtag}
