@@ -93,6 +93,8 @@ public class MakeStats {
 					listaTweet.add((double)tweets.get(i).getLike());
 				else if(field.equals("Followers"))
 					listaTweet.add((double)tweets.get(i).getFollowers());
+				else if(field.equals("Friends"))
+					listaTweet.add((double)tweets.get(i).getFriends());
 		}
 		return listaTweet;
 	}

@@ -23,7 +23,7 @@ public class ServTweetsImpl implements ServTweets{
 	public ArrayList<Tweet> TweetList = new ArrayList<Tweet>();
 	private Map<Long, Tweet> timeline=new HashMap<>();
 	private DateStatistics filteredDateStatistics;
-	private Statistics[] filteredStatistics = new Statistics[2];
+	private Statistics[] filteredStatistics = new Statistics[3];
 	
 	//Costruttore
 	public ServTweetsImpl(Hashtag hash) {
@@ -58,6 +58,8 @@ public class ServTweetsImpl implements ServTweets{
 			return "Like";
 		if (field.equals("\"Followers\""))
 			return "Followers";
+		if (field.equals("\"Friends\""))
+			return "Friends";
 		return null;
 	}
 
@@ -67,6 +69,7 @@ public class ServTweetsImpl implements ServTweets{
 		try {
 			filteredStatistics[0] = new Statistics(RecognizeFilter.JsonParserColumn(filter, hash), "Like");
 			filteredStatistics[1] = new Statistics(RecognizeFilter.JsonParserColumn(filter, hash), "Followers");
+			filteredStatistics[2] = new Statistics(RecognizeFilter.JsonParserColumn(filter, hash), "Friends");
 		} 
 		catch (FilterNotFoundException | FilterIllegalArgumentException | InternalGeneralException
 				| ParseException e) {
