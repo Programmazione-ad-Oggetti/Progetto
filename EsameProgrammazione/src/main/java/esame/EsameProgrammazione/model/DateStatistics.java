@@ -10,9 +10,8 @@ import esame.EsameProgrammazione.exceptions.FilterIllegalArgumentException;
 import esame.EsameProgrammazione.exceptions.FilterNotFoundException;
 import esame.EsameProgrammazione.exceptions.InternalGeneralException;
 import esame.EsameProgrammazione.service.RecognizeFilter;
-import esame.EsameProgrammazione.statistic.MakeStatsDate;
 
-public class DateStatistics extends MakeStatsDate{
+public class DateStatistics{
 	private int numeroTweet;
 	
 	public DateStatistics(Object filter, Hashtag hash) throws ParseException, com.sun.el.parser.ParseException, java.text.ParseException, FilterNotFoundException, FilterIllegalArgumentException, MalformedURLException, JSONException, InternalGeneralException {

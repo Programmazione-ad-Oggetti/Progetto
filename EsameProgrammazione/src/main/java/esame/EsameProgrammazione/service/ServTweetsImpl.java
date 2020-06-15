@@ -17,7 +17,6 @@ import esame.EsameProgrammazione.model.DateStatistics;
 import esame.EsameProgrammazione.model.Hashtag;
 import esame.EsameProgrammazione.model.Statistics;
 import esame.EsameProgrammazione.model.Tweet;
-import esame.EsameProgrammazione.service.JsonParser;
 
 @Service
 public class ServTweetsImpl implements ServTweets{
@@ -44,18 +43,7 @@ public class ServTweetsImpl implements ServTweets{
 	}
 	
 	@Override
-	public Collection<Tweet> getTweets(/*Hashtag hash*/) /*throws ParseException*/ {
-		/*try {
-			ArrayList<Tweet> lista = JsonParser.parsingDataset(hash); //Viene richiamata la funzione che effettua il parsing del Json
-			
-			for(int i = 0; i < lista.size(); i++) {
-				Tweet twt = lista.get(i);
-				TweetList.add(twt);
-			}
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}*/
+	public Collection<Tweet> getTweets() {
 		
 		return timeline.values();
 	}
