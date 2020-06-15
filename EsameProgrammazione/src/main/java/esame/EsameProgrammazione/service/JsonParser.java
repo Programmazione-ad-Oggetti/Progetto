@@ -56,14 +56,15 @@ public class JsonParser {
 			//in quanto (nel JSON) il campo "favorite_count" e' inserito dentro l'oggetto "retweeted_status"
 		
 			 */
-			JSONObject retweeted = (JSONObject) tweetObject.get("user"); 
+			JSONObject user = (JSONObject) tweetObject.get("user"); 
 			
-			tweet.setLike((long) retweeted.get("favourites_count"));
-			tweet.setFollowers((long) retweeted.get("followers_count"));//Viene preso il numero dei Like
-			tweet.setLocation((String) retweeted.get("location"));
-			tweet.setName((String) retweeted.get("name"));
-			tweet.setScreen_name((String) retweeted.get("screen_name"));
-			tweet.setUrl((String) retweeted.get("url"));
+			tweet.setLike((long) user.get("favourites_count"));
+			tweet.setFollowers((long) user.get("followers_count"));//Viene preso il numero dei Like
+			tweet.setFriends((long) user.get("friends_count"));
+			tweet.setLocation((String) user.get("location"));
+			tweet.setName((String) user.get("name"));
+			tweet.setScreen_name((String) user.get("screen_name"));
+			tweet.setUrl((String) user.get("url"));
 			
 			ListaTweets.add(tweet);
 		}

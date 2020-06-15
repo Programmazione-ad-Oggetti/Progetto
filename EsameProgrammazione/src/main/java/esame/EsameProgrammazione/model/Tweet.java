@@ -19,8 +19,17 @@ public class Tweet extends Hashtag{
 	private String name;
 	private String screen_name;
 	private String url;
+	private long friends;
 	
 	
+	public long getFriends() {
+		return friends;
+	}
+
+	public void setFriends(long friends) {
+		this.friends = friends;
+	}
+
 	public String getLocation() {
 		return location;
 	}
