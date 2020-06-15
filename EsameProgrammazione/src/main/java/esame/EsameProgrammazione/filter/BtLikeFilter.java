@@ -5,6 +5,7 @@ import java.util.Calendar;
 
 import com.sun.el.parser.ParseException;
 
+import esame.EsameProgrammazione.model.OurDate;
 import esame.EsameProgrammazione.model.Tweet;
 
 public class BtLikeFilter extends FilterParent implements Filter{
@@ -36,19 +37,21 @@ public class BtLikeFilter extends FilterParent implements Filter{
 		return true;
 	}
 
+	//METODO DERIVANTE DALL'INTERFACCIA IMPLEMENTATA, CHE IN QUESTO CASO NON FA NIENTE
 	@Override
 	public boolean filter(Tweet tweet) {
 		return false;
 	}
 
+	//METODO DERIVANTE DALL'INTERFACCIA IMPLEMENTATA, CHE IN QUESTO CASO NON FA NIENTE
 	@Override
 	public boolean filter(ArrayList<String> value, Tweet tweet) {
 		return false;
 	}
 
+	//METODO DERIVANTE DALL'INTERFACCIA IMPLEMENTATA, CHE IN QUESTO CASO NON FA NIENTE
 	@Override
-	public boolean filterDate(Calendar data, String data_utente) throws ParseException, java.text.ParseException {
-		// TODO Auto-generated method stub
+	public boolean filterDate(OurDate data) throws ParseException, java.text.ParseException {
 		return false;
 	}
 }
