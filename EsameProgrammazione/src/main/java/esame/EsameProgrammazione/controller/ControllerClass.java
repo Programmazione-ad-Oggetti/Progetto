@@ -72,7 +72,7 @@ public class ControllerClass {
 	//VENGONO RESTITUITE LE STATISTICHE RELATIVE AI LIKE
 	@PostMapping("/GetStats/{hashtag}")
 	public ResponseEntity<Object> getStatsOfLike(@PathVariable("hashtag") String testo, 
-								  				 @RequestBody String filter) 
+								  				 @RequestBody Object filter) 
 					  	throws InternalGeneralException, StatsNotFoundException, FilterNotFoundException, FilterIllegalArgumentException, MalformedURLException, JSONException {
 
 		Hashtag hash = new Hashtag();
@@ -82,7 +82,7 @@ public class ControllerClass {
 	}
 	
 	@PostMapping("/GetFieldStats/{hashtag}")
-	public ResponseEntity<Object> getFieldStatistic(@PathVariable("hashtag") String testo, @RequestParam(name="field")String field,@RequestBody String filter ) throws FailedLoginException, MismatchedInputException, FailedLoginException, OpenDataException, SaslException, FilterNotFoundException, FilterIllegalArgumentException, MalformedURLException, JSONException, InternalGeneralException, ParseException{
+	public ResponseEntity<Object> getFieldStatistic(@PathVariable("hashtag") String testo, @RequestParam(name="field")String field,@RequestBody Object filter ) throws FailedLoginException, MismatchedInputException, FailedLoginException, OpenDataException, SaslException, FilterNotFoundException, FilterIllegalArgumentException, MalformedURLException, JSONException, InternalGeneralException, ParseException{
 
 		Hashtag hash = new Hashtag();
 		hash.setTesto(testo);
@@ -92,12 +92,12 @@ public class ControllerClass {
 	//VENGONO RESTITUITE LE STATISTICHE RELATIVE ALLA DATA
 	@PostMapping("/GetStatsDate/{hashtag}")
 	public ResponseEntity<Object> getStatsOfDate(@PathVariable("hashtag") String testo, 
-								  				 @RequestBody String filter, String data_utente) 
+								  				 @RequestBody Object filter) 
 					  	throws InternalGeneralException, StatsNotFoundException, FilterNotFoundException, FilterIllegalArgumentException, MalformedURLException, JSONException {
 
 		Hashtag hash = new Hashtag();
 		hash.setTesto(testo);
 		
-		return new ResponseEntity<>(ServTweetsImpl.StatsVisualizeDate(filter, hash, data_utente), HttpStatus.OK);
+		return new ResponseEntity<>(ServTweetsImpl.StatsVisualizeDate(filter, hash), HttpStatus.OK);
 	}
 }

@@ -61,21 +61,21 @@ public class ServTweetsImpl implements ServTweets{
 	}
 	
 	@Override
-	public Statistics VisualizeStatsField(String filter, String field, Hashtag hash) throws FilterNotFoundException, FilterIllegalArgumentException, MalformedURLException, JSONException, InternalGeneralException, ParseException {
+	public Statistics VisualizeStatsField(Object filter, String field, Hashtag hash) throws FilterNotFoundException, FilterIllegalArgumentException, MalformedURLException, JSONException, InternalGeneralException, ParseException {
 		filteredStatistics[0] = new Statistics(RecognizeFilter.JsonParserColumn(filter, hash), RecognizeField(field));
 		return filteredStatistics[0];
 	}
 	private String RecognizeField(String field) {
 		if (field.equals("\"Like\""))
-			return "width";
+			return "Like";
 		if (field.equals("\"Followers\""))
-			return "height";
+			return "Followers";
 		return null;
 	}
 
 	//Ritorna le statistiche riferite ai like
 	@Override
-	public Statistics[] VisualizeStats(String filter, Hashtag hash) throws MalformedURLException, JSONException {
+	public Statistics[] VisualizeStats(Object filter, Hashtag hash) throws MalformedURLException, JSONException {
 		try {
 			filteredStatistics[0] = new Statistics(RecognizeFilter.JsonParserColumn(filter, hash), "Like");
 			filteredStatistics[1] = new Statistics(RecognizeFilter.JsonParserColumn(filter, hash), "Followers");
@@ -90,10 +90,10 @@ public class ServTweetsImpl implements ServTweets{
 	
 	//Ritorna le statistiche riferite alla data
 	@Override
-	public DateStatistics StatsVisualizeDate(String filter, Hashtag hash, String data_utente) throws MalformedURLException, JSONException {
+	public DateStatistics StatsVisualizeDate(Object filter, Hashtag hash) throws MalformedURLException, JSONException {
 		
 		try {
-			filteredDateStatistics = new DateStatistics(RecognizeFilter.JsonParserColumn(filter, hash), hash, data_utente);
+			filteredDateStatistics = new DateStatistics(filter,hash);
 		} 
 		catch (com.sun.el.parser.ParseException | java.text.ParseException | FilterNotFoundException | FilterIllegalArgumentException | InternalGeneralException
 				| ParseException e) {
