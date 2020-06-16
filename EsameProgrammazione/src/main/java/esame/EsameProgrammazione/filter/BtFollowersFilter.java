@@ -14,7 +14,6 @@ import esame.EsameProgrammazione.model.Tweet;
  * @author Colucci Antonio
  * @author Andreozzi Carmen
  */
-
 public class BtFollowersFilter extends FilterParent implements Filter{
 	
 	/**
