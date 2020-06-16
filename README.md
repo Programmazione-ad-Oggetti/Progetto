@@ -18,6 +18,7 @@ il nostro progetto è stato organizzato e sviluppato.
 
 Nel seguente diagramma sono schematizzate le azioni che l'utente può effettuare.
 
+[![Use-Case-Diagram.jpg](https://i.postimg.cc/br2pkwHv/Use-Case-Diagram.jpg)](https://postimg.cc/RJ9kz9Yr)
 
 
 Per effettuare queste richieste, l'utente può consultare la tabella di seguito che mostra le istruzioni per visualizzare i dati interessati:
@@ -44,7 +45,7 @@ Per effettuare queste richieste, l'utente può consultare la tabella di seguito 
 | {"Friends":{"Gt": 250}} | Questo filtro immesso nel body permette di visualizzare i Tweet pubblicati da utenti che hanno più di 250 amici |
 | {"Data":{"Eq":"Jun 13 2020}} | Questo filtro immesso nel body permette di visualizzare i Tweet pubblicati il 13 Giugno 2020 |
 | {"Location":{"Eq":"Ancona"}} | Questo filtro immesso nel body permette di visualizzare i Tweet che hanno come location Ancona |
-| {"Like": { "Bt": [100,200]}, "Data": {"Type": "and", "Eq": "Jun 12 2020"}} | Si tratta di un filtro concatenato (and) che permette di visualizzare i Tweet che hanno tra i 100 e i 200 like e che sono stati pubblicati il 12 Giugno 2020 |
+| {"Like": { "Bt": [100,200]}, "Data": {"Type": "And", "Eq": "Jun 12 2020"}} | Si tratta di un filtro concatenato (and) che permette di visualizzare i Tweet che hanno tra i 100 e i 200 like e che sono stati pubblicati il 12 Giugno 2020 |
 
 
 Per capire il funzionamento di tutti gli operatori che possono essere utilizzati nel filtraggio, l'utente può consultare le tabelle di seguito.
@@ -90,6 +91,9 @@ Entrando ancora di più nel dettaglio, esaminiamo ogni package e ogni classe con
 
 * esame.EsameProgrammazione.controller
 * esame.EsameProgrammazione.service
+
+[![service.jpg](https://i.postimg.cc/Hk2Lzj5Z/service.jpg)](https://postimg.cc/Jssm4rpZ)
+
 * esame.EsameProgrammazione.exceptions
 
 [![exceptions.jpg](https://i.postimg.cc/Cx0WwrZf/exceptions.jpg)](https://postimg.cc/ZCffccxT)
@@ -99,6 +103,9 @@ Entrando ancora di più nel dettaglio, esaminiamo ogni package e ogni classe con
 [![database.jpg](https://i.postimg.cc/0j6VCDzv/database.jpg)](https://postimg.cc/tnjdq1dv)
 
 * esame.EsameProgrammazione.model
+
+[![model.jpg](https://i.postimg.cc/BQybttDR/model.jpg)](https://postimg.cc/vcrbNY0v)
+
 * esame.EsameProgrammazione.filter
 * esame.EsameProgrammazione.statistics
 
