@@ -41,7 +41,7 @@ public class Statistics extends MakeStats{
 	}
 	
 	/**
-	 * @return field
+	 * @return Il campo delle statistiche
 	 */
 	public String getField() {
 		return field;

@@ -5,8 +5,8 @@ import org.springframework.stereotype.Service;
 /** 
  * Classe che rappresenta la struttura di un hashtag
  * 
- * @author Antonio Colucci
- * @author Carmen Andreozzi
+ * @author Colucci Antonio
+ * @author Andreozzi Carmen
  */
 @Service
 public class Hashtag {
@@ -22,12 +22,21 @@ public class Hashtag {
 		this.testo = testo;
 	}
 
+	/**
+	 * Costruttore di default
+	 */
 	public Hashtag() {}
 
+	/**
+	 * @return Testo dell'hashtag
+	 */
 	public String getTesto() {
 		return testo;
 	}
 
+	/**
+	 * @param testo
+	 */
 	public void setTesto(String testo) {
 		this.testo = testo;
 	}

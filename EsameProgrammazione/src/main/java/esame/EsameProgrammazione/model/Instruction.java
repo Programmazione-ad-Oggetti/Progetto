@@ -10,10 +10,10 @@ import java.util.ArrayList;
  */
 public class Instruction {
 	
-	//INTRODUZIONE DELL'ISTRUZIONE
+	//Introduzione dell'istruzione
 	private String introduzione = "";
 
-	//ARRAY DELLE DIVERSE POSSIBILITA'
+	//Array delle diverse possibilità
 	private ArrayList<String> scelta = new ArrayList<String>();
 
 	/**

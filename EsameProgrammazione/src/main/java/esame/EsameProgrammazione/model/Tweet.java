@@ -3,8 +3,8 @@ package esame.EsameProgrammazione.model;
 /** 
  * Classe che descrive la struttura di un tweet
  * 
- * @author Antonio Colucci
- * @author Carmen Andreozzi
+ * @author Colucci Antonio
+ * @author Andreozzi Carmen
  */
 public class Tweet extends Hashtag{
 	private String data;         //Data di un tweet

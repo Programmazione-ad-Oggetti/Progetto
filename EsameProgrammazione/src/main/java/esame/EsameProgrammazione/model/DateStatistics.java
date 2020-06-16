@@ -40,6 +40,9 @@ public class DateStatistics{
 		numeroTweetPerGiorno=tweets.size();
 	}
 	
+	/**
+	 * @return Numero di tweet scritti in una certa data
+	 */
 	public int getNumeroTweetPerGiorno() {
 		return numeroTweetPerGiorno;
 	}
