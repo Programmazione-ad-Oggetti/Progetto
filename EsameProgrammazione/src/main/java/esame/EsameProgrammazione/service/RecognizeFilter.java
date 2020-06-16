@@ -17,48 +17,72 @@ import esame.EsameProgrammazione.exceptions.InternalGeneralException;
 import esame.EsameProgrammazione.filter.Filter;
 import esame.EsameProgrammazione.model.*;
 
+/**
+ * Classe che elabora il campo e il macro-operatore di un filtro in modo da 
+ * eseguire il filtraggio secondo i due macro-operatori
+ * 
+ * @author Colucci Antonio
+ * @author Andreozzi Carmen
+ */
 public class RecognizeFilter {
 	
-	/**Effettua il parsing dei dati esterni (Campo da analizzare)
-	 * @param filter filtro da applicare
+	/**
+	 * Viene elaborato il campo da analizzare
+	 * 
+	 * @param filter Filtro da applicare
 	 * @param hash Hashtag applicato
 	 * @return ArrayList di Tweet filtrati
 	 * @throws InternalGeneralException
-	 * @throws  FilterNotFoundException 
+	 * @throws FilterNotFoundException 
 	 * @throws FilterIllegalArgumentException 
 	 * @throws ParseException 
 	 * @throws JSONException 
 	 * @throws MalformedURLException 
 	 */
 	public static ArrayList<Tweet> JsonParserColumn(Object filter, Hashtag hash)
-			throws InternalGeneralException, FilterNotFoundException, FilterIllegalArgumentException, ParseException, MalformedURLException, JSONException{ 
-				ArrayList<Tweet> previousArray= new ArrayList<Tweet>();
-				ArrayList<Tweet> filteredArray= new ArrayList<Tweet>();
-			//vedere se posso anche non istanziarlo qui
-				HashMap<String,Object> result= new ObjectMapper().convertValue(filter, HashMap.class);
+		throws InternalGeneralException, FilterNotFoundException, FilterIllegalArgumentException, ParseException, MalformedURLException, JSONException{ 
+			ArrayList<Tweet> previousArray= new ArrayList<Tweet>();
+			ArrayList<Tweet> filteredArray= new ArrayList<Tweet>();
+			HashMap<String,Object> result= new ObjectMapper().convertValue(filter, HashMap.class);
 
-			//Itera con tutti gli elementi dell'ArrayList
-				for(Map.Entry<String, Object> entry: result.entrySet()) {
-					filteredArray= new ArrayList<Tweet>();
-					String column=entry.getKey();
-					Object filterParam=entry.getValue();
-					try {
-							filteredArray=jsonParserOperator(column, filterParam, previousArray, hash);
-					}catch (SecurityException e) {
-						throw new InternalGeneralException ("Error in I/O parsing information");
-					}
-					
-					previousArray=new ArrayList<Tweet>();
-					previousArray.addAll(filteredArray);
+		//Ciclo con tutti gli elementi dell'ArrayList
+			for(Map.Entry<String, Object> entry: result.entrySet()) {
+				filteredArray= new ArrayList<Tweet>();
+				String column=entry.getKey();
+				Object filterParam=entry.getValue();
+				try {
+						filteredArray=jsonParserOperator(column, filterParam, previousArray, hash);
+				}catch (SecurityException e) {
+					throw new InternalGeneralException ("Error in I/O parsing information");
 				}
-				return filteredArray;
+				
+				previousArray=new ArrayList<Tweet>();
+				previousArray.addAll(filteredArray);
+			}
+			
+			return filteredArray;
 	}
 			
 	
-	
+	/**
+	 * Viene elaborato il macro-operatore del filtro
+	 * 
+	 * @param column Campo del filtro
+	 * @param filterParam Filtro da analizzare
+	 * @param previousArray Array di tweet
+	 * @param hash Hashtag inserito
+	 * @return Lista filtrata
+	 * @throws InternalGeneralException
+	 * @throws FilterNotFoundException
+	 * @throws FilterIllegalArgumentException
+	 * @throws ParseException
+	 * @throws MalformedURLException
+	 * @throws JSONException
+	 */
 	public static  ArrayList<Tweet> jsonParserOperator (String column,Object filterParam,
             ArrayList<Tweet> previousArray, Hashtag hash)
 	throws InternalGeneralException, FilterNotFoundException, FilterIllegalArgumentException, ParseException, MalformedURLException, JSONException {
+		
 		String type="";
 		Filter filter;
 		ArrayList<Tweet> filteredArray= new ArrayList <Tweet>();
@@ -107,7 +131,6 @@ public class RecognizeFilter {
 		}
 		
 		return filteredArray;
-		
 	}
 }
 	

@@ -11,20 +11,27 @@ import org.json.JSONException;
 import org.json.simple.*;
 import org.json.simple.parser.ParseException;
 
-/////********************************************************/////
-/////     IN QUESTA CLASSE VIENE EFFETTUATO IL PARSING  	 /////
-/////  DEL JSON SCARICATO DALLA CLASSE DatabaseClass.java    /////
-/////********************************************************/////
-
-/** @author Antonio Colucci
-*   @author Carmen Andreozzi
-*/
-
+/** 
+ * Classe in cui viene effettuato il parsing del json scaricato dalla classe DatabaseClass.java
+ * 
+ * @author Colucci Antonio
+ * @author Andreozzi Carmen
+ */
 public class JsonParser {
 	
+	/**
+	 * Viene effettuato il download del JSON dalla classe DatabaseClass.java 
+	 * e ne viene effettuato il parsing
+	 * 
+	 * @param hash Hashtag inserito
+	 * @return Lista dei tweet elaborati
+	 * @throws ParseException
+	 * @throws MalformedURLException
+	 * @throws JSONException
+	 */
 	public static ArrayList<Tweet> parsingDataset(Hashtag hash) throws ParseException, MalformedURLException, JSONException{
 			
-		JSONObject parser = DatabaseClass.JSONdownloader(hash);
+		JSONObject parser = DatabaseClass.JSONdownloader(hash); //Viene effettuato il download
 			
 		JSONArray stasuses = (JSONArray) parser.get("statuses");
 		
@@ -35,9 +42,9 @@ public class JsonParser {
 			JSONObject tweetObject = (JSONObject) stasuses.get(i);
 			
 			//tweet.setHashtag((String) parsedTweet.get("hashtags"));
-			tweet.setText((String) tweetObject.get("text"));
+			tweet.setText((String) tweetObject.get("text")); //Viene preso il testo del tweet
 			tweet.setData((String) tweetObject.get("created_at")); //Viene presa la data
-			tweet.setID((long) tweetObject.get("id"));
+			tweet.setID((long) tweetObject.get("id")); //Viene preso l'ID del tweet
 			
 		/*	Hashtag hashtg;
 			
@@ -58,18 +65,17 @@ public class JsonParser {
 			 */
 			JSONObject user = (JSONObject) tweetObject.get("user"); 
 			
-			tweet.setLike((long) user.get("favourites_count"));
-			tweet.setFollowers((long) user.get("followers_count"));//Viene preso il numero dei Like
-			tweet.setFriends((long) user.get("friends_count"));
-			tweet.setLocation((String) user.get("location"));
-			tweet.setName((String) user.get("name"));
-			tweet.setScreen_name((String) user.get("screen_name"));
-			tweet.setUrl((String) user.get("url"));
+			tweet.setLike((long) user.get("favourites_count")); //Viene preso il numero dei like
+			tweet.setFollowers((long) user.get("followers_count")); //Viene preso il numero dei followers
+			tweet.setFriends((long) user.get("friends_count")); //Viene preso il numero degli amici
+			tweet.setLocation((String) user.get("location")); //Viene presa la posizione geografica
+			tweet.setName((String) user.get("name")); //Viene preso il nome dell'utente
+			tweet.setScreen_name((String) user.get("screen_name")); //Viene preso lo screen name
+			tweet.setUrl((String) user.get("url")); //Viene preso l'url
 			
 			ListaTweets.add(tweet);
 		}
 		
 		return ListaTweets;
 	}
-
 }

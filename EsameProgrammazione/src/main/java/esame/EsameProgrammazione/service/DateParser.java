@@ -2,11 +2,22 @@ package esame.EsameProgrammazione.service;
 
 import esame.EsameProgrammazione.model.*;
 
+/**
+ * Classe che effettua il parsing della data di ogni tweet e della data inserita dall'utente
+ * 
+ * @author Colucci Antonio
+ * @author Andreozzi Carmen
+ */
 public class DateParser {
 	
+	/**
+	 * Viene effettuato il parsing della data di ogni tweet
+	 * RICORDA: LA DATA DI UN TWEET E' FORMATTATA NEL SEGUENTE MODO: "EEE MMM dd HH:mm:ss Z yyyy"
+	 * 
+	 * @param date La data di un tweet
+	 * @return Data elaborata di tipo OurDate
+	 */
 	public static OurDate parsing(String date) {
-		//RICORDA: LA DATA DI UN TWEET E' FORMATTATA NEL SEGUENTE MODO: "EEE MMM dd HH:mm:ss Z yyyy"
-		//String[] months = initialize();
 		OurDate data = new OurDate();
 		
 		//VIENE ELIMINATA LA PARTE "Z "
@@ -34,9 +45,14 @@ public class DateParser {
 		return data;
 	}
 	
+	/**
+	 * Viene effettuato il parsing della data inserita dall'utente
+	 * RICORDA: LA DATA IMMESSA DALL'UTENTE E' FORMATTATA NEL SEGUENTE MODO: "MMM dd yyyy"
+	 * 
+	 * @param user_date La data inserita dall'utente
+	 * @return Data elaborata di tipo OurDate
+	 */
 	public static OurDate userParsing(String user_date) {
-		//RICORDA: LA DATA IMMESSA DALL'UTENTE E' FORMATTATA NEL SEGUENTE MODO: "MMM dd yyyy"
-
 		OurDate data = new OurDate();
 		
 		data.setMonth(user_date.substring(0,3));
@@ -45,5 +61,4 @@ public class DateParser {
 		
 		return data;
 	}
-	
 }

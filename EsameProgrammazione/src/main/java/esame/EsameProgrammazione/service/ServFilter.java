@@ -17,19 +17,27 @@ import esame.EsameProgrammazione.model.Tweet;
 import esame.EsameProgrammazione.filter.EqDataFilter;
 import esame.EsameProgrammazione.filter.Filter;
 
-/////*******************************************************************/////
-/////   VIENE SCORSA LA LISTA COMPLETA DI TUTTI I TWEET SCARICATI E     /////
-///// NE VIENE EFFETTUATO IL FILTRAGGIO, MEDIANTE IL METODO Filtering() /////
-/////*******************************************************************/////
-
-/** @author Antonio Colucci
- * 	@author Carmen Andreozzi
+/** 
+ * Viene scorsa la lista completa di tutti i tweet scaricati e ne viene effettuato il filtraggio
+ * 
+ * @author Colucci Antonio
+ * @author Andreozzi Carmen
  */
-
 public class ServFilter {
+	//Nome del package al quale verrà concatenato la classe da utilizzare
+	private final static String path = "esame.EsameProgrammazione.filter."; 
 	
-	private final static String path = "esame.EsameProgrammazione.filter.";
-	
+	/**
+	 * Viene selezionata la classe di filtraggio adatta al filtro inserito
+	 * 
+	 * @param field Campo del filtro
+	 * @param operator Operatore del filtro
+	 * @param param Parametro del filtro
+	 * @return Filtro
+	 * @throws FilterNotFoundException
+	 * @throws FilterIllegalArgumentException
+	 * @throws InternalGeneralException
+	 */
 	public static Filter instanceFilter(String field,String operator,Object param) 
 			   throws FilterNotFoundException, FilterIllegalArgumentException,InternalGeneralException{
 			
@@ -46,19 +54,19 @@ public class ServFilter {
 				filtro =(Filter)ct.newInstance(param);  //Istanzio oggetto filtro
 			}
 			
-		    //entra qui se il nome filtro non e' corretto 
+		    //Entra qui se il nome filtro non e' corretto 
 		    catch(ClassNotFoundException e){
 		    	throw new FilterNotFoundException("The filter in field: '"+field+"' with operator: '"+
 		                                          operator +"' does not exist");
 		    }
 			
-			//entra qui se sbagliate maiuscole e minuscole
+			//Entra qui se sbagliate maiuscole e minuscole
 		    catch(NoClassDefFoundError e){
 		    	throw new FilterNotFoundException(
 		    			"Error typing: '"+filterName+"' uppercase and lowercase error");
 		    }
 
-		    //entra qui se il costruttore chiamato da newInstance lancia un eccezione 
+		    //Entra qui se il costruttore chiamato da newInstance lancia un eccezione 
 		   	catch (InvocationTargetException e) {  
 		   		//genero una nuova eccezione 
 		   		throw new FilterIllegalArgumentException(e.getTargetException().getMessage()
@@ -70,16 +78,15 @@ public class ServFilter {
 			    	
 			    	e.printStackTrace();
 			    	throw new InternalGeneralException("try later");
-			    }
-
+			}
 			
 		    return filtro;
-		    
 		}
 	
+	
 	/**
-	 * Questo metodo restitusce una lista di tweet composta da soli tweet 
-	 * che rispettano le condizioni del filtro.
+	 * Filtraggio secondo il macro-operatore AND
+	 * 
 	 * @param filtro Filtro che si desidera utilizzare.  
 	 * @param previousArray ArrayList di Tweet sulla quale si vuole effettuare il filtraggio.
 	 * @param hash Hashtag applicato
@@ -100,6 +107,7 @@ public class ServFilter {
 		EqDataFilter fil;
 		ArrayList<Tweet> filteredArray = new ArrayList<Tweet>();
 		
+		//Nel caso in cui il campo sia uguale a "Data" viene effettuato il filtraggio per la data
 		if(column.equals("Data")) {
 			for(int i = 0; i<tweets.size(); i++) {
 				data = DateParser.parsing(tweets.get(i).getData());
@@ -123,6 +131,21 @@ public class ServFilter {
 	}
 
 	
+	/**
+	 * Filtraggio secondo il macro-operatore OR
+	 * 
+	 * @param filtro Filtro inserito
+	 * @param previousArray ArrayList di tweet completa
+	 * @param hash Hashtag inserito
+	 * @param column Campo del filtro
+	 * @param value Valore del filtro
+	 * @return ArrayList filtrato
+	 * @throws MalformedURLException
+	 * @throws JSONException
+	 * @throws ParseException
+	 * @throws com.sun.el.parser.ParseException
+	 * @throws java.text.ParseException
+	 */
 	public static  ArrayList<Tweet> FilteringOR(Filter filtro, ArrayList<Tweet> previousArray, Hashtag hash, String column, Object value) throws MalformedURLException, JSONException, ParseException, com.sun.el.parser.ParseException, java.text.ParseException{
 		
 		ArrayList<Tweet> tweets = JsonParser.parsingDataset(hash);
@@ -130,6 +153,7 @@ public class ServFilter {
 		EqDataFilter fil;
 		ArrayList<Tweet> filteredArray = new ArrayList<Tweet>();
 		
+		//Nel caso in cui il campo sia uguale a "Data" viene effettuato il filtraggio per la data
 		if(column.equals("Data")) {
 			for(int i = 0; i<tweets.size(); i++) {
 				data = DateParser.parsing(tweets.get(i).getData());
@@ -151,6 +175,7 @@ public class ServFilter {
 			
 		previousArray.removeAll(filteredArray);
 		previousArray.addAll(filteredArray);
+		
 		return previousArray;
 	}
 }

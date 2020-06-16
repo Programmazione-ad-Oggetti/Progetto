@@ -8,10 +8,19 @@ import java.util.ArrayList;
 
 import esame.EsameProgrammazione.model.Instruction;
 
+/**
+ * Classe che legge il file "Instruction.txt" e crea una lista di istruzioni
+ * 
+ * @author Colucci Antonio
+ * @author Andreozzi Carmen
+ */
 public class InstructionReader extends Instruction {
 	
 	private static ArrayList<Instruction> listaIstruzioni = new ArrayList<Instruction>();
 
+	/**
+	 * Costruttore che legge il file "Instruction.txt" e riempie la lista di istruzioni
+	 */
 	public InstructionReader() {
 		Instruction istruzione;
 		try {
@@ -38,6 +47,9 @@ public class InstructionReader extends Instruction {
 		}
 	}
 
+	/**
+	 * @return La lista delle istruzioni
+	 */
 	public static ArrayList<Instruction> getInstructions() {
 		return listaIstruzioni;
 	}
