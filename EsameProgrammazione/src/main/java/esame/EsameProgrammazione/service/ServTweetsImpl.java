@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import esame.EsameProgrammazione.exceptions.FilterIllegalArgumentException;
 import esame.EsameProgrammazione.exceptions.FilterNotFoundException;
 import esame.EsameProgrammazione.exceptions.InternalGeneralException;
+import esame.EsameProgrammazione.exceptions.StatsNotFoundException;
 import esame.EsameProgrammazione.model.DateStatistics;
 import esame.EsameProgrammazione.model.Hashtag;
 import esame.EsameProgrammazione.model.Statistics;
@@ -42,6 +43,13 @@ public class ServTweetsImpl implements ServTweets{
 		}
 	}
 	
+	/**
+	 * Secondo costruttore usato nei test, per evitare il download dei tweet
+	 * @throws DeleteFileException 
+	 */
+	public ServTweetsImpl(){
+	}
+	
 	@Override
 	public Collection<Tweet> getTweets() {
 		
@@ -49,18 +57,19 @@ public class ServTweetsImpl implements ServTweets{
 	}
 	
 	@Override
-	public Statistics VisualizeStatsField(Object filter, String field, Hashtag hash) throws FilterNotFoundException, FilterIllegalArgumentException, MalformedURLException, JSONException, InternalGeneralException, ParseException {
+	public Statistics VisualizeStatsField(Object filter, String field, Hashtag hash) throws FilterNotFoundException, FilterIllegalArgumentException, MalformedURLException, JSONException, InternalGeneralException, ParseException, StatsNotFoundException {
 		filteredStatistics[0] = new Statistics(RecognizeFilter.JsonParserColumn(filter, hash), RecognizeField(field));
 		return filteredStatistics[0];
 	}
-	private String RecognizeField(String field) {
+	public String RecognizeField(String field) throws StatsNotFoundException{
 		if (field.equals("\"Like\""))
 			return "Like";
 		if (field.equals("\"Followers\""))
 			return "Followers";
 		if (field.equals("\"Friends\""))
 			return "Friends";
-		return null;
+		else
+			throw new StatsNotFoundException("Campo non valido");
 	}
 
 	//Ritorna le statistiche riferite ai like

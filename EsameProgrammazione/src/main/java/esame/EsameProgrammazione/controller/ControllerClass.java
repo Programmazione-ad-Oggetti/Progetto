@@ -141,9 +141,10 @@ public class ControllerClass {
 	 * @throws JSONException
 	 * @throws InternalGeneralException
 	 * @throws ParseException
+	 * @throws StatsNotFoundException 
 	 */
 	@PostMapping("/GetFieldStats/{hashtag}")
-	public ResponseEntity<Object> getFieldStatistic(@PathVariable("hashtag") String testo, @RequestParam(name="field")String field,@RequestBody Object filter ) throws FailedLoginException, MismatchedInputException, FailedLoginException, OpenDataException, SaslException, FilterNotFoundException, FilterIllegalArgumentException, MalformedURLException, JSONException, InternalGeneralException, ParseException{
+	public ResponseEntity<Object> getFieldStatistic(@PathVariable("hashtag") String testo, @RequestParam(name="field")String field,@RequestBody Object filter ) throws FailedLoginException, MismatchedInputException, FailedLoginException, OpenDataException, SaslException, FilterNotFoundException, FilterIllegalArgumentException, MalformedURLException, JSONException, InternalGeneralException, ParseException, StatsNotFoundException{
 
 		Hashtag hash = new Hashtag();
 		hash.setTesto(testo);

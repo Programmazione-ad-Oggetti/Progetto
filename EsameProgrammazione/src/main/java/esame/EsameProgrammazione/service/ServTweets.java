@@ -9,6 +9,7 @@ import org.json.simple.parser.ParseException;
 import esame.EsameProgrammazione.exceptions.FilterIllegalArgumentException;
 import esame.EsameProgrammazione.exceptions.FilterNotFoundException;
 import esame.EsameProgrammazione.exceptions.InternalGeneralException;
+import esame.EsameProgrammazione.exceptions.StatsNotFoundException;
 import esame.EsameProgrammazione.model.DateStatistics;
 import esame.EsameProgrammazione.model.Hashtag;
 import esame.EsameProgrammazione.model.Statistics;
@@ -34,5 +35,5 @@ public interface ServTweets {
 	public abstract Collection<Tweet> getTweets(/*Hashtag hash*/)  /*throws ParseException*/;
 	public abstract Statistics[] VisualizeStats(Object filter, Hashtag hash)  throws MalformedURLException, JSONException;
 	public abstract DateStatistics StatsVisualizeDate(Object filter, Hashtag hash) throws MalformedURLException, JSONException ;
-	public abstract Statistics VisualizeStatsField(Object filter, String field, Hashtag hash)throws FilterNotFoundException, FilterIllegalArgumentException, MalformedURLException, JSONException, InternalGeneralException, ParseException;
+	public abstract Statistics VisualizeStatsField(Object filter, String field, Hashtag hash)throws FilterNotFoundException, FilterIllegalArgumentException, MalformedURLException, JSONException, InternalGeneralException, ParseException, StatsNotFoundException;
 }
