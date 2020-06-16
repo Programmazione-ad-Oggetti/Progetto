@@ -2,20 +2,22 @@ package esame.EsameProgrammazione.model;
 
 import org.springframework.stereotype.Service;
 
-/////*****************************************/////
-///// QUESTA CLASSE RAPPRESENTA LA STRUTTURA  /////
-/////             DI UN HASHTAG               /////
-/////*****************************************/////
-
-/** @author Antonio Colucci
-*  @author Carmen Andreozzi
-*/
-
+/** 
+ * Classe che rappresenta la struttura di un hashtag
+ * 
+ * @author Antonio Colucci
+ * @author Carmen Andreozzi
+ */
 @Service
 public class Hashtag {
 	
-	protected String testo;
-
+	protected String testo; //Il testo dell'hashtag
+	
+	/**
+	 * Costruttore che imposta il testo passato
+	 * 
+	 * @param testo
+	 */
 	public Hashtag(String testo) {
 		this.testo = testo;
 	}

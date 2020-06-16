@@ -5,26 +5,33 @@ import java.util.HashMap;
 
 import esame.EsameProgrammazione.statistic.MakeStats;
 
+/**
+ * Classe che descrive le statistiche
+ * 
+ * @author Colucci Antonio
+ * @author Andreozzi Carmen
+ */
 public class Statistics extends MakeStats{
 	/**
-	 * The field of what the stats where calculated
+	 * Il campo di una certa statistica
 	 */
 	private String field;
 
 	/**
-	 * An hashmap to contain the name of the stat and the result calculated
+	 * Hashmap che contiene il nome della statistica e il rispettivo risultato
 	 */
 	private HashMap<String, Double> statistics = new HashMap<String, Double>();
 	
 	/**
-	 * The constructor of the class; it inizialize the hashamap calculating the different stats with the right records
+	 * Costruttore che inizializza l'hashmap richiamando le funzioni di calcolo delle statistiche
+	 * 
 	 * @param tweet ArrayList usato per calcolare le statistiche
 	 * @param field Campo inserito
 	 */
 	public Statistics(ArrayList<Tweet> tweet, String field) {
-		
 		this.field = field; 
-		//filling the HashMap "statistic" with the different stats of a particular field, calculated on the images contained in the records passed
+		
+		//Inizializzazione della hashmap con i risultati di tutte le statistiche relative a "field"
 		statistics.put("min", Min(tweet,field));
 		statistics.put("max", Max(tweet,field));
 		statistics.put("sum", Sum(tweet,field));
@@ -32,20 +39,18 @@ public class Statistics extends MakeStats{
 		statistics.put("variance", Variance(tweet,field));
 		statistics.put("standard deviation",Math.pow(Variance(tweet,field),0.5));
 	}
+	
 	/**
-	 * Getter for the statsField
-	 * @return the statsField
+	 * @return field
 	 */
 	public String getField() {
 		return field;
 	}
 	
 	/**
-	 * Getter for the hasmap
-	 * @return the hasmap with the calculated stats
+	 * @return L'hashmap con le statistiche che sono state calcolate
 	 */
 	public HashMap<String, Double> getStatistics() {
 		return statistics;
 	}
-	
 }

@@ -2,16 +2,21 @@ package esame.EsameProgrammazione.model;
 
 import java.util.ArrayList;
 
+/**
+ * Classe che descrive la struttura delle istruzioni
+ * 
+ * @author Colucci Antonio
+ * @author Andreozzi Carmen
+ */
 public class Instruction {
 	
 	//INTRODUZIONE DELL'ISTRUZIONE
 	private String introduzione = "";
 
-	//ARRAY DELLE DIVERE POSSIBILITA'
+	//ARRAY DELLE DIVERSE POSSIBILITA'
 	private ArrayList<String> scelta = new ArrayList<String>();
 
 	/**
-	 * GETTER DELL'ATTRIBUTO "introduzione"
 	 * @return introduction
 	 */
 	public String getIntroduzione() {
@@ -19,7 +24,6 @@ public class Instruction {
 	}
 
 	/**
-	 * SETTER DELL'ATTRIBUTO "introduzione"
 	 * @param intro L'introduzione da settare
 	 */
 	 public void setIntroduzione(String intro) {
@@ -27,7 +31,6 @@ public class Instruction {
 	}
 
 	/**
-	 * GETTER DELL'ARRAYLIST "scelta"
 	 * @return scelta
 	 */
 	public ArrayList<String> getScelta() {
@@ -35,8 +38,7 @@ public class Instruction {
 	}
 
 	/**
-	 * SETTER DELL'ARRAYLIST "scelta"
-	 * @param choice 
+	 * @param choice
 	 */
 	 public void setScelta(String[] choice) {
 		for(int i=0;i<choice.length;i++)

@@ -2,19 +2,16 @@ package esame.EsameProgrammazione.model;
 
 import java.util.ArrayList;
 
-/////*****************************************/////
-/////   CREAZIONE DELLA CLASSE CHE DESCRIVE   /////
-/////      LA STRUTTURA DI UN FILTRO          /////
-/////*****************************************/////
-
-/** @author Antonio Colucci
-* 	@author Carmen Andreozzi
-*/
-
+/** 
+ * Classe che descrive la struttura di un filtro
+ * 
+ * @author Antonio Colucci
+ * @author Carmen Andreozzi
+ */
 public class FilterStruct {
 	
-	private String field = "";
-	private String operator = "";
+	private String field = ""; //Campo inserito 
+	private String operator = ""; //Operatore inserito
 	private ArrayList<String> values = new ArrayList<String>();
 
 	public String getField() {
