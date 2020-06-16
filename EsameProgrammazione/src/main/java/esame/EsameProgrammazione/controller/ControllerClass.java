@@ -113,7 +113,7 @@ public class ControllerClass {
 	 * @throws JSONException
 	 */
 	@PostMapping("/GetStats/{hashtag}")
-	public ResponseEntity<Object> getStatsOfLike(@PathVariable("hashtag") String testo, 
+	public ResponseEntity<Object> getStats(@PathVariable("hashtag") String testo, 
 								  				 @RequestBody Object filter) 
 					  	throws InternalGeneralException, StatsNotFoundException, FilterNotFoundException, FilterIllegalArgumentException, MalformedURLException, JSONException {
 
