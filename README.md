@@ -125,7 +125,13 @@ In particolare, le classi EqDataFilter e EqLocationFilter implementano Filter ed
 In questo punto esaminiamo nello specifico le chiamate che l'utente può effettuare utilizzando i diagrammi delle sequenze, i quali mostrano come interagiscono tra di loro gli oggetti delle varie classi e forniscono informazioni anche di tipo temporale, poiché le interazioni nel diagramma vengono disposte in ordine cronologico.
 
 * GET /GetInstructions
+
+[![Sequence-Diagram-Get-Instructions.jpg](https://i.postimg.cc/yd3tXFPC/Sequence-Diagram-Get-Instructions.jpg)](https://postimg.cc/DJFx74Hx)
+
 * GET /GetTweets/{hashtag}
+
+[![Sequence-Diagram-Get-Tweets.jpg](https://i.postimg.cc/9XLwqKM9/Sequence-Diagram-Get-Tweets.jpg)](https://postimg.cc/gr62CM3c)
+
 * GET /GetFilteredTweets/{hashtag}
 * POST /GetStats/{hashtag}
 * POST /GetFieldStats/{hashtag}?field="campo"
