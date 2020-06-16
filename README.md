@@ -90,24 +90,34 @@ La gerarchia vede al suo livello più alto esame.EsameProgrammazione, a sua volt
 Entrando ancora di più nel dettaglio, esaminiamo ogni package e ogni classe contenuta al suo interno:
 
 * esame.EsameProgrammazione.controller
+
+
+
 * esame.EsameProgrammazione.service
 
-[![service.jpg](https://i.postimg.cc/Hk2Lzj5Z/service.jpg)](https://postimg.cc/Jssm4rpZ)
+[![service.jpg](https://i.postimg.cc/FH6WKYyf/service.jpg)](https://postimg.cc/3kgCSJb7)
 
 * esame.EsameProgrammazione.exceptions
 
-[![exceptions.jpg](https://i.postimg.cc/Cx0WwrZf/exceptions.jpg)](https://postimg.cc/ZCffccxT)
+[![exceptions.jpg](https://i.postimg.cc/FzCwvDGq/exceptions.jpg)](https://postimg.cc/QK5fkg2k)
 
 * esame.EsameProgrammazione.database
 
-[![database.jpg](https://i.postimg.cc/0j6VCDzv/database.jpg)](https://postimg.cc/tnjdq1dv)
+[![database.jpg](https://i.postimg.cc/vZ0xs9dn/database.jpg)](https://postimg.cc/PC85bCJf)
 
 * esame.EsameProgrammazione.model
 
-[![model.jpg](https://i.postimg.cc/BQybttDR/model.jpg)](https://postimg.cc/vcrbNY0v)
+[![model.jpg](https://i.postimg.cc/nh9r6WTy/model.jpg)](https://postimg.cc/BjsJFMrp)
 
 * esame.EsameProgrammazione.filter
+
+[![filter.jpg](https://i.postimg.cc/sDfYS3K3/filter.jpg)](https://postimg.cc/vDjxwFpK)
+NB: Tutte le classi composte da operatore+campo+"filter" implementano l'interfaccia Filter ed estendono la classe FilterParent.
+In particolare, le classi EqDataFilter e EqLocationFilter implementano Filter ed estendono FilterParentString.
+
 * esame.EsameProgrammazione.statistics
+
+[![Statistic.jpg](https://i.postimg.cc/fbFQf0Wh/Statistic.jpg)](https://postimg.cc/cKQzsC8D)
 
 
 ## Chiamate
@@ -115,7 +125,13 @@ Entrando ancora di più nel dettaglio, esaminiamo ogni package e ogni classe con
 In questo punto esaminiamo nello specifico le chiamate che l'utente può effettuare utilizzando i diagrammi delle sequenze, i quali mostrano come interagiscono tra di loro gli oggetti delle varie classi e forniscono informazioni anche di tipo temporale, poiché le interazioni nel diagramma vengono disposte in ordine cronologico.
 
 * GET /GetInstructions
+
+[![Sequence-Diagram-Get-Instructions.jpg](https://i.postimg.cc/yd3tXFPC/Sequence-Diagram-Get-Instructions.jpg)](https://postimg.cc/DJFx74Hx)
+
 * GET /GetTweets/{hashtag}
+
+[![Sequence-Diagram-Get-Tweets.jpg](https://i.postimg.cc/9XLwqKM9/Sequence-Diagram-Get-Tweets.jpg)](https://postimg.cc/gr62CM3c)
+
 * GET /GetFilteredTweets/{hashtag}
 * POST /GetStats/{hashtag}
 * POST /GetFieldStats/{hashtag}?field="campo"
