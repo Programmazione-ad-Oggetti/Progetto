@@ -67,7 +67,7 @@ public class ControllerClass {
 	 * @throws ParseException
 	 */
 	@RequestMapping(value = "/GetTweets/{hashtag}", method = RequestMethod.GET)
-	public ResponseEntity<Object> setTesto(@PathVariable("hashtag") String testo) throws ParseException{
+	public ResponseEntity<Object> getTweets(@PathVariable("hashtag") String testo) throws ParseException{
 		
 		Hashtag hash = new Hashtag();
 		hash.setTesto(testo);
@@ -90,7 +90,7 @@ public class ControllerClass {
 	 * @throws JSONException
 	 */
 	@RequestMapping(value = "/GetFilteredTweets/{hashtag}", method = RequestMethod.GET)
-	public ResponseEntity<Object> setTesto(@PathVariable("hashtag") String testo, @RequestBody Object param) throws ParseException, FilterNotFoundException, FilterIllegalArgumentException, InternalGeneralException, MalformedURLException, JSONException{
+	public ResponseEntity<Object> getFilteredTweets(@PathVariable("hashtag") String testo, @RequestBody Object param) throws ParseException, FilterNotFoundException, FilterIllegalArgumentException, InternalGeneralException, MalformedURLException, JSONException{
 		
 		Hashtag hash = new Hashtag();
 		hash.setTesto(testo);
@@ -144,7 +144,7 @@ public class ControllerClass {
 	 * @throws StatsNotFoundException 
 	 */
 	@PostMapping("/GetFieldStats/{hashtag}")
-	public ResponseEntity<Object> getFieldStatistic(@PathVariable("hashtag") String testo, @RequestParam(name="field")String field,@RequestBody Object filter ) throws FailedLoginException, MismatchedInputException, FailedLoginException, OpenDataException, SaslException, FilterNotFoundException, FilterIllegalArgumentException, MalformedURLException, JSONException, InternalGeneralException, ParseException, StatsNotFoundException{
+	public ResponseEntity<Object> getFieldStats(@PathVariable("hashtag") String testo, @RequestParam(name="field")String field,@RequestBody Object filter ) throws FailedLoginException, MismatchedInputException, FailedLoginException, OpenDataException, SaslException, FilterNotFoundException, FilterIllegalArgumentException, MalformedURLException, JSONException, InternalGeneralException, ParseException, StatsNotFoundException{
 
 		Hashtag hash = new Hashtag();
 		hash.setTesto(testo);
