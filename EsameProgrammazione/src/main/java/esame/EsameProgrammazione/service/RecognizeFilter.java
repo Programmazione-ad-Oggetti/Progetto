@@ -71,15 +71,15 @@ public class RecognizeFilter {
 			if(operator.equals("type") || operator.equals("Type")) {
 				type=(String) value;
 				
-				if(!(value.equals("and"))&&!(value.equals("or"))) {
-					throw new FilterIllegalArgumentException("'and' o 'or' expected after 'type'");
+				if((!(value.equals("And"))) && (!(value.equals("Or")))) {
+					throw new FilterIllegalArgumentException("'And' o 'Or' expected after 'type'");
 				}
 				continue;
 			}
 			
 			filter= ServFilter.instanceFilter(column, operator, value);
 			
-			if (type == "and")
+			if (type == "And")
 				try {
 					filteredArray = ServFilter.Filtering(filter, previousArray, hash, column, value);
 				} 
@@ -87,7 +87,7 @@ public class RecognizeFilter {
 						| java.text.ParseException e) {
 					e.printStackTrace();
 				}
-			else if(type == "or")
+			else if(type == "Or")
 				try {
 					filteredArray = ServFilter.FilteringOR(filter, previousArray, hash, column, value);
 				} 
