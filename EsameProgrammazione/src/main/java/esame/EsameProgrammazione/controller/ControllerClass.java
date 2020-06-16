@@ -174,4 +174,15 @@ public class ControllerClass {
 		
 		return new ResponseEntity<>(ServTweetsImpl.StatsVisualizeDate(filter, hash), HttpStatus.OK);
 	}
+	
+	@PostMapping("/GetStatsLocation/{hashtag}")
+	public ResponseEntity<Object> getStatsOfLocation(@PathVariable("hashtag") String testo, 
+								  				 @RequestBody Object filter) 
+					  	throws InternalGeneralException, StatsNotFoundException, FilterNotFoundException, FilterIllegalArgumentException, MalformedURLException, JSONException {
+
+		Hashtag hash = new Hashtag();
+		hash.setTesto(testo);
+		
+		return new ResponseEntity<>(ServTweetsImpl.StatsVisualizeLocation(filter, hash), HttpStatus.OK);
+	}
 }

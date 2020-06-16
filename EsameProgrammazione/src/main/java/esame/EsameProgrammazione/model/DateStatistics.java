@@ -18,7 +18,7 @@ import esame.EsameProgrammazione.service.RecognizeFilter;
  * @author Andreozzi Carmen
  */
 public class DateStatistics{
-	private int numeroTweet;
+	private int numeroTweetPerGiorno;
 	
 	/**
 	 * Costruttore che recupera e conta i tweet scritti in una certa data
@@ -37,10 +37,10 @@ public class DateStatistics{
 	public DateStatistics(Object filter, Hashtag hash) throws ParseException, com.sun.el.parser.ParseException, java.text.ParseException, FilterNotFoundException, FilterIllegalArgumentException, MalformedURLException, JSONException, InternalGeneralException {
 		ArrayList<Tweet> tweets = RecognizeFilter.JsonParserColumn(filter, hash);
 		
-		numeroTweet=tweets.size();
+		numeroTweetPerGiorno=tweets.size();
 	}
 	
-	public int getNumeroTweet() {
-		return numeroTweet;
+	public int getNumeroTweetPerGiorno() {
+		return numeroTweetPerGiorno;
 	}
 }

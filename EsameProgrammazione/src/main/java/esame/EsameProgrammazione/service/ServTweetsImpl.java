@@ -16,6 +16,7 @@ import esame.EsameProgrammazione.exceptions.InternalGeneralException;
 import esame.EsameProgrammazione.exceptions.StatsNotFoundException;
 import esame.EsameProgrammazione.model.DateStatistics;
 import esame.EsameProgrammazione.model.Hashtag;
+import esame.EsameProgrammazione.model.LocationStatistics;
 import esame.EsameProgrammazione.model.Statistics;
 import esame.EsameProgrammazione.model.Tweet;
 
@@ -24,6 +25,7 @@ public class ServTweetsImpl implements ServTweets{
 	public ArrayList<Tweet> TweetList = new ArrayList<Tweet>();
 	private Map<Long, Tweet> timeline=new HashMap<>();
 	private DateStatistics filteredDateStatistics;
+	private LocationStatistics filteredLocationStatistics;
 	private Statistics[] filteredStatistics = new Statistics[3];
 	
 	//Costruttore
@@ -103,6 +105,22 @@ public class ServTweetsImpl implements ServTweets{
 
 			
 		return filteredDateStatistics;
+	}
+	
+	@Override
+	public LocationStatistics StatsVisualizeLocation(Object filter, Hashtag hash) throws MalformedURLException, JSONException {
+		
+		try {
+			filteredLocationStatistics = new LocationStatistics(filter,hash);
+		} 
+		catch (com.sun.el.parser.ParseException | java.text.ParseException | FilterNotFoundException | FilterIllegalArgumentException | InternalGeneralException
+				| ParseException e) {
+
+			e.printStackTrace();
+		}
+
+			
+		return filteredLocationStatistics;
 	}
 
 }
