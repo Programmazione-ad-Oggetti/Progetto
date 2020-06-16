@@ -11,7 +11,7 @@ import esame.EsameProgrammazione.model.*;
 public class DateParser {
 	
 	/**
-	 * Viene effettuato il parsing della data di ogni tweet
+	 * Viene effettuato il parsing della data di ogni tweet.  
 	 * RICORDA: LA DATA DI UN TWEET E' FORMATTATA NEL SEGUENTE MODO: "EEE MMM dd HH:mm:ss Z yyyy"
 	 * 
 	 * @param date La data di un tweet
@@ -46,7 +46,7 @@ public class DateParser {
 	}
 	
 	/**
-	 * Viene effettuato il parsing della data inserita dall'utente
+	 * Viene effettuato il parsing della data inserita dall'utente.  
 	 * RICORDA: LA DATA IMMESSA DALL'UTENTE E' FORMATTATA NEL SEGUENTE MODO: "MMM dd yyyy"
 	 * 
 	 * @param user_date La data inserita dall'utente
