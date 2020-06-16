@@ -4,12 +4,20 @@ import java.util.ArrayList;
 
 import esame.EsameProgrammazione.model.Tweet;
 
+/**
+ * Classe che implementa tutti i metodi per eseguire le statistiche
+ * 
+ * @author Colucci Antonio
+ * @author Andreozzi Carmen
+ */
 public class MakeStats {
+	
 	/**
-	 * The function that calculate the average.
-	 * @param tweets i Tweets where to get the information for calcuting the average
-	 * @param field the field of which the average has to be calculated
-	 * @return the average
+	 * Viene calcolata la media
+	 * 
+	 * @param tweets I Tweets da cui vengono prese le informazioni per il calcolo della media
+	 * @param field Il campo sul quale verrà calcolata la media
+	 * @return La media
 	 */
 	public double Average(ArrayList<Tweet> tweets, String field) {
 
@@ -18,10 +26,11 @@ public class MakeStats {
 	}
 
 	/**
-	 * The function that calculate the sum.
-	 * @param tweets the Tweets where to get the information for calcuting the sum
-	 * @param field the field of which the sum has to be calculated
-	 * @return the sum
+	 * Viene calcolata la somma
+	 * 
+	 * @param tweets I Tweets da cui vengono prese le informazioni per il calcolo della somma
+	 * @param field Il campo sul quale verrà calcolata la somma
+	 * @return La somma
 	 */
 	public double Sum(ArrayList<Tweet> tweets,String field) {
 		double sum = 0;
@@ -31,10 +40,11 @@ public class MakeStats {
 	}
 
 	/**
-	 * The function that find the max value of the field passed
-	 * @param tweets the Tweets where to get the information for finding the max value
-	 * @param field the field of which the max has to be founded
-	 * @return the max
+	 * Viene determinato il massimo valore del campo inserito
+	 * 
+	 * @param tweets I Tweets da cui vengono prese le informazioni per determinare il massimo
+	 * @param field Il campo sul quale verrà determinato il massimo
+	 * @return Il massimo valore
 	 */
 	public double Max(ArrayList<Tweet> tweets,String field) {
 		double max = Double.MIN_VALUE;
@@ -47,10 +57,11 @@ public class MakeStats {
 	}
 
 	/**
-	 * The function that find the min value of the field passed
-	 * @param tweets the Tweets where to get the information for finding the min value
-	 * @param field the field of which the min has to be founded
-	 * @return the min
+	 * Viene determinato il minimo valore del campo inserito
+	 * 
+	 * @param tweets I Tweets da cui vengono prese le informazioni per determinare il minimo
+	 * @param field Il campo sul quale verrà determinato il minimo
+	 * @return Il minimo valore
 	 */
 	public double Min(ArrayList<Tweet> tweets,String field) {
 		double min = Double.MAX_VALUE;
@@ -63,10 +74,11 @@ public class MakeStats {
 	}
 
 	/**
-	 * The function that calculate the variance.
-	 * @param tweets the Tweets where to get the information for calcuting the variance
-	 * @param field the field of which the variance has to be calculated
-	 * @return the variance
+	 * Viene calcolata la varianza
+	 * 
+	 * @param tweets I Tweets da cui vengono prese le informazioni per il calcolo della varianza
+	 * @param field Il campo sul quale verrà calcolata la varianza
+	 * @return La varianza
 	 */
 	public double Variance(ArrayList<Tweet> tweets,String field) {
 		double variance = 0;
@@ -79,10 +91,11 @@ public class MakeStats {
 	}
 
 	/**
-	 * This function is used to find all the values of a field of the images of the database
-	 * @param tweets the Tweets where to take the information to calculate stats
-	 * @param field the field of which the stats has to be calculated
-	 * @return an ArraList of the value of the images of the records that satisfy the field passed
+	 * Viene riempita la lista con i tweet di un certo campo
+	 * 
+	 * @param tweets I Tweets da cui vengono prese le informazioni per il calcolo delle statistiche
+	 * @param field Il campo sul quale verranno calcolate le statistiche
+	 * @return La lista dei tweet relitivi ad un certo campo
 	 */
 	public ArrayList<Double> List(ArrayList<Tweet> tweets, String field){
 		

@@ -57,8 +57,6 @@ public class ServTweetsImpl implements ServTweets{
 	
 	/**
 	 * Secondo costruttore usato nei test, per evitare il download dei tweet
-	 * 
-	 * @throws DeleteFileException 
 	 */
 	public ServTweetsImpl(){
 	}
