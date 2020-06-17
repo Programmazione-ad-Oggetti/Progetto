@@ -152,6 +152,13 @@ In questo punto esaminiamo nello specifico le chiamate che l'utente può effettu
 
 [![Get-Stats-Of-Location-Sequence-Diagram.jpg](https://i.postimg.cc/VNqcyjCB/Get-Stats-Of-Location-Sequence-Diagram.jpg)](https://postimg.cc/3yxqm09d)
 
+## Suddivisione del lavoro
+
+Lo sviluppo delle parti principali del programma è stato svolto parallelamente da entrambi i componenti del gruppo, apportando sempre tutte le modifiche necessarie al lavoro dell'altro. Nonostante ciò, alcune parti sono state sviluppate individualmente.
+Nella fattispecie:
+* Le parti di realizzazione dei UML-Diagrams e di stesura del README sono state svolte da Andreozzi.
+* Le parti dei JUnit Test e della generazione del JavaDoc sono state svolte da Colucci.
+
 
 ## Software
 
@@ -163,3 +170,5 @@ In questo punto esaminiamo nello specifico le chiamate che l'utente può effettu
 
 * Antonio Colucci
 * Carmen Andreozzi
+ 
+
