@@ -50,7 +50,7 @@ Per effettuare queste richieste, l'utente può consultare la tabella di seguito 
 
 Per capire il funzionamento di tutti gli operatori che possono essere utilizzati nel filtraggio, l'utente può consultare le tabelle di seguito.
 
-| OPERATORI PER I LIKE | SPIEGAZIONE |
+| OPERATORI PER LIKE, FOLLOWERS E FRIENDS | SPIEGAZIONE |
 | --------- | ----------- | 
 | "Gt" | Serve per vedere i Tweet il cui valore del campo interessato è maggiore del valore immesso. |
 | "Gte" | Serve per vedere i Tweet il cui valore del campo interessato è maggiore o uguale al valore immesso. |
@@ -91,7 +91,7 @@ Entrando ancora di più nel dettaglio, esaminiamo ogni package e ogni classe con
 
 * esame.EsameProgrammazione.controller
 
-
+[![controller.jpg](https://i.postimg.cc/Jhm2kSsZ/controller.jpg)](https://postimg.cc/xXx5rxy1)
 
 * esame.EsameProgrammazione.service
 
@@ -126,17 +126,32 @@ In questo punto esaminiamo nello specifico le chiamate che l'utente può effettu
 
 > **GET** /GetInstructions
 
-[![Sequence-Diagram-Get-Instructions.jpg](https://i.postimg.cc/yd3tXFPC/Sequence-Diagram-Get-Instructions.jpg)](https://postimg.cc/DJFx74Hx)
+[![Get-Instructions-Sequence-Diagram.jpg](https://i.postimg.cc/mr57sHWk/Get-Instructions-Sequence-Diagram.jpg)](https://postimg.cc/rd5DGzm2)
 
 > **GET** /GetTweets/{hashtag}
 
-[![Sequence-Diagram-Get-Tweets.jpg](https://i.postimg.cc/9XLwqKM9/Sequence-Diagram-Get-Tweets.jpg)](https://postimg.cc/gr62CM3c)
+[![Get-Tweets-Sequence-Diagram.jpg](https://i.postimg.cc/v89fJTq8/Get-Tweets-Sequence-Diagram.jpg)](https://postimg.cc/V5fJMfP2)
 
 > **GET** /GetFilteredTweets/{hashtag}
+
+[![get-Filtered-Tweets-Sequence-Diagram.jpg](https://i.postimg.cc/bvDs1V4Y/get-Filtered-Tweets-Sequence-Diagram.jpg)](https://postimg.cc/p9vWHC23)
+
 > **POST** /GetStats/{hashtag}
+
+[![Get-Stats-Sequence-Diagram.jpg](https://i.postimg.cc/g0Z2xX6n/Get-Stats-Sequence-Diagram.jpg)](https://postimg.cc/qtpTY7wT)
+
 > **POST** /GetFieldStats/{hashtag}?field="campo"
+
+[![Get-Field-Stats-Sequence-Diagram.jpg](https://i.postimg.cc/t41XcZk2/Get-Field-Stats-Sequence-Diagram.jpg)](https://postimg.cc/0zsRMNLw)
+
 > **POST** /GetStatsDate/{hashtag}
+
+[![get-Stats-Of-Date-Sequence-Diagram.jpg](https://i.postimg.cc/1tKPFpR5/get-Stats-Of-Date-Sequence-Diagram.jpg)](https://postimg.cc/ygWw43Sw)
+
 > **POST** /GetStatsLocation/{hashtag}
+
+[![Get-Stats-Of-Location-Sequence-Diagram.jpg](https://i.postimg.cc/VNqcyjCB/Get-Stats-Of-Location-Sequence-Diagram.jpg)](https://postimg.cc/3yxqm09d)
+
 
 ## Software
 
