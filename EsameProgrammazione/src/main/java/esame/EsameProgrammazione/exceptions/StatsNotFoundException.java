@@ -6,7 +6,6 @@ package esame.EsameProgrammazione.exceptions;
  * @author Antonio Colucci
  * @author Carmen Andreozzi
 */
-
 public class StatsNotFoundException extends ClassNotFoundException{
 	
 	private static final long serialVersionUID = 4L;

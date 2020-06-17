@@ -1,6 +1,8 @@
 package esame.EsameProgrammazione.model;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 /** 
  * Classe che rappresenta la struttura di un hashtag
@@ -38,6 +40,9 @@ public class Hashtag {
 	 * @param testo
 	 */
 	public void setTesto(String testo) {
+		if(testo.charAt(1) == '#') 
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Il carattere # non deve essere inserito");
+			
 		this.testo = testo;
 	}
 	

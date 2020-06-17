@@ -6,7 +6,6 @@ package esame.EsameProgrammazione.exceptions;
  * @author Antonio Colucci
  * @author Carmen Andreozzi
 */
-
 public class InternalGeneralException extends Exception {
 	
 	    private static final long serialVersionUID = 3L;

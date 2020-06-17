@@ -146,7 +146,8 @@ public class ServFilter {
 	 * @throws com.sun.el.parser.ParseException
 	 * @throws java.text.ParseException
 	 */
-	public static  ArrayList<Tweet> FilteringOR(Filter filtro, ArrayList<Tweet> previousArray, Hashtag hash, String column, Object value) throws MalformedURLException, JSONException, ParseException, com.sun.el.parser.ParseException, java.text.ParseException{
+	public static  ArrayList<Tweet> FilteringOR(Filter filtro, ArrayList<Tweet> previousArray, Hashtag hash, String column, Object value) 
+			throws MalformedURLException, JSONException, ParseException, com.sun.el.parser.ParseException, java.text.ParseException{
 		
 		ArrayList<Tweet> tweets = JsonParser.parsingDataset(hash);
 		OurDate data;

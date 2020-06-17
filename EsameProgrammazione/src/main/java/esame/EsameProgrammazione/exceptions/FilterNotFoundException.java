@@ -6,7 +6,6 @@ package esame.EsameProgrammazione.exceptions;
  * @author Antonio Colucci
  * @author Carmen Andreozzi
 */
-
 public class FilterNotFoundException extends ClassNotFoundException{
 	
 	private static final long serialVersionUID = 2L;

@@ -69,10 +69,14 @@ public class ControllerClass {
 	@RequestMapping(value = "/GetTweets/{hashtag}", method = RequestMethod.GET)
 	public ResponseEntity<Object> getTweets(@PathVariable("hashtag") String testo) throws ParseException{
 		
-		Hashtag hash = new Hashtag();
-		hash.setTesto(testo);
-		ServTweetsImpl = new ServTweetsImpl(hash);
-		return new ResponseEntity<>(ServTweetsImpl.getTweets(), HttpStatus.OK);
+		if(testo.charAt(1) == '#') return new ResponseEntity<>("Non è stato inserito l'Hashtag!", HttpStatus.BAD_REQUEST);
+		else{
+			Hashtag hash = new Hashtag();
+			hash.setTesto(testo);
+			ServTweetsImpl = new ServTweetsImpl(hash);
+			return new ResponseEntity<>(ServTweetsImpl.getTweets(), HttpStatus.CREATED);
+		}
+		
 	}
 	
 	

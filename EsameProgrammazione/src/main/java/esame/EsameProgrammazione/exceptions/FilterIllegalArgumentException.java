@@ -6,7 +6,6 @@ package esame.EsameProgrammazione.exceptions;
  * @author Antonio Colucci
  * @author Carmen Andreozzi
 */
-
 public class FilterIllegalArgumentException extends IllegalArgumentException{
 	
 	    private static final long serialVersionUID = 1L;
