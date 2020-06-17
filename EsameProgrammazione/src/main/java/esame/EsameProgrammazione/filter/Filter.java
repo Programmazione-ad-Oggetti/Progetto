@@ -29,7 +29,7 @@ public interface Filter {
 	public boolean filter(ArrayList<String> value, Tweet tweet);
 	
 	/**
-	 * Controlla se la data presa come parametro è uguale a quella di ogni singolo tweet
+	 * Controlla se la data presa come parametro ï¿½ uguale a quella di ogni singolo tweet
 	 * 
 	 * @param data
 	 * @return risposta booleana

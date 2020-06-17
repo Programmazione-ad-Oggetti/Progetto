@@ -62,29 +62,25 @@ public class ControllerClass {
 	 * Viene restituita la lista dei Tweet corrispondenti ad 
 	 * un certo hashtag inserito nella rotta
 	 * 
-	 * @param testo Testo dell'hashtag
-	 * @return La lista dei tweet
+	 * @param testo
+	 * @return la lista dei tweet
 	 * @throws ParseException
 	 */
 	@RequestMapping(value = "/GetTweets/{hashtag}", method = RequestMethod.GET)
 	public ResponseEntity<Object> getTweets(@PathVariable("hashtag") String testo) throws ParseException{
 		
-		if(testo.charAt(1) == '#') return new ResponseEntity<>("Non è stato inserito l'Hashtag!", HttpStatus.BAD_REQUEST);
-		else{
-			Hashtag hash = new Hashtag();
-			hash.setTesto(testo);
-			ServTweetsImpl = new ServTweetsImpl(hash);
-			return new ResponseEntity<>(ServTweetsImpl.getTweets(), HttpStatus.CREATED);
-		}
-		
+		Hashtag hash = new Hashtag();
+		hash.setTesto(testo);
+		ServTweetsImpl = new ServTweetsImpl(hash);
+		return new ResponseEntity<>(ServTweetsImpl.getTweets(), HttpStatus.OK);
 	}
 	
 	
 	/**
 	 * Viene restituita la lista dei Tweet con un certo Filtro
 	 * 
-	 * @param testo Testo dell'hashtag
-	 * @param filter Filtro da applicare
+	 * @param testo
+	 * @param param
 	 * @return lista dei tweet filtrati
 	 * @throws ParseException
 	 * @throws FilterNotFoundException
@@ -94,20 +90,20 @@ public class ControllerClass {
 	 * @throws JSONException
 	 */
 	@RequestMapping(value = "/GetFilteredTweets/{hashtag}", method = RequestMethod.GET)
-	public ResponseEntity<Object> getFilteredTweets(@PathVariable("hashtag") String testo, @RequestBody Object filter) throws ParseException, FilterNotFoundException, FilterIllegalArgumentException, InternalGeneralException, MalformedURLException, JSONException{
+	public ResponseEntity<Object> getFilteredTweets(@PathVariable("hashtag") String testo, @RequestBody Object param) throws ParseException, FilterNotFoundException, FilterIllegalArgumentException, InternalGeneralException, MalformedURLException, JSONException{
 		
 		Hashtag hash = new Hashtag();
 		hash.setTesto(testo);
 		ServTweetsImpl = new ServTweetsImpl(hash);
-		return new ResponseEntity<>(RecognizeFilter.JsonParserColumn(filter, hash), HttpStatus.OK);
+		return new ResponseEntity<>(RecognizeFilter.JsonParserColumn(param, hash), HttpStatus.OK);
 	}
 	
 	
 	/**
 	 * Vengono restituite tutte le statistiche
 	 * 
-	 * @param testo Testo dell'hashtag
-	 * @param filter Filtro da applicare
+	 * @param testo
+	 * @param filter
 	 * @return statistiche relative ai like
 	 * @throws InternalGeneralException
 	 * @throws StatsNotFoundException
@@ -130,9 +126,9 @@ public class ControllerClass {
 	/**
 	 * Vengono restituite le statistiche relative ad un determinato campo (Field)
 	 * 
-	 * @param testo Testo dell'hashtag
-	 * @param field Campo della statistica
-	 * @param filter Filtro da applicare
+	 * @param testo
+	 * @param field
+	 * @param filter
 	 * @return statistiche relative al "field" inserito
 	 * @throws FailedLoginException
 	 * @throws MismatchedInputException
@@ -158,8 +154,8 @@ public class ControllerClass {
 	/**
 	 * Vengono restituite le statistiche relative alla data
 	 * 
-	 * @param testo Testo dell'hashtag
-	 * @param filter Filtro da applicare
+	 * @param testo
+	 * @param filter
 	 * @return numero di tweet pubblicati in una certa data
 	 * @throws InternalGeneralException
 	 * @throws StatsNotFoundException
@@ -179,19 +175,6 @@ public class ControllerClass {
 		return new ResponseEntity<>(ServTweetsImpl.StatsVisualizeDate(filter, hash), HttpStatus.OK);
 	}
 	
-	/**
-	 * Vengono restituite le statistiche relative alla posizione geografica
-	 * 
-	 * @param testo Testo dell'hashtag
-	 * @param filter Filtro da applicare
-	 * @return Numero di tweet pubblicati in una certa posizione geografica
-	 * @throws InternalGeneralException
-	 * @throws StatsNotFoundException
-	 * @throws FilterNotFoundException
-	 * @throws FilterIllegalArgumentException
-	 * @throws MalformedURLException
-	 * @throws JSONException
-	 */
 	@PostMapping("/GetStatsLocation/{hashtag}")
 	public ResponseEntity<Object> getStatsOfLocation(@PathVariable("hashtag") String testo, 
 								  				 @RequestBody Object filter) 
